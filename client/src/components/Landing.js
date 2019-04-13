@@ -44,7 +44,7 @@ class Landing extends Component {
 		var event = e.currentTarget;
 
 		if(this.props.thisuser){
-
+			//watsup
 
 		 console.log(this.props.thisuser)
 
