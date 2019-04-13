@@ -181,7 +181,7 @@ body,
     -webkit-animation-iteration-count: infinite;
     -moz-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
-    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
     background-position: 0 0;
     background-color: #222;
 
