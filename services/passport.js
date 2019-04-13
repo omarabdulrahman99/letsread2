@@ -5,6 +5,8 @@ const keys = require('../config/keys');
 const util = require('util');
 
 const User = mongoose.model('User');
+var gdsecret = process.env.GOODREADS_SECRET || keys.GOODREADS_SECRET;
+
 
 passport.serializeUser((user,done) => {
 
@@ -34,7 +36,7 @@ passport.use(
 	{
 
 		consumerKey: keys.GOODREADS_KEY,
-		consumerSecret: (process.env.GOODREADS_SECRET || keys.GOODREADS_SECRET),
+		consumerSecret: gdsecret,
 		callbackURL:'/auth/goodreads/callback',
 		proxy:true
 
