@@ -1832,6 +1832,7 @@ blockquote.grapefruit{
   
 
 
+
   
 }
 
@@ -1848,10 +1849,45 @@ blockquote.grapefruit{
         padding: .5rem 1rem;
     }
 
+    .mybookscontainer{
+        display:grid;
+        grid-template-rows:1fr ;
+        grid-template-columns: 1fr;
+       
+    }
+
+    .mybookscontainer2{
+        display:grid;
+        grid-template-rows:1fr;
+        grid-template-columns: 1fr;
+        overflow-y:visible;
+        
+    }
+
+    .booklistsidebar{
+        grid-column:1/2;
+        overflow-y:visible;
+        overflow-x:visible;
+    }
+
+    .mybookstable{
+     grid-column:1/2;
+     overflow-y:visible;
+    }
+
+    .previewnote{
+       grid-column:1/2;
+       overflow-y:visible;
+       grid-template-rows:1fr 85px 400px;
+    }
+
+
     .logobg{
         font-size:2rem;
         white-space:nowrap;
     }
+
+
 
 
 
