@@ -95,8 +95,8 @@ body,
     color:white;
     text-decoration:none;
     font-size:1.6rem;
-    font-family: 'Fascinate Inline', cursive;
-    font: 3rem 'Arizonia', Helvetica, sans-serif;
+  
+    font: 3rem 'Arizonia', Helvetica, sans-serif !important;
     margin-left:10px;
 
 
