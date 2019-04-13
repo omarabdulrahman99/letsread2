@@ -144,7 +144,7 @@ componentDidMount(){
 		for(var i=0;i<9;i++){
 
 			//console.log(JSON.stringify(favbooks[i].book[0].small_image_url[0]));
-			if( !(favbooks[i])){
+			if( !(favbooks)){
 				imagesarray.push(<figure key={i}><img src={imgempty} alt=""></img></figure>);
 			}else{
 				
