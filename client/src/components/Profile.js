@@ -144,10 +144,10 @@ componentDidMount(){
 		for(var i=0;i<9;i++){
 
 			//console.log(JSON.stringify(favbooks[i].book[0].small_image_url[0]));
-			if( !(favbooks)){
+			if( !(favbooks) || !favbooks[i]){
 				imagesarray.push(<figure key={i}><img src={imgempty} alt=""></img></figure>);
 			}else{
-				
+				console.log(favbooks[i])
 				imagesarray.push(<figure key={i} onClick={() => this.toggle(1)}><img src={favbooks[i].book[0].image_url[0]} alt=""></img></figure>);
 			}
 

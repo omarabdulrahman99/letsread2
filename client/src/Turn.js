@@ -1,7 +1,7 @@
 import $ from "jquery";
 import q from "turn.js";
 import React from 'react';
-import "./styles.css";
+
 
 import * as actions from './actions';
 import { connect } from 'react-redux';

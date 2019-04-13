@@ -27,7 +27,7 @@ class Header2 extends Component {
 				return (
 
 					
-						<a href={'/auth/goodreads'}>
+						<a className="login" href={'/auth/goodreads'}>
 							<img src='https://s.gr-assets.com/assets/badge/goodreads-login-button-7bd184d3077cf3580f68aa8a00de39ce.png' alt='nother' />
 						 </a>
 				

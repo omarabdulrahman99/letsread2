@@ -1028,7 +1028,7 @@ class BookNote extends Component {
 			        {this.state.chapters && this.state.edit == false  ? this.renderCards() : null}
 					{this.state.edit ? null : <div className="addCenter">
 						<div className="addCenter" onClick={this.setChapterStart}>
-						  <div className="addChapter"></div>
+						  <div className="editFlexBack">Add Chapter</div>
 						</div>
 					</div>}
 				</div>

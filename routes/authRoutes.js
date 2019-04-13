@@ -16,17 +16,40 @@ module.exports = app => {
 
 
     (req,res) => {
+      var envir = process.env.NODE_ENV || 'dev';
+      console.log(envir);
+      console.log('ENVIRONMENT OMFG')
+      var redir = '';
+
+      if(envir != 'dev'){
+         redir = '/';
+       
+      }else{
+        redir = 'http://localhost:3000';
+      }
+      console.log(redir)
+      console.log('REDIR MAN')
 
       //console.log('goodreadscallback');
-      res.redirect('/'); //zzz must fix later
+      res.redirect(redir); //zzz must fix later
     })
 
 
   app.get('/auth/logout', (req, res) => {
     
+          var envir = process.env.NODE_ENV || 'dev';
+      var redir = '';
+      if(envir != 'dev'){
+        redir = '/';
+      }else{
+        
+         redir = 'http://localhost:3000';
+      }
+
+
       //console.log('logged out');
       req.logout();
-        res.redirect('/');
+        res.redirect(redir);
 
   });
 
