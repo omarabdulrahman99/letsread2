@@ -1887,7 +1887,23 @@ blockquote.grapefruit{
         white-space:nowrap;
     }
 
+    .editcontainer{
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr;
+        text-align:center;
+        margin:0 auto;
+    }
 
+    .editflex{
+        grid-column:1/2;
+        grid-row:1/2;
+    }
+
+    .bkcards{
+        margin:0 auto;
+        margin-top:5rem;
+        margin-bottom:5rem;
+    }
 
 
 
@@ -1911,6 +1927,56 @@ blockquote.grapefruit{
     .logobg{
         font-size:1.8rem;
         white-space:nowrap;
+    }
+
+        .mybookscontainer{
+        display:grid;
+        grid-template-rows:1fr ;
+        grid-template-columns: 1fr;
+       
+    }
+
+    .mybookscontainer2{
+        display:grid;
+        grid-template-rows:1fr;
+        grid-template-columns: 1fr;
+        overflow-y:visible;
+        
+    }
+
+    .booklistsidebar{
+        grid-column:1/2;
+        overflow-y:visible;
+        overflow-x:visible;
+    }
+
+    .mybookstable{
+     grid-column:1/2;
+     overflow-y:visible;
+    }
+
+    .previewnote{
+       grid-column:1/2;
+       overflow-y:visible;
+       grid-template-rows:1fr 85px 400px;
+    }
+
+        .editcontainer{
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr;
+        text-align:center;
+        margin:0 auto;
+    }
+
+    .editflex{
+        grid-column:1/2;
+        grid-row:1/2;
+    }
+
+    .bkcards{
+        margin:0 auto;
+        margin-top:5rem;
+        margin-bottom:5rem;
     }
 
 
