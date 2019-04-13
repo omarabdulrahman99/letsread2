@@ -34,7 +34,7 @@ passport.use(
 	{
 
 		consumerKey: keys.GOODREADS_KEY,
-		consumerSecret: process.env.GOODREADS_SECRET || keys.GOODREADS_SECRET,
+		consumerSecret: (process.env.GOODREADS_SECRET || keys.GOODREADS_SECRET),
 		callbackURL:'/auth/goodreads/callback',
 		proxy:true
 
