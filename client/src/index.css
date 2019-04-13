@@ -134,7 +134,8 @@ body,
     border-top: 2px solid rgba(255,255,255,0);
     border-bottom: 2px solid rgba(255,255,255,0);
     transition: padding .3s,border-color .3s;
-    font-size:1.2vw;
+    font-size:1rem;
+
   
     
 
@@ -1841,6 +1842,18 @@ blockquote.grapefruit{
 
 @media (min-width: 481px) and (max-width: 767px) {
   
+    .headerul a{
+        font-size:.9rem;
+        white-space:nowrap;
+        padding: .5rem 1rem;
+    }
+
+    .logobg{
+        font-size:2rem;
+        white-space:nowrap;
+    }
+
+
 
 
   
@@ -1851,9 +1864,18 @@ blockquote.grapefruit{
   ##Screen = B/w 320px to 479px
 */
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 0px) and (max-width: 480px) {
   
+    .headerul a{
+        font-size:.7rem;
+        white-space:nowrap;
+        padding: .5rem 1rem;
+    }
 
+    .logobg{
+        font-size:1.8rem;
+        white-space:nowrap;
+    }
 
 
 }
