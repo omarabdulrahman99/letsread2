@@ -1,0 +1,32 @@
+{
+  "name": "letsread",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.4",
+    "draft.js": "^0.2.0",
+    "express": "^4.16.3",
+    "jquery": "^1.12.0",
+    "json-stringify-safe": "^5.0.1",
+    "mongoose": "^5.2.17",
+    "passport": "^0.4.0",
+    "passport-goodreads": "^1.0.0",
+    "turn.js": "^1.0.5",
+    "twilio": "^3.30.0",
+    "xml2js": "^0.4.19"
+  }
+}
