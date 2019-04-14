@@ -2066,17 +2066,23 @@ blockquote.grapefruit{
         grid-column:1/2;
         overflow-y:visible;
         overflow-x:visible;
+       
     }
 
     .mybookstable{
      grid-column:1/2;
      overflow-y:visible;
+    
+    
     }
 
     .previewnote{
+        display:grid;
        grid-column:1/2;
+     
        overflow-y:visible;
        grid-template-rows:1fr 85px 400px;
+       
     }
 
         .editcontainer{
