@@ -252,6 +252,7 @@ class BookList extends Component {
 
     async previewState(e) {
 
+        e.preventDefault();
         this.bookpreviewId = e.currentTarget.id;
         this.props.calendarbookid(this.bookpreviewId);//for booknotes access
         //axios post req with bookid, find bookdates, return.
@@ -333,7 +334,7 @@ class BookList extends Component {
                </div>
             </div>
             <div className="noteprevinfo" >
-              <a className="toBkNoteLink" onClick={()=> { this.setState({booknote:true })} }>Go to book notes</a>
+              <a className="toBkNoteLink" onClick={(e)=> {e.preventDefault(); this.setState({booknote:true })} }>Go to book notes</a>
             </div>
             <div className="calendarprevinfo">
                 <Calendar bookid={this.bookpreviewId} booksched={this.booksched} user={this.props.auth}/>
