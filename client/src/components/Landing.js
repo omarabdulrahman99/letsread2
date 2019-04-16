@@ -120,7 +120,7 @@ class Landing extends Component {
 					<div onClick={this.handleSubmit}>
   					<i className="fa fa-search" aria-hidden="true"></i>
   					</div>
-  					<input className="form-control form-control-sm ml-3 w-75" required={true} type="text" name="searchq" value={this.state.searchquery} onChange={this.handleInputChange} placeholder="Search books by title, isbn, or author!" aria-label="Search" />
+  					<input className="form-control form-control-sm ml-3 w-75" required={true} type="text" name="searchq" value={this.state.searchquery} onChange={this.handleInputChange} placeholder="Search books by title, isbn, or author!" aria-label="Search" role="search"/>
 				</form>
 			</div>
 

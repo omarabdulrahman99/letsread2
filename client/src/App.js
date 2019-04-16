@@ -5,16 +5,19 @@ import * as actions from './actions';
 
 
 
-import FooterSec from './components/Footer';
-import Landing from './components/Landing';
-import SearchResults from './components/SearchResults';
-import Profile from './components/Profile';
-import BookList from './components/books/BookList';
-import BookNote from './components/books/BookNote';
-import Calendar from './components/Calendar';
 
-import Turn from './Turn';
-import Header2 from './Header2';
+
+import asyncComponent from "./components/AsyncComponent";
+const Header = asyncComponent(() => import("./Header"));
+const Footer = asyncComponent(() => import("./components/Footer"));
+const Landing = asyncComponent(() => import("./components/Landing"));
+const Profile = asyncComponent(() => import("./components/Profile"));
+const BookList = asyncComponent(() => import("./components/books/BookList"));
+const BookNote = asyncComponent(() => import("./components/books/BookNote"))
+
+
+
+
 
 class App extends Component {
 
@@ -36,9 +39,10 @@ class App extends Component {
        <BrowserRouter>             
        
           <div className="rootdk">
-            <Header2/>
+            <Header/>
               <div className="container">
                       
+                     
                         <Switch>
                           <Route exact path="/" component={Landing}/>
                           <Route exact path="/mybooks" component={() => (
@@ -64,8 +68,9 @@ class App extends Component {
                                   )}/>
 
                         </Switch>
+                
                        
-                       <FooterSec />
+                       <Footer />
 
                  </div>
               </div>

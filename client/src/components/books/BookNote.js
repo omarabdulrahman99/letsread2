@@ -968,7 +968,7 @@ class BookNote extends Component {
 
 
 
-        <div className="cero">
+        <main className="cero">
 
             {this.state.turnjs == 'on' ? <Link to="/booknotes" className="editFlexBack">Go Back</Link> : null}
 			{this.state.turnjs == 'on' ?  <Turn turnjstext={this.state.turnjstext} profile={this.state.profile} coverinfo={this.state.coverinfo} /> : 
@@ -1037,7 +1037,7 @@ class BookNote extends Component {
 			}
 
 
-			</div>
+			</main>
 
 
 

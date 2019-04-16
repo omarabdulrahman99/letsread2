@@ -325,7 +325,7 @@ class BookList extends Component {
 
         return (
 
-            <div className="previewnote style-13">  
+          <aside className="previewnote style-13">  
             <div className="bookprevinfo">
                <img src={cover}></img>
                <div className="bkprevdet">
@@ -339,7 +339,7 @@ class BookList extends Component {
             <div className="calendarprevinfo">
                 <Calendar bookid={this.bookpreviewId} booksched={this.booksched} user={this.props.auth}/>
             </div>
-          </div>
+          </aside>
 
         )
 
@@ -378,9 +378,9 @@ class BookList extends Component {
 
 
                     {this.state.booknote != false ? null :
-                        <div className="mybookstable style-13">
+                        <main className="mybookstable style-13">
                           {this.state.bookcounter != 1 ? this.tablerender() : null}
-                        </div>
+                        </main>
                     }
 
 

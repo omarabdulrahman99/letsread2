@@ -1,0 +1,12 @@
+-Header
+-Footer
+-<main> element vs. div
+-<nav> element vs. div
+-<aside> element vs. div
+-role attribute: search. 
+-Links
+
+to-do:
+-carousel
+
+In-progress

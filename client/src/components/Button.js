@@ -345,7 +345,7 @@ class Button extends Component {
 		return(
 
 		
-			<div className="button">
+			<div className="button" role="button">
 					
 						<Dropdown>
 						  {this.renderToggle()}

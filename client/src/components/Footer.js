@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-class FooterSec extends Component {
+class Footer extends Component {
 
 
 render() {
@@ -9,16 +9,16 @@ render() {
 
 return (
 
-		<div className="footer">
+		<footer className="footer">
 
 			<ul className="ftlinks">
 				<li>Copyright ©2018-2019 LetsRead.com </li>
 	
 
 			</ul>
-		</div>
+		</footer>
     );
   }
 }
 
-export default FooterSec;
+export default Footer;

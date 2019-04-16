@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as actions from './actions';
 import { Link } from 'react-router-dom';
 
-class Header2 extends Component {
+class Header extends Component {
 
 
 	constructor(props){
@@ -28,7 +28,7 @@ class Header2 extends Component {
 
 					
 						<a className="login" href={'/auth/goodreads'}>
-							<img src='https://s.gr-assets.com/assets/badge/goodreads-login-button-7bd184d3077cf3580f68aa8a00de39ce.png' alt='nother' />
+							<img src='https://s.gr-assets.com/assets/badge/goodreads-login-button-7bd184d3077cf3580f68aa8a00de39ce.png' alt='goodreads-login-button' />
 						 </a>
 				
 
@@ -37,7 +37,7 @@ class Header2 extends Component {
 			default:
 				return (
 				
-				<div>
+				<nav>
 				  <ul className="headerul">
 					
 						<Link to="/mybooks">My Books</Link>
@@ -53,7 +53,7 @@ class Header2 extends Component {
 						</a>
 					
 				 </ul>
-				</div>
+				</nav>
 			
 					)
 
@@ -74,14 +74,14 @@ class Header2 extends Component {
 
 			return(
 
-				<div className="header">
+				<header className="header">
 					<a href="/">
 						<div className="logobg">Let's Read!</div>
 					</a>
 					<div>
 						{this.renderContent()}
 					</div>
-				</div>
+				</header>
 			
 		
 				)
@@ -108,4 +108,4 @@ function mapStateToProps({ auth }){
 }
 
 
-export default connect(mapStateToProps,actions)(Header2);
+export default connect(mapStateToProps,actions)(Header);
