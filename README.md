@@ -5,4 +5,5 @@ A site where you can pull in your shelves from goodreads, create a reading sched
 NodeJs/ExpressJs/ReactJs/MongoDB
 
 In-progress.
+Initial load may be slow due to Heroku conserving server resources, so it sleeps.
 https://letsread2.herokuapp.com/
