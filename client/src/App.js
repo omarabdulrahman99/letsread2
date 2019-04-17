@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {lazy, Suspense, Component } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './actions';
@@ -8,7 +8,8 @@ import * as actions from './actions';
 
 
 import asyncComponent from "./components/AsyncComponent";
-const Header = asyncComponent(() => import("./Header"));
+//const Header = asyncComponent(() => import("./Header"));
+const Header = lazy(()=> import('./Header'));//just to try
 const Footer = asyncComponent(() => import("./components/Footer"));
 const Landing = asyncComponent(() => import("./components/Landing"));
 const Profile = asyncComponent(() => import("./components/Profile"));
@@ -39,7 +40,9 @@ class App extends Component {
        <BrowserRouter>             
        
           <div className="rootdk">
-            <Header/>
+            <Suspense fallback ={<div>Loading</div>}>
+              <Header/>
+            </Suspense>
               <div className="container">
                       
                      
