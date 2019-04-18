@@ -9,7 +9,7 @@ import * as actions from './actions';
 
 import asyncComponent from "./components/AsyncComponent";
 //const Header = asyncComponent(() => import("./Header"));
-const Header = lazy(()=> import('./Header'));//just to try
+const Header = lazy(()=> import('./components/Header'));//just to try
 const Footer = asyncComponent(() => import("./components/Footer"));
 const Landing = asyncComponent(() => import("./components/Landing"));
 const Profile = asyncComponent(() => import("./components/Profile"));

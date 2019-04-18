@@ -178,6 +178,7 @@ class SearchResults extends Component {
 		return(
 	
 		<div>
+		<p className="marquee"><span>GoodreadsAPI corrently borken like zis Engrish. You cannot add books to shelves from here. Will be fixed once updated. Thanks for your patience!</span></p>
 		  <div className="topsearch">
 
 			<form onSubmit={this.handleSubmits} className="form-inline active-pink-3 active-pink-4 ">

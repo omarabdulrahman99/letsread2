@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import * as actions from './actions';
+import * as actions from '../actions';
 import { Link } from 'react-router-dom';
-import {ThemeContext} from './ThemeContext';
+import {ThemeContext} from '../ThemeContext';
 class Header extends Component {
 
 
