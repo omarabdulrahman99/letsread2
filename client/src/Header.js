@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 import { Link } from 'react-router-dom';
-
+import {ThemeContext} from './ThemeContext';
 class Header extends Component {
 
 
 	constructor(props){
 		super(props);
 		this.state = {
-
+			theme:'light'
 		}
 	}
 
@@ -37,23 +37,36 @@ class Header extends Component {
 			default:
 				return (
 				
-				<nav>
-				  <ul className="headerul">
-					
-						<Link to="/mybooks">My Books</Link>
-					
-					
-						<a href={'/profile'} >
-							Profile
-						</a>
-					
-				
-						<a href={'/auth/logout'} >
-							LogOut
-						</a>
-					
-				 </ul>
-				</nav>
+						//you can't use context outside of return. also no dispatch actions like redux. and this messy looking code. redux > context.
+						<nav>
+							<ThemeContext.Provider value={this.state.theme}>
+								<ThemeContext.Consumer>
+									{(context) => (
+
+									<ul className="headerul">
+											
+											<Link to="/mybooks">My Books</Link>
+											
+										
+											<a href={'/profile'} >
+												Profile
+											</a>
+										
+									
+											<a href={'/auth/logout'} >
+												LogOut
+											</a>
+										
+									 </ul>
+
+
+
+										)}
+
+
+							 	</ThemeContext.Consumer>
+							</ThemeContext.Provider>
+						</nav>
 			
 					)
 
