@@ -15,7 +15,7 @@ const Landing = asyncComponent(() => import("./components/Landing"));
 const Profile = asyncComponent(() => import("./components/Profile"));
 const BookList = asyncComponent(() => import("./components/books/BookList"));
 const BookNote = asyncComponent(() => import("./components/books/BookNote"))
-
+const StatsChart = asyncComponent(() => import("./components/StatsChart"));
 
 
 
@@ -61,7 +61,14 @@ class App extends Component {
                                     ) : (
                                       <Landing/>
                                     )
-                                  )} />} />
+                                  )} />
+                          <Route exact path="/statschart" component={() => (
+                                    this.props.thisuser ? (
+                                      <StatsChart/>
+                                    ) : (
+                                      <Landing/>
+                                    )
+                                  )} />
                           <Route exact path="/profile" render={() => (
                                     this.props.thisuser ? (
                                       <Profile/>
