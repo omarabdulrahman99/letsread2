@@ -265,78 +265,44 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 
 .landtitlep {
-    margin-bottom: 5%;
-
-    background: linear-gradient(to right, #ff6600 10%, #800000 70%, #cc0000 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 5%;  
+    background-clip: text;
     font-size: 10vw;
     font-family: "Poppins", sans-serif;
-
     text-align: center;
+ 
+
+  background: -webkit-linear-gradient(right, #ff6600 0%, #800000 25%, #cc0000 50%, #FFC0CB 100%) repeat;
+  -webkit-background-clip: text;
+  -ms-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-fill-color: transparent;
+  -webkit-animation-name: shimmer;
+  -webkit-animation-duration: 50s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 
 
    
-    -webkit-background-size: 125px 100%;
-    -moz-background-size: 125px 100%;
-    background-size: 65% 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    -webkit-animation-name: shimmer;
-    -moz-animation-name: shimmer;
-    animation-name: shimmer;
-    -webkit-animation-duration: 4s;
-    -moz-animation-duration: 4s;
-    animation-duration: 6s;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-    /*background-repeat: no-repeat;*/
-    background-position: 0 0;
-    background-color: #222;
 
-
-
+  
+ 
+  
+    
 }
 
-@-moz-keyframes shimmer {
-    0% {
-        background-position: top left;
-    }
-
-    100% {
-        background-position: top right;
-    }
-}
-
-@-webkit-keyframes shimmer {
-    0% {
-        background-position: top left;
-    }
-
-    100% {
-        background-position: top right;
-    }
-}
-
-@-o-keyframes shimmer {
-    0% {
-        background-position: top left;
-    }
-
-    100% {
-        background-position: top right;
-    }
-}
 
 @keyframes shimmer {
     0% {
-        background-position: top left;
+        background-position: 0,0;
     }
 
     100% {
-        background-position: top right;
+       background-position: 8000px 3000px;
     }
 }
 
@@ -1928,14 +1894,14 @@ blockquote.grapefruit{
 }
 
 .pagesChart{
-    grid-column:2/3;
+    grid-column:1/2;
     grid-row:1;
     margin-right:5em;
     margin-left:5em;
 }
 
 .shelvesChart{
-    grid-column:1/2;
+    grid-column:2/3;
     grid-row:1;
     margin-right:5em;
     margin-left:5em;
