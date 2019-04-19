@@ -2013,6 +2013,41 @@ svg{
 /*MEDIA QUERY TIME!! =)*/
 @media (min-width: 1281px) {
   
+    .chartLayout{
+
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        grid-row-gap:1em;
+        margin:0px;
+      
+    
+
+    }
+
+    .pagesChart{
+        grid-column:1/2;
+        grid-row:1/2;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
+
+    .shelvesChart{
+        grid-column:1/2;
+        grid-row:2/3;
+        margin:0px auto;
+        margin-top:5em;
+ 
+    }
+
+    .totalreadChart{
+        grid-column:1/2;
+        grid-row:3;
+        margin:0px auto;
+        margin-top:5em;
+    }
 
 
 
@@ -2026,6 +2061,41 @@ svg{
 
 @media (min-width: 1025px) and (max-width: 1280px) {
   
+    .chartLayout{
+
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        grid-row-gap:1em;
+        margin:0px;
+      
+    
+
+    }
+
+    .pagesChart{
+        grid-column:1/2;
+        grid-row:1/2;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
+
+    .shelvesChart{
+        grid-column:1/2;
+        grid-row:2/3;
+        margin:0px auto;
+        margin-top:5em;
+ 
+    }
+
+    .totalreadChart{
+        grid-column:1/2;
+        grid-row:3;
+        margin:0px auto;
+        margin-top:5em;
+    }
 
 
   
@@ -2133,7 +2203,7 @@ svg{
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
 
     }
@@ -2141,7 +2211,7 @@ svg{
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
  
     }
@@ -2149,7 +2219,7 @@ svg{
     .totalreadChart{
         grid-column:1/2;
         grid-row:3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
     }
 
@@ -2224,7 +2294,7 @@ svg{
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
 
     }
@@ -2232,7 +2302,7 @@ svg{
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
  
     }
@@ -2240,7 +2310,7 @@ svg{
     .totalreadChart{
         grid-column:1/2;
         grid-row:3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
     }
 
@@ -2334,7 +2404,7 @@ svg{
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
 
     }
@@ -2342,7 +2412,7 @@ svg{
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
  
     }
@@ -2350,7 +2420,7 @@ svg{
     .totalreadChart{
         grid-column:1/2;
         grid-row:3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
     }
 
@@ -2455,7 +2525,7 @@ svg{
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
 
     }
@@ -2463,7 +2533,7 @@ svg{
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
  
     }
@@ -2471,7 +2541,7 @@ svg{
     .totalreadChart{
         grid-column:1/2;
         grid-row:3;
-        margin:0px;
+        margin:0px auto;
         margin-top:5em;
     }
 
