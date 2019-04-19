@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 import { Link } from 'react-router-dom';
-import {ThemeContext} from '../ThemeContext';
+//import {ThemeContext} from '../ThemeContext';
 import { slide as Menu } from 'react-burger-menu';
 
 
@@ -13,17 +13,12 @@ class Header extends Component {
 		super(props);
 		this.state = {
 			theme:'light',
-			open:false
+			
 		}
 	}
 
 
 
-	handleClick = () => {
-		    this.setState({
-		        open: !this.state.open
-		    });
-		}
 
 
 	renderContent(){
@@ -49,17 +44,15 @@ class Header extends Component {
 			default:
 				return (
 				
-						//you can't use context outside of return. also no dispatch actions like redux. and this messy looking code. redux > context.
+			
 						<nav>
 
-							<ThemeContext.Provider value={this.state.theme}>
-								<ThemeContext.Consumer>
-									{(context) => (
+
 								 <div>
 
 								
 									<ul className="headerul">
-										<Menu>
+										<Menu isOpen={true}>
 											<Link to="/mybooks">My Books</Link>
 											
 											<a href={'/statschart'}>
@@ -82,11 +75,9 @@ class Header extends Component {
 
 								</div>
 
-										)}
 
 
-							 	</ThemeContext.Consumer>
-							</ThemeContext.Provider>
+		
 						</nav>
 			
 					)
