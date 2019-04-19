@@ -164,12 +164,14 @@ body,
   right: 36px;
   bottom:95%;
   top:2%;
+
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   /*background: #373a47;*/
   background:#f7f9fb;
+
 }
 
 /* Color/shape of burger icon bars on hover*/
@@ -1932,9 +1934,6 @@ blockquote.grapefruit{
     margin-left:5em;
 }
 
-
-
-
 .shelvesChart{
     grid-column:1/2;
     grid-row:1;
@@ -2073,6 +2072,35 @@ blockquote.grapefruit{
 
     }
 
+    .chartLayout{
+
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        grid-row-gap:1em;
+        margin-top:5em;
+        margin-left:5em;
+        margin-right:5em;
+
+    }
+
+    .pagesChart{
+        grid-column:1/2;
+        grid-row:1/2;
+        margin-right:5em;
+        margin-left:5em;
+    }
+
+    .shelvesChart{
+        grid-column:1/2;
+        grid-row:2/3;
+        margin-right:5em;
+        margin-left:5em;
+    }
+
+
+
  
   
 }
@@ -2084,6 +2112,7 @@ blockquote.grapefruit{
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   
+
 
     .mybookscontainer{
         display:grid;
@@ -2123,6 +2152,33 @@ blockquote.grapefruit{
        overflow-y:scroll;
        grid-template-rows:1fr 85px 400px;
 
+    }
+
+    .chartLayout{
+
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        grid-row-gap:1em;
+        margin-top:5em;
+        margin-left:5em;
+        margin-right:5em;
+
+    }
+
+    .pagesChart{
+        grid-column:1/2;
+        grid-row:1/2;
+        margin-right:5em;
+        margin-left:5em;
+    }
+
+    .shelvesChart{
+        grid-column:1/2;
+        grid-row:2/3;
+        margin-right:5em;
+        margin-left:5em;
     }
 
 
@@ -2197,6 +2253,33 @@ blockquote.grapefruit{
         margin:0 auto;
         margin-top:5rem;
         margin-bottom:5rem;
+    }
+
+    .chartLayout{
+
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        grid-row-gap:1em;
+        margin-top:5em;
+        margin-left:5em;
+        margin-right:5em;
+
+    }
+
+    .pagesChart{
+        grid-column:1/2;
+        grid-row:1/2;
+        margin-right:5em;
+        margin-left:5em;
+    }
+
+    .shelvesChart{
+        grid-column:1/2;
+        grid-row:2/3;
+        margin-right:5em;
+        margin-left:5em;
     }
 
 
@@ -2279,6 +2362,33 @@ blockquote.grapefruit{
         margin:0 auto;
         margin-top:5rem;
         margin-bottom:5rem;
+    }
+
+    .chartLayout{
+
+        display:grid;
+        grid-template-columns:1fr;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        grid-row-gap:1em;
+        margin-top:5em;
+        margin-left:5em;
+        margin-right:5em;
+
+    }
+
+    .pagesChart{
+        grid-column:1/2;
+        grid-row:1/2;
+        margin-right:5em;
+        margin-left:5em;
+    }
+
+    .shelvesChart{
+        grid-column:1/2;
+        grid-row:2/3;
+        margin-right:5em;
+        margin-left:5em;
     }
 
 

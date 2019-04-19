@@ -125,7 +125,9 @@ class StatsChart extends Component {
 								width={650}
 								height={400}
 								margin={{top:90, bottom:50, left:50, right:10}}
-					
+								xAxis={{label: "Book pages"}}
+                    			yAxis={{label: "No. of books"}}
+						
 							/>
 					
 				</div>
@@ -185,6 +187,8 @@ class StatsChart extends Component {
 							width={600}
 							height={400}
 							margin={{top:90, bottom:50, left:50, right:10}}
+							xAxis={{label: "Shelf names"}}
+                    		yAxis={{label: "No.of books"}}
 					
 
 

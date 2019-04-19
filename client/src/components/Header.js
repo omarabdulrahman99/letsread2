@@ -13,10 +13,10 @@ class Header extends Component {
 		super(props);
 		this.state = {
 			theme:'light',
+			areMenusOpen:true
 			
 		}
 	}
-
 
 
 
@@ -54,7 +54,7 @@ class Header extends Component {
 									<ul className="headerul">
 
 
-										<Menu isOpen={true}>
+										<Menu  isOpen={true}>
 
 											<Link to="/mybooks">My Books</Link>
 											
@@ -77,7 +77,7 @@ class Header extends Component {
 
 
 								</div>
-								
+
 
 
 		
