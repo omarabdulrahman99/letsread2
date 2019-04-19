@@ -37,7 +37,7 @@ module.exports = app => {
 
 	app.post('/api/shelflist',  async (req,res) => {
 
-		console.log('SHELFLISTARRIVED!')
+		
 		let gdrdId = req.body.user.goodreadId;
 	
 		const shelfres = await axios.get(`https://www.goodreads.com/shelf/list.xml?user_id=${gdrdId}&key=${process.env.GOODREADS_KEY || keys.GOODREADS_KEY }`);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { notebookid } from  '../actions/index'
 import axios from 'axios';
 
@@ -28,7 +27,7 @@ class Profile extends Component {
  
 componentDidMount(){
 
-	
+		this.profileload(this.props.thisuser);
 
 	}
 
@@ -178,7 +177,7 @@ componentDidMount(){
 	
 	render(){
 
-		this.profileload(this.props.thisuser);
+	
 
 		return(
 				
@@ -190,7 +189,8 @@ componentDidMount(){
 				<div className="favbookscontainer">
 					<div className="favbookstitle">Favorite books</div>
 					<div className="favbooksicon">
-						<img src="https://i.imgur.com/600kya8.jpg"></img>
+						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+
 					</div>
 				</div>
 				  
@@ -210,4 +210,4 @@ function mapStateToProps(props){
 	return {thisuser:props.auth}
 }
 
-export default connect(mapStateToProps,notebookid)(Profile);
+export default connect(mapStateToProps)(Profile);

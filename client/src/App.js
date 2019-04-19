@@ -9,13 +9,13 @@ import * as actions from './actions';
 
 import asyncComponent from "./components/AsyncComponent";
 //const Header = asyncComponent(() => import("./Header"));
-const Header = lazy(()=> import('./components/Header'));//just to try
-const Footer = asyncComponent(() => import("./components/Footer"));
-const Landing = asyncComponent(() => import("./components/Landing"));
-const Profile = asyncComponent(() => import("./components/Profile"));
-const BookList = asyncComponent(() => import("./components/books/BookList"));
-const BookNote = asyncComponent(() => import("./components/books/BookNote"))
-const StatsChart = asyncComponent(() => import("./components/StatsChart"));
+const Header = lazy(()=> import('./components/Header'));
+const Footer =  lazy(()=> import('./components/Footer'));
+const Landing = lazy(()=> import('./components/Landing'));
+const Profile = lazy(()=> import('./components/Profile'));
+const BookList = lazy(()=> import('./components/books/BookList'));
+const BookNote = lazy(()=> import('./components/books/BookNote'));
+const StatsChart = lazy(()=> import('./components/StatsChart'));
 
 
 
@@ -40,12 +40,12 @@ class App extends Component {
        <BrowserRouter>             
        
           <div className="rootdk">
-            <Suspense fallback ={<div>Loading</div>}>
+            <Suspense fallback ={<div className="loader">Loading</div>}>
               <Header/>
             </Suspense>
               <div className="container">
                       
-                     
+                       <Suspense fallback={<div>Loading...</div>}>
                         <Switch>
                           <Route exact path="/" component={Landing}/>
                           <Route exact path="/mybooks" component={() => (
@@ -69,7 +69,7 @@ class App extends Component {
                                       <Landing/>
                                     )
                                   )} />
-                          <Route exact path="/profile" render={() => (
+                          <Route exact path="/profile" component={() => (
                                     this.props.thisuser ? (
                                       <Profile/>
                                     ) : (
@@ -78,9 +78,11 @@ class App extends Component {
                                   )}/>
 
                         </Switch>
-                
-                       
-                       <Footer />
+                </Suspense>
+                     
+                <Suspense fallback ={<div>Loading</div>}>
+                  <Footer/>
+                </Suspense>
 
                  </div>
               </div>
