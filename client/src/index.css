@@ -1894,20 +1894,88 @@ blockquote.grapefruit{
 }
 
 .pagesChart{
+
     grid-column:1/2;
     grid-row:1;
     margin-right:5em;
     margin-left:5em;
+    margin-bottom:5em;
+    
+
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+
+
 }
+
+
+
+/* for slideins
+
+    position: absolute;
+    left: -1000px;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 3s forwards;
+    animation-delay: 2s;
+
+
+@-webkit-keyframes slide {
+    100% {     
+    left:0;
+    position:relative;
+    grid-column:1/2;
+    grid-row:1;
+    margin-right:5em;
+    margin-left:5em;
+     }
+}
+
+@keyframes slide {
+    100% {  
+    left:0; 
+    position:relative;
+    grid-column:1/2;
+    grid-row:1;
+    margin-right:5em;
+    margin-left:5em; }
+}
+*/
+
+
 
 .shelvesChart{
     grid-column:2/3;
     grid-row:1;
     margin-right:5em;
     margin-left:5em;
+    margin-bottom:5em;
+        animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
 }
 
+.totalreadChart{
 
+    grid-column:1/2;
+    grid-row:2;
+    margin-right:5em;
+    margin-left:5em;
+    margin-bottom:5em;
+
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+
+
+}
 
 
 
@@ -2065,6 +2133,11 @@ blockquote.grapefruit{
         margin-left:5em;
     }
 
+    .totalreadChart{
+        grid-column:1/2;
+        grid-row:3;
+    }
+
 
 
  
@@ -2147,6 +2220,10 @@ blockquote.grapefruit{
         margin-left:5em;
     }
 
+    .totalreadChart{
+        grid-column:1/2;
+        grid-row:3;
+    }
 
 
   
@@ -2248,6 +2325,10 @@ blockquote.grapefruit{
         margin-left:5em;
     }
 
+        .totalreadChart{
+        grid-column:1/2;
+        grid-row:3;
+    }
 
 
   
@@ -2334,7 +2415,7 @@ blockquote.grapefruit{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr;
+        grid-template-rows:1fr 1fr 1fr 1fr 1fr;
         grid-column-gap: 1em;
         grid-row-gap:1em;
         margin-top:5em;
@@ -2357,6 +2438,10 @@ blockquote.grapefruit{
         margin-left:5em;
     }
 
+    .totalreadChart{
+        grid-column:1/2;
+        grid-row:3;
+    }
 
 
 

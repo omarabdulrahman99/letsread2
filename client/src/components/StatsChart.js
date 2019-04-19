@@ -225,6 +225,10 @@ class StatsChart extends Component {
 					<div className="shelvesChart">
 						{this.drawChart2()}
 					</div>
+
+					<div className="totalreadChart">
+						{this.drawChart2()}
+					</div>
 				</div>
 			: <div className="loader"></div>}
 
