@@ -152,6 +152,85 @@ body,
 
 
 
+.innerheader{
+
+    display:none;
+   
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 3em;
+  height: 5vh;
+  right: 36px;
+  bottom:95%;
+  top:2%;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  /*background: #373a47;*/
+  background:#f7f9fb;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
 .centeredsearch {
 
     grid-row: 1/2;
@@ -1823,11 +1902,39 @@ blockquote.grapefruit{
 
 /* d3 statcharts */
 
+.chartTitle{
+    text-align:center;
+    font-weight:bold;
+}
+
+.chartLayout{
+
+    display:grid;
+    grid-template-columns:50% 50%;
+    grid-column-gap: 1em;
+    grid-row-gap:1em;
+    margin-top:5em;
+    margin-left:5em;
+    margin-right:5em;
+
+}
+
+.pagesChart{
+    grid-column:2/3;
+    grid-row:1;
+    margin-right:5em;
+    margin-left:5em;
+}
 
 
 
 
-
+.shelvesChart{
+    grid-column:1/2;
+    grid-row:1;
+    margin-right:5em;
+    margin-left:5em;
+}
 
 
 
@@ -2099,10 +2206,13 @@ blockquote.grapefruit{
 @media (min-width: 0px) and (max-width: 480px) {
   
     .headerul a{
-        font-size:.7rem;
+        font-size:1em;
         white-space:nowrap;
         padding: .5rem 1rem;
+      
     }
+
+
 
     .logobg{
         font-size:1.8rem;

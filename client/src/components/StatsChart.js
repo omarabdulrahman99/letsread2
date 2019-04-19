@@ -14,6 +14,7 @@ class StatsChart extends Component {
 		
 		this.state = {
 			books:null,
+			shelves:null,
 			drawcharts:"off"
 		}
 
@@ -25,8 +26,13 @@ class StatsChart extends Component {
 
 		const booksres = await axios.post('/api/usershelfbooks', {goodreadId:this.props.thisuser.goodreadId});
 		const books = booksres.data.usershelfbooks;
-		this.setState({books:books}, () => {this.setState({drawcharts:true});})
-		console.log(this.state)
+
+		const shelfres = await axios.post('/api/shelflist', {user:this.props.thisuser});
+		const shelves = shelfres.data.GoodreadsResponse.shelves[0].user_shelf;
+
+
+		console.log(shelves);
+		this.setState({books:books, shelves:shelves}, () => {this.setState({drawcharts:true});})
 
 	}
 
@@ -106,24 +112,21 @@ class StatsChart extends Component {
 
 
 			var data = [{label:"useless label", values:pages}]
-			console.log(data)
 
 			return (
 
 				<div>
 
-				<div>
-					<div>Preference for length of book</div>
-					<BarChart
-						data={data}
-						width={800}
-						height={400}
-						margin={{top:90, bottom:50, left:50, right:10}}
-				
-
-
-					/>
-				</div>
+						<div className="chartTitle">Preference for length of book</div>
+						
+							<BarChart
+								data={data}
+								width={650}
+								height={400}
+								margin={{top:90, bottom:50, left:50, right:10}}
+					
+							/>
+					
 				</div>
 
 
@@ -133,6 +136,67 @@ class StatsChart extends Component {
 	}
 
 
+	drawChart2 = () => {
+
+				var shelves = this.state.shelves;
+				shelves.sort(function(a,b){
+
+					return a.book_count[0]._  -  b.book_count[0]._
+
+				})
+
+				var data = [{
+					label:"useless label",
+					values:[]
+				}];
+
+
+				var top6 = shelves.length >= 6 ? shelves.slice(shelves.length-6) : shelves;
+
+				console.log(top6)
+
+				for(let i=0;i<top6.length;i++){
+
+					let shelfname = top6[i].name[0];
+					let bkcount = top6[i].book_count[0]._;
+					if(bkcount == 0){
+						continue;
+					}
+					data[0].values.push({x:shelfname, y:parseInt(bkcount)});
+
+				}
+
+				console.log(data)
+
+
+
+
+
+
+
+			return (
+
+				<div>
+
+						<div className="chartTitle">Your Hottest Shelves/Genres</div>
+						<BarChart
+							data={data}
+							width={600}
+							height={400}
+							margin={{top:90, bottom:50, left:50, right:10}}
+					
+
+
+						/>
+
+				</div>
+
+
+				)
+
+
+
+	}
 
 
 
@@ -143,16 +207,20 @@ class StatsChart extends Component {
 
 
 		return(
-			<div className="chartLayout">
+			<div>
 
 			{ drawcharts ?
+				<div className="chartLayout">
+					<div className="pagesChart">
+						
+						{this.drawChart()}
 
-				<div className="pagesChart">
-					
-					{this.drawChart()}
+					</div>
 
+					<div className="shelvesChart">
+						{this.drawChart2()}
+					</div>
 				</div>
-
 			: null}
 
 			</div>
