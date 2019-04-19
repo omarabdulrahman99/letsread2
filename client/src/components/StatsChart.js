@@ -7,6 +7,7 @@ import ReactD3, {BarChart} from 'react-d3-components';
 
 
 
+
 class StatsChart extends Component {
 
 
@@ -221,7 +222,7 @@ class StatsChart extends Component {
 						{this.drawChart2()}
 					</div>
 				</div>
-			: null}
+			: <div className="loader"></div>}
 
 			</div>
 			)
