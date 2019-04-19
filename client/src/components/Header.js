@@ -50,9 +50,12 @@ class Header extends Component {
 
 								 <div>
 
-								
+									
 									<ul className="headerul">
+
+
 										<Menu isOpen={true}>
+
 											<Link to="/mybooks">My Books</Link>
 											
 											<a href={'/statschart'}>
@@ -74,7 +77,7 @@ class Header extends Component {
 
 
 								</div>
-
+								
 
 
 		
