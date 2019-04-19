@@ -13,10 +13,13 @@ class StatsChart extends Component {
 
 	constuctor(props){
 		
+		this.chartref = React.createRef();
 		this.state = {
 			books:null,
 			shelves:null,
-			drawcharts:"off"
+			drawcharts:"off",
+			chartWidth:620,
+			initialwidth:1
 		}
 
 	}
@@ -32,10 +35,75 @@ class StatsChart extends Component {
 		const shelves = shelfres.data.GoodreadsResponse.shelves[0].user_shelf;
 
 
-		console.log(shelves);
+		console.log(books);
+		window.addEventListener('resize', this.handleResize);
+		
+		   	let winwidth = window.innerWidth;
+		   	if(winwidth >=0 && winwidth <= 500){
+		   		this.setState({chartWidth:300});
+	    	}else if(winwidth >=501 && winwidth <= 600) {
+			   	
+			   		this.setState({chartWidth:500});
+		    	
+	    	}else if(winwidth >=601 && winwidth <= 700){
+
+	    			this.setState({chartWidth:580})
+
+    		}else if(winwidth >=701 && winwidth <= 800){
+
+	    			this.setState({chartWidth:680})
+
+    		}else if(winwidth >=801 && winwidth <= 900){
+
+	    			this.setState({chartWidth:780})
+
+    		}else if(winwidth >=901 && winwidth <= 1020){
+
+	    			this.setState({chartWidth:780})
+    		}else{
+
+    				this.setState({chartWidth:780})
+    		}
+	
+
+
 		this.setState({books:books, shelves:shelves}, () => {this.setState({drawcharts:true});})
 
 	}
+
+
+	   handleResize = (e) => {
+
+		   	let winwidth = window.innerWidth;
+		   	if(winwidth >=0 && winwidth <= 500){
+		   		this.setState({chartWidth:300});
+	    	}else if(winwidth >=501 && winwidth <= 600) {
+			   	
+			   		this.setState({chartWidth:500});
+		    	
+	    	}else if(winwidth >=601 && winwidth <= 700){
+
+	    			this.setState({chartWidth:580})
+
+    		}else if(winwidth >=701 && winwidth <= 800){
+
+	    			this.setState({chartWidth:680})
+
+    		}else if(winwidth >=801 && winwidth <= 900){
+
+	    			this.setState({chartWidth:780})
+
+    		}else if(winwidth >=901 && winwidth <= 1020){
+
+	    			this.setState({chartWidth:780})
+    		}else{
+
+    				this.setState({chartWidth:780})
+    		}
+
+
+	  }
+
 
 
 
@@ -113,7 +181,7 @@ class StatsChart extends Component {
 
 
 			var data = [{label:"useless label", values:pages}]
-
+			var width = this.state.chartWidth;
 			return (
 
 				<div>
@@ -122,7 +190,7 @@ class StatsChart extends Component {
 						
 							<BarChart
 								data={data}
-								width={650}
+								width={width || 620}
 								height={400}
 								margin={{top:90, bottom:50, left:50, right:10}}
 								xAxis={{label: "Book pages"}}
@@ -156,7 +224,7 @@ class StatsChart extends Component {
 
 				var top6 = shelves.length >= 6 ? shelves.slice(shelves.length-6) : shelves;
 
-				console.log(top6)
+				
 
 				for(let i=0;i<top6.length;i++){
 
@@ -169,14 +237,14 @@ class StatsChart extends Component {
 
 				}
 
-				console.log(data)
+			
 
 
 
 
 
 
-
+			var width = this.state.chartWidth;
 			return (
 
 				<div>
@@ -184,7 +252,7 @@ class StatsChart extends Component {
 						<div className="chartTitle">Your Hottest Shelves/Genres</div>
 						<BarChart
 							data={data}
-							width={600}
+							width={width || 620}
 							height={400}
 							margin={{top:90, bottom:50, left:50, right:10}}
 							xAxis={{label: "Shelf names"}}
@@ -215,7 +283,7 @@ class StatsChart extends Component {
 			<div>
 
 			{ drawcharts ?
-				<div className="chartLayout">
+				<div  className="chartLayout">
 					<div className="pagesChart">
 						
 						{this.drawChart()}

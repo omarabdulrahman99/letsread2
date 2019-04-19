@@ -158,12 +158,13 @@ body,
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: fixed;
+  position: absolute;
   width: 3em;
-  height: 3em;
+  height: 2.5em;
   right: 36px;
   bottom:95%;
   top:2%;
+
 
 }
 
@@ -1976,6 +1977,16 @@ blockquote.grapefruit{
 
 
 }
+/*
+svg{
+    width:400px;
+}
+.x.axis{
+    width:700px !important;
+}
+.bar{
+    width:50px;
+}*/
 
 
 
@@ -2113,29 +2124,33 @@ blockquote.grapefruit{
         grid-template-rows:1fr 1fr 1fr;
         grid-column-gap: 1em;
         grid-row-gap:1em;
-        margin-top:5em;
-        margin-left:5em;
-        margin-right:5em;
+        margin:0px;
+      
+    
 
     }
 
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+
     }
 
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+ 
     }
 
     .totalreadChart{
         grid-column:1/2;
         grid-row:3;
+        margin:0px;
+        margin-top:5em;
     }
 
 
@@ -2200,30 +2215,35 @@ blockquote.grapefruit{
         grid-template-rows:1fr 1fr 1fr;
         grid-column-gap: 1em;
         grid-row-gap:1em;
-        margin-top:5em;
-        margin-left:5em;
-        margin-right:5em;
+        margin:0px;
+   
+    
 
     }
 
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+
     }
 
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+ 
     }
 
     .totalreadChart{
         grid-column:1/2;
         grid-row:3;
+        margin:0px;
+        margin-top:5em;
     }
+
 
 
   
@@ -2305,29 +2325,37 @@ blockquote.grapefruit{
         grid-template-rows:1fr 1fr 1fr;
         grid-column-gap: 1em;
         grid-row-gap:1em;
-        margin-top:5em;
-        margin-left:5em;
-        margin-right:5em;
+        margin:0px;
+      
+    
 
     }
 
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+
     }
 
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+ 
     }
 
-        .totalreadChart{
+    .totalreadChart{
         grid-column:1/2;
         grid-row:3;
+        margin:0px;
+        margin-top:5em;
+    }
+
+        .tick{
+        font-size:.7em;
     }
 
 
@@ -2415,32 +2443,40 @@ blockquote.grapefruit{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows:1fr 1fr 1fr;
         grid-column-gap: 1em;
         grid-row-gap:1em;
-        margin-top:5em;
-        margin-left:5em;
-        margin-right:5em;
+        margin:0px;
+  
+    
 
     }
 
     .pagesChart{
         grid-column:1/2;
         grid-row:1/2;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+
     }
 
     .shelvesChart{
         grid-column:1/2;
         grid-row:2/3;
-        margin-right:5em;
-        margin-left:5em;
+        margin:0px;
+        margin-top:5em;
+ 
     }
 
     .totalreadChart{
         grid-column:1/2;
         grid-row:3;
+        margin:0px;
+        margin-top:5em;
+    }
+
+    .tick{
+        font-size:.7em;
     }
 
 
