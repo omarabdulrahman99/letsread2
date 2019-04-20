@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import * as d3 from "d3";
 import {connect} from "react-redux";
 import axios from 'axios';
-import ReactD3, {BarChart} from 'react-d3-components';
+import ReactD3, {BarChart, LineChart} from 'react-d3-components';
+import dateFns from 'date-fns';
 
 
 
@@ -193,7 +194,7 @@ class StatsChart extends Component {
 								width={width || 620}
 								height={400}
 								margin={{top:90, bottom:50, left:50, right:10}}
-								xAxis={{label: "Book pages"}}
+								xAxis={{label: "Pages"}}
                     			yAxis={{label: "No. of books"}}
 						
 							/>
@@ -267,9 +268,99 @@ class StatsChart extends Component {
 
 				)
 
+	}
+
+
+
+
+
+
+	drawChart3 = () => {
+
+		var data = [{
+			label:"useless label",
+			values:[]
+		}];
+
+		let currDate = new Date();
+		let startOfWeek = dateFns.startOfWeek(currDate);
+		let endOfWeek = dateFns.endOfWeek(currDate);	
+		let daysArr = dateFns.eachDay(startOfWeek, endOfWeek);
+
+		let books = this.state.books;
+
+
+		//only get books on the 'read' shelf.
+		let booksread = books.filter((book) => {
+
+			for(let i=0;i<book.shelves.length;i++){
+				if(book.shelves[i].shelf[0].$.name == "read"){
+					return true;
+				}
+			}
+
+			return false;
+
+		})
+
+		
+
+		console.log(booksread)
+
+
+		//populate values array full of objects, x stands for date to be represented, y for #of books
+		for(let i=0;i<daysArr.length;i++){
+			let tempday = dateFns.format(daysArr[i], 'MMM D');
+			data[0].values.push({x:tempday, y:0})
+
+		}
+
+		
+
+
+		//loop through each book & compare its date with each date in data.values array. if equals, then increment y by 1.
+		for(let i=0;i<booksread.length;i++){
+			let tempbook = dateFns.format(booksread[i].date_updated[0], 'MMM D');
+			
+			for(let j=0;j<data[0].values.length;j++){
+
+				let tempday = data[0].values[j].x;
+				if(dateFns.isEqual(tempday,tempbook)){
+					data[0].values[j].y += 1;
+				}
+			}
+
+		}
+
+
+		
+		var width = this.state.chartWidth;
+		return(
+                <LineChart
+                   data={data}
+                   width={width || 620}
+                   height={400}
+                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
+    
+                />
+
+		)
+
+
+
+
+
+
+
+
 
 
 	}
+
+
+
+
+
 
 
 
@@ -295,7 +386,7 @@ class StatsChart extends Component {
 					</div>
 
 					<div className="totalreadChart">
-						{this.drawChart2()}
+						{this.drawChart3()}
 					</div>
 				</div>
 			: <div className="loader"></div>}

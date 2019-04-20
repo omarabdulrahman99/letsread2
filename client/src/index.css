@@ -2025,7 +2025,7 @@ svg{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr;
+        grid-template-rows:auto;
         grid-column-gap: 1em;
         grid-row-gap:1em;
         margin:0px;
@@ -2073,7 +2073,7 @@ svg{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr;
+        grid-template-rows:auto;
         grid-column-gap: 1em;
         grid-row-gap:1em;
         margin:0px;
@@ -2199,7 +2199,7 @@ svg{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr;
+        grid-template-rows:auto;
         grid-column-gap: 1em;
         grid-row-gap:1em;
         margin:0px;
@@ -2290,7 +2290,7 @@ svg{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr;
+        grid-template-rows:auto;
         grid-column-gap: 1em;
         grid-row-gap:1em;
         margin:0px;
@@ -2400,7 +2400,7 @@ svg{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr;
+        grid-template-rows:auto;
         grid-column-gap: 1em;
         grid-row-gap:1em;
         margin:0px;
@@ -2435,6 +2435,39 @@ svg{
         .tick{
         font-size:.7em;
     }
+
+
+    .profiledetail{
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .profileimage {
+        grid-column: 1/5;
+        grid-row: 1;
+        width: 50vw;
+        height: 50vw;
+        margin-top: 9%;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-color: red;
+        image-rendering: crisp-edges;
+        background-size: cover;
+        background-position: 50% 50%;
+        margin: 5% auto;
+    }
+
+    .profileinfo {
+        grid-column: 1/5;
+        grid-row: 2;
+    }
+
+    .profilename {
+        text-align:center;
+        padding:5%;
+    }
+
 
 
   
@@ -2521,7 +2554,7 @@ svg{
 
         display:grid;
         grid-template-columns:1fr;
-        grid-template-rows:1fr 1fr 1fr;
+        grid-template-rows:auto;
         grid-column-gap: 1em;
         grid-row-gap:1em;
         margin:0px;
@@ -2540,7 +2573,7 @@ svg{
 
     .shelvesChart{
         grid-column:1/2;
-        grid-row:2/3;
+        grid-row:2;
         margin:0px auto;
         margin-top:5em;
  
@@ -2559,5 +2592,35 @@ svg{
 
 
 
+    .profiledetail{
+        grid-row: 1/2;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .profileimage {
+        grid-column: 1/5;
+        grid-row: 1;
+        width: 50vw;
+        height: 50vw;
+        margin-top: 9%;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-color: red;
+        image-rendering: crisp-edges;
+        background-size: cover;
+        background-position: 50% 50%;
+        margin: 5% auto;
+    }
+
+    .profileinfo {
+        grid-column: 1/5;
+        grid-row: 2;
+    }
+
+    .profilename {
+        text-align:center;
+        padding:5%;
+    }
 
 }

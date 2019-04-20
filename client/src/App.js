@@ -40,12 +40,12 @@ class App extends Component {
        <BrowserRouter>             
        
           <div className="rootdk">
-            <Suspense fallback ={<div className="loader">Loading</div>}>
+            <Suspense fallback ={<div className="loader"></div>}>
               <Header/>
             </Suspense>
               <div className="container">
                       
-                       <Suspense fallback={<div>Loading...</div>}>
+                       <Suspense fallback={<div className="loader"></div>}>
                         <Switch>
                           <Route exact path="/" component={Landing}/>
                           <Route exact path="/mybooks" component={() => (
@@ -80,7 +80,7 @@ class App extends Component {
                         </Switch>
                 </Suspense>
                      
-                <Suspense fallback ={<div>Loading</div>}>
+                <Suspense fallback ={<div></div>}>
                   <Footer/>
                 </Suspense>
 
