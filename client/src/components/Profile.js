@@ -186,14 +186,16 @@ componentDidMount(){
 					{this.state.dataloaded != 'notloaded' ? this.profilerender() : <div className="loader"></div>}
 					{this.state.dataloaded != 'notloaded' ? this.galleryrender() : <div></div>}
 					
-				<div className="favbookscontainer">
-					<div className="favbookstitle">Favorite books</div>
-					<div className="favbooksicon">
-						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+					{this.state.dataloaded != 'notloaded' ?
+					<div className="favbookscontainer">
+						<div className="favbookstitle">Favorite books</div>
+						<div className="favbooksicon">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 
+						</div>
 					</div>
-				</div>
-				  
+				  : null}
+
 				</div>
 			
 
