@@ -17,6 +17,7 @@ class StatsChart extends Component {
 		this.state = {
 			books:null,
 			shelves:null,
+			joindate:null,
 			drawcharts:false,
 			chartWidth:620,
 			initialwidth:1,
@@ -35,8 +36,13 @@ class StatsChart extends Component {
 		const shelfres = await axios.post('/api/shelflist', {user:this.props.thisuser});
 		const shelves = shelfres.data.GoodreadsResponse.shelves[0].user_shelf;
 
+		const profileres = await axios.post('/api/profileonly', {goodreadId:this.props.thisuser.goodreadId});
+		const joindate = profileres.data.profileinfo.GoodreadsResponse.user[0].joined[0];
+		
 
-		console.log(books);
+
+
+
 		window.addEventListener('resize', this.handleResize);
 		
 		   	let winwidth = window.innerWidth;
@@ -68,9 +74,12 @@ class StatsChart extends Component {
 	
 
 
-		this.setState({books:books, shelves:shelves, draw3view:"year"}, () => {this.setState({drawcharts:true});})
+		this.setState({books:books, shelves:shelves, joindate:joindate, draw3view:"year", totalreadChecked:"year"}, () => {this.setState({drawcharts:true});})
 
 	}
+
+
+
 
 
 	   handleResize = (e) => {
@@ -308,7 +317,8 @@ class StatsChart extends Component {
 
 			if(this.state.draw3view == "week"){
 						
-						data[0].values.length = 0;
+						data[0].values = [];
+						console.log(data);
 						let startOfWeek = dateFns.startOfWeek(currDate);
 						let endOfWeek = dateFns.endOfWeek(currDate);	
 						let daysArr = dateFns.eachDay(startOfWeek, endOfWeek);
@@ -360,7 +370,7 @@ class StatsChart extends Component {
 				                   height={400}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
-				            	   yAxis={{label: "No.of books", ticks:booksread.length, tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
+				            	   yAxis={{label: "No. of books", ticks:booksread.length, tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
 
 				                />
 				            </div>
@@ -371,7 +381,8 @@ class StatsChart extends Component {
 
 			if(this.state.draw3view == "month"){
 
-						data[0].values.length = 0;
+						data[0].values = [];
+						console.log(data)
 						let startOfMonth = dateFns.startOfMonth(currDate);
 						let endOfMonth = dateFns.lastDayOfMonth(currDate);	
 						let daysArr = dateFns.eachDay(startOfMonth, endOfMonth);
@@ -418,7 +429,7 @@ class StatsChart extends Component {
 				                   height={400}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
-				            	   yAxis={{label: "No.of books"}}
+				            	   yAxis={{label: "No. of books", tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
 
 				                />
 				            </div>
@@ -432,7 +443,8 @@ class StatsChart extends Component {
 
 			if(this.state.draw3view == "year"){
 
-						data[0].values.length = 0;
+						data[0].values = [];
+						console.log(data);
 						//take last day of year. subtract 1 month, 12 times loop. save those in an array, use shift for asc order.
 						let lastDayOfYear = dateFns.lastDayOfYear(currDate);
 						let months = [];
@@ -486,7 +498,7 @@ class StatsChart extends Component {
 				                   height={400}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
-				            	   yAxis={{label: "No.of books"}}
+				            	   yAxis={{label: "No. of books", tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
 
 				                />
 				            </div>
@@ -498,15 +510,85 @@ class StatsChart extends Component {
 
 
 
+			if(this.state.draw3view == "all"){
+
+						data[0].values = [];
+						console.log(data);
+						//do currentDate minus accountCreationDate. that'll be the amount of years for loop to do subYear from currentDate.
+						let joindateparsed = dateFns.parse(this.state.joindate.slice(this.state.joindate.indexOf('/')+1));
+						let joindate = dateFns.format(joindateparsed,'YYYY');
+						let currDateYear = dateFns.format(currDate,'YYYY');
+						let numdiffyears = dateFns.differenceInYears(currDateYear,joindate)+1;
+						let years = [];
+
+				
+
+						for(let i=0;i<numdiffyears;i++){
+							let tempyear = dateFns.format(dateFns.subYears(currDateYear,i),'YYYY');
+							years.unshift(tempyear);
+						}
+
+					
+
+						for(let i=0;i<years.length;i++){
+							let tempyear = years[i];
+							data[0].values.push({x:tempyear, y:0})
+
+						}
+
+					
+						
+						for(let i=0;i<booksread.length;i++){
+							let tempbook = dateFns.format(booksread[i].date_updated[0], 'YYYY');
+							
+							for(let j=0;j<data[0].values.length;j++){
+
+								let tempday = data[0].values[j].x;
+								if(dateFns.isSameYear(tempday,tempbook)){
+									data[0].values[j].y += 1;
+								}
+							}
+
+						}
+
+						
+
+						var width = this.state.chartWidth;
 
 
+						return(
+
+							<div>
+								<div className="chartTitle">Books read by this Week/Month/Year/All-time</div>
+				                <LineChart
+				                   data={data}
+				                   width={width || 620}
+				                   height={400}
+				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
+				           		   xAxis={{label: "Dates"}}
+				            	   yAxis={{label: "No. of books"}}
+
+				                />
+				            </div>
+						)
+
+				
 
 
+			}
 
+			
 
 
 	}
 
+
+	totalreadChartRadioChange = (e) => {
+
+		let checkedname = e.target.value;
+		this.setState({totalreadChecked:checkedname, draw3view:checkedname});
+
+	}
 
 
 
@@ -531,6 +613,16 @@ class StatsChart extends Component {
 
 					<div className="totalreadChart">
 						{this.drawChart3()}
+						<div className="totalreadChartRadioGroup">
+								<input id="weekradio" type="radio" className="chartRadio" checked={this.state.totalreadChecked === "week"} value="week" onChange={this.totalreadChartRadioChange}/>
+								<label htmlFor="weekradio">Week</label>
+								<input id="monthradio" type="radio" className="chartRadio" checked={this.state.totalreadChecked === "month"} value="month" onChange={this.totalreadChartRadioChange}/>
+								<label htmlFor="monthradio">Month</label>
+								<input id="yearradio" type="radio" className="chartRadio" checked={this.state.totalreadChecked === "year"} value="year" onChange={this.totalreadChartRadioChange}/>
+								<label htmlFor="yearradio">Year</label>
+								<input id="allradio" type="radio" className="chartRadio" checked={this.state.totalreadChecked === "all"} value="all" onChange={this.totalreadChartRadioChange}/>
+								<label htmlFor="allradio">All-time</label>
+						</div>
 					</div>
 
 				</div>

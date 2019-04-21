@@ -357,7 +357,6 @@ module.exports = app => {
 
 
 
-
 	app.post('/api/booksched', async(req,res) => {
 
 		var user = req.body.user;
@@ -478,7 +477,7 @@ module.exports = app => {
 
 
 
-		app.post('/api/updatechapters', async(req,res) => {
+	app.post('/api/updatechapters', async(req,res) => {
 
 		//replace entire chapter array.
 		var bookid = req.body.bookid;
