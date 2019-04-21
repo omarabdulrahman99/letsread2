@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import * as d3 from "d3";
 import {connect} from "react-redux";
 import axios from 'axios';
-import ReactD3, {BarChart, LineChart} from 'react-d3-components';
+import ReactD3, {d3,BarChart, LineChart} from 'react-d3-components';
 import dateFns from 'date-fns';
 
 
@@ -18,9 +17,10 @@ class StatsChart extends Component {
 		this.state = {
 			books:null,
 			shelves:null,
-			drawcharts:"off",
+			drawcharts:false,
 			chartWidth:620,
-			initialwidth:1
+			initialwidth:1,
+			draw3view:"week"
 		}
 
 	}
@@ -68,7 +68,7 @@ class StatsChart extends Component {
 	
 
 
-		this.setState({books:books, shelves:shelves}, () => {this.setState({drawcharts:true});})
+		this.setState({books:books, shelves:shelves, draw3view:"year"}, () => {this.setState({drawcharts:true});})
 
 	}
 
@@ -283,9 +283,7 @@ class StatsChart extends Component {
 		}];
 
 		let currDate = new Date();
-		let startOfWeek = dateFns.startOfWeek(currDate);
-		let endOfWeek = dateFns.endOfWeek(currDate);	
-		let daysArr = dateFns.eachDay(startOfWeek, endOfWeek);
+
 
 		let books = this.state.books;
 
@@ -305,46 +303,198 @@ class StatsChart extends Component {
 
 		
 
-		console.log(booksread)
-
-
-		//populate values array full of objects, x stands for date to be represented, y for #of books
-		for(let i=0;i<daysArr.length;i++){
-			let tempday = dateFns.format(daysArr[i], 'MMM D');
-			data[0].values.push({x:tempday, y:0})
-
-		}
-
 		
 
 
-		//loop through each book & compare its date with each date in data.values array. if equals, then increment y by 1.
-		for(let i=0;i<booksread.length;i++){
-			let tempbook = dateFns.format(booksread[i].date_updated[0], 'MMM D');
-			
-			for(let j=0;j<data[0].values.length;j++){
+			if(this.state.draw3view == "week"){
+						
+						data[0].values.length = 0;
+						let startOfWeek = dateFns.startOfWeek(currDate);
+						let endOfWeek = dateFns.endOfWeek(currDate);	
+						let daysArr = dateFns.eachDay(startOfWeek, endOfWeek);
+						//for week view.
+						//populate values array full of objects, x stands for date to be represented, y for #of books
+						for(let i=0;i<daysArr.length;i++){
+							let tempday = daysArr[i];
+							data[0].values.push({x:tempday, y:0})
 
-				let tempday = data[0].values[j].x;
-				if(dateFns.isEqual(tempday,tempbook)){
-					data[0].values[j].y += 1;
-				}
+						}
+
+						
+
+
+						//loop through each book & compare its date with each date in data.values array. if equals, then increment y by 1.
+						for(let i=0;i<booksread.length;i++){
+							let tempbook = booksread[i].date_updated[0];
+							
+							for(let j=0;j<data[0].values.length;j++){
+
+								let tempday = data[0].values[j].x;
+								if(dateFns.isSameDay(tempday,tempbook)){
+									data[0].values[j].y += 1;
+								}
+							}
+
+						}
+
+
+
+
+						
+						for(let i=0;i<data[0].values.length;i++){
+							data[0].values[i].x = dateFns.format(data[0].values[i].x, 'MMM D');
+						}
+
+						
+						//let yScale = d3.scale.linear().domain([0,10]);
+						var width = this.state.chartWidth;
+
+
+						return(
+
+							<div>
+								<div className="chartTitle">Books read by Week/Month/Year/All-time</div>
+				                <LineChart
+				                   data={data}
+				                   width={width || 620}
+				                   height={400}
+				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
+				           		   xAxis={{label: "Dates"}}
+				            	   yAxis={{label: "No.of books", ticks:booksread.length, tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
+
+				                />
+				            </div>
+						)
+
 			}
 
-		}
+
+			if(this.state.draw3view == "month"){
+
+						data[0].values.length = 0;
+						let startOfMonth = dateFns.startOfMonth(currDate);
+						let endOfMonth = dateFns.lastDayOfMonth(currDate);	
+						let daysArr = dateFns.eachDay(startOfMonth, endOfMonth);
 
 
-		
-		var width = this.state.chartWidth;
-		return(
-                <LineChart
-                   data={data}
-                   width={width || 620}
-                   height={400}
-                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
-    
-                />
+						for(let i=0;i<daysArr.length;i++){
+							let tempday = daysArr[i];
+							data[0].values.push({x:tempday, y:0})
 
-		)
+						}
+
+
+						for(let i=0;i<booksread.length;i++){
+							let tempbook = booksread[i].date_updated[0];
+							
+							for(let j=0;j<data[0].values.length;j++){
+
+								let tempday = data[0].values[j].x;
+								if(dateFns.isSameDay(tempday,tempbook)){
+									data[0].values[j].y += 1;
+								}
+							}
+
+						}
+
+
+
+						for(let i=0;i<data[0].values.length;i++){
+							data[0].values[i].x = dateFns.format(data[0].values[i].x, 'D');
+						}
+
+
+
+						var width = this.state.chartWidth;
+
+
+						return(
+
+							<div>
+								<div className="chartTitle">Books read by this Week/Month/Year/All-time</div>
+				                <LineChart
+				                   data={data}
+				                   width={width || 620}
+				                   height={400}
+				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
+				           		   xAxis={{label: "Dates"}}
+				            	   yAxis={{label: "No.of books"}}
+
+				                />
+				            </div>
+						)
+
+
+
+			}
+
+
+
+			if(this.state.draw3view == "year"){
+
+						data[0].values.length = 0;
+						//take last day of year. subtract 1 month, 12 times loop. save those in an array, use shift for asc order.
+						let lastDayOfYear = dateFns.lastDayOfYear(currDate);
+						let months = [];
+
+						for(let i=0;i<12;i++){
+							//'tempmonth but rly its a day of the month for each month'
+							let tempmonth = dateFns.subMonths(lastDayOfYear,i);
+							months.unshift(tempmonth);
+						}
+
+
+						for(let i=0;i<months.length;i++){
+							let tempmonth = months[i];
+							data[0].values.push({x:tempmonth, y:0})
+
+						}
+
+
+						
+						for(let i=0;i<booksread.length;i++){
+							let tempbook = booksread[i].date_updated[0];
+							
+							for(let j=0;j<data[0].values.length;j++){
+
+								let tempday = data[0].values[j].x;
+								if(dateFns.isSameMonth(tempday,tempbook)){
+									data[0].values[j].y += 1;
+								}
+							}
+
+						}
+
+
+						
+						for(let i=0;i<data[0].values.length;i++){
+							data[0].values[i].x = dateFns.format(data[0].values[i].x, 'MMM');
+						}
+
+
+
+						var width = this.state.chartWidth;
+
+
+						return(
+
+							<div>
+								<div className="chartTitle">Books read by this Week/Month/Year/All-time</div>
+				                <LineChart
+				                   data={data}
+				                   width={width || 620}
+				                   height={400}
+				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
+				           		   xAxis={{label: "Dates"}}
+				            	   yAxis={{label: "No.of books"}}
+
+				                />
+				            </div>
+						)
+
+			}
+
+
 
 
 
@@ -361,10 +511,6 @@ class StatsChart extends Component {
 
 
 
-
-
-
-
 	render(){
 
 		var drawcharts = this.state ?  this.state.drawcharts ? this.state.drawcharts : false : false;
@@ -375,10 +521,8 @@ class StatsChart extends Component {
 
 			{ drawcharts ?
 				<div  className="chartLayout">
-					<div className="pagesChart">
-						
+					<div className="pagesChart">						
 						{this.drawChart()}
-
 					</div>
 
 					<div className="shelvesChart">
@@ -388,6 +532,7 @@ class StatsChart extends Component {
 					<div className="totalreadChart">
 						{this.drawChart3()}
 					</div>
+
 				</div>
 			: <div className="loader"></div>}
 
