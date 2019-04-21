@@ -318,7 +318,7 @@ class StatsChart extends Component {
 			if(this.state.draw3view == "week"){
 						
 						data[0].values = [];
-						console.log(data);
+					
 						let startOfWeek = dateFns.startOfWeek(currDate);
 						let endOfWeek = dateFns.endOfWeek(currDate);	
 						let daysArr = dateFns.eachDay(startOfWeek, endOfWeek);
@@ -382,7 +382,7 @@ class StatsChart extends Component {
 			if(this.state.draw3view == "month"){
 
 						data[0].values = [];
-						console.log(data)
+					
 						let startOfMonth = dateFns.startOfMonth(currDate);
 						let endOfMonth = dateFns.lastDayOfMonth(currDate);	
 						let daysArr = dateFns.eachDay(startOfMonth, endOfMonth);
@@ -444,7 +444,7 @@ class StatsChart extends Component {
 			if(this.state.draw3view == "year"){
 
 						data[0].values = [];
-						console.log(data);
+					
 						//take last day of year. subtract 1 month, 12 times loop. save those in an array, use shift for asc order.
 						let lastDayOfYear = dateFns.lastDayOfYear(currDate);
 						let months = [];
@@ -513,7 +513,7 @@ class StatsChart extends Component {
 			if(this.state.draw3view == "all"){
 
 						data[0].values = [];
-						console.log(data);
+					
 						//do currentDate minus accountCreationDate. that'll be the amount of years for loop to do subYear from currentDate.
 						let joindateparsed = dateFns.parse(this.state.joindate.slice(this.state.joindate.indexOf('/')+1));
 						let joindate = dateFns.format(joindateparsed,'YYYY');
@@ -555,6 +555,9 @@ class StatsChart extends Component {
 
 						var width = this.state.chartWidth;
 
+						data[0].values.unshift({x:dateFns.format(dateFns.subYears(data[0].values[0].x, 1),'YYYY'),  y:0 })
+						//glitch sorta. line graph needs one data plot previous to connect a line. needs to have a default.
+						console.log(data)
 
 						return(
 
