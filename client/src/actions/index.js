@@ -10,15 +10,6 @@ export const fetchUser = () => async dispatch => {
 }
 
 
-export const callbacklul = (pathlul) => async dispatch => {
-
-
-	const res = await axios.get('/auth/goodreads/callback');
-
-	dispatch({type:'callbacklul', payload:res.data })
-
-
-}
 
 export const notebookid = (bookid) => async dispatch => {
 

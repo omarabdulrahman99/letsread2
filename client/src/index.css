@@ -1890,6 +1890,7 @@ blockquote.grapefruit{
 .chartTitle{
     text-align:center;
     font-weight:bold;
+    padding-bottom:1em;
 }
 
 .chartLayout{
@@ -2154,6 +2155,7 @@ div.days .day p {
         grid-row:2;
         margin:0px auto;
         margin-top:5em;
+       
 
     }
 
@@ -2170,6 +2172,7 @@ div.days .day p {
         grid-row:4;
         margin:0px auto;
         margin-top:5em;
+
     }
 
 

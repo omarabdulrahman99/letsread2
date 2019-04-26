@@ -38,6 +38,7 @@ class StatsChart extends Component {
 		const booksres = await axios.post('/api/usershelfbooks', {goodreadId:this.props.thisuser.goodreadId});
 		const books = booksres.data.usershelfbooks;
 
+
 		const shelfres = await axios.post('/api/shelflist', {user:this.props.thisuser});
 		const shelves = shelfres.data.GoodreadsResponse.shelves[0].user_shelf;
 
@@ -51,30 +52,31 @@ class StatsChart extends Component {
 		window.addEventListener('resize', this.handleResize);
 		
 		   	let winwidth = window.innerWidth;
+		 
 		   	if(winwidth >=0 && winwidth <= 500){
 		   		this.setState({chartWidth:300});
 	    	}else if(winwidth >=501 && winwidth <= 600) {
 			   	
-			   		this.setState({chartWidth:500});
+			   		this.setState({chartWidth:500, chartHeight:400});
 		    	
 	    	}else if(winwidth >=601 && winwidth <= 700){
 
-	    			this.setState({chartWidth:580})
+	    			this.setState({chartWidth:580, chartHeight:425})
 
     		}else if(winwidth >=701 && winwidth <= 800){
 
-	    			this.setState({chartWidth:680})
+	    			this.setState({chartWidth:680, chartHeight:450})
 
     		}else if(winwidth >=801 && winwidth <= 900){
 
-	    			this.setState({chartWidth:780})
+	    			this.setState({chartWidth:780, chartHeight:475})
 
-    		}else if(winwidth >=901 && winwidth <= 1020){
+    		}else if(winwidth >=901 && winwidth <= 1100){
 
-	    			this.setState({chartWidth:780})
+	    			this.setState({chartWidth:780, chartHeight:500})
     		}else{
 
-    				this.setState({chartWidth:780})
+    				this.setState({chartWidth:1080, chartHeight:525})
     		}
 	
 
@@ -125,26 +127,26 @@ class StatsChart extends Component {
 		   		this.setState({chartWidth:300});
 	    	}else if(winwidth >=501 && winwidth <= 600) {
 			   	
-			   		this.setState({chartWidth:500});
+			   		this.setState({chartWidth:500, chartHeight:400});
 		    	
 	    	}else if(winwidth >=601 && winwidth <= 700){
 
-	    			this.setState({chartWidth:580})
+	    			this.setState({chartWidth:580, chartHeight:425})
 
     		}else if(winwidth >=701 && winwidth <= 800){
 
-	    			this.setState({chartWidth:680})
+	    			this.setState({chartWidth:680, chartHeight:450})
 
     		}else if(winwidth >=801 && winwidth <= 900){
 
-	    			this.setState({chartWidth:780})
+	    			this.setState({chartWidth:780, chartHeight:475})
 
-    		}else if(winwidth >=901 && winwidth <= 1020){
+    		}else if(winwidth >=901 && winwidth <= 1100){
 
-	    			this.setState({chartWidth:780})
+	    			this.setState({chartWidth:780, chartHeight:500})
     		}else{
 
-    				this.setState({chartWidth:780})
+    				this.setState({chartWidth:1080, chartHeight:525})
     		}
 
 
@@ -193,14 +195,13 @@ class StatsChart extends Component {
 				];
 
 				let books = this.state.books;
-				for(let i=0;i<books ? books.length : 0;i++){
+				for(let i=0;i<(books ? books.length : 0);i++){
 					
 					let numpages = books[i].book[0].num_pages[0];
 					
 					if(numpages >=100 && numpages <= 200){
 						pages[0].y += 1;
 					}
-
 					if(numpages >=201 && numpages <= 300){
 						pages[1].y += 1;
 					}
@@ -228,6 +229,8 @@ class StatsChart extends Component {
 
 			var data = [{label:"useless label", values:pages}]
 			var width = this.state.chartWidth;
+			var height = this.state.chartHeight;
+
 			return (
 
 				<div>
@@ -237,7 +240,7 @@ class StatsChart extends Component {
 							<BarChart
 								data={data}
 								width={width || 620}
-								height={400}
+								height={height}
 								margin={{top:90, bottom:50, left:50, right:10}}
 								xAxis={{label: "Pages"}}
                     			yAxis={{label: "No. of books"}}
@@ -285,6 +288,9 @@ class StatsChart extends Component {
 			
 
 			var width = this.state.chartWidth;
+			var height = this.state.chartHeight;
+
+
 			return (
 
 				<div>
@@ -293,7 +299,7 @@ class StatsChart extends Component {
 						<BarChart
 							data={data}
 							width={width || 620}
-							height={400}
+							height={height || 450}
 							margin={{top:90, bottom:50, left:50, right:10}}
 							xAxis={{label: "Shelf names"}}
                     		yAxis={{label: "No.of books"}}
@@ -363,7 +369,7 @@ class StatsChart extends Component {
 
 
 						//loop through each book & compare its date with each date in data.values array. if equals, then increment y by 1.
-						for(let i=0;i<booksread ? booksread.length : 0;i++){
+						for(let i=0;i<(booksread ? booksread.length : 0);i++){
 							let tempbook = booksread[i].date_updated[0];
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -387,16 +393,17 @@ class StatsChart extends Component {
 						
 						//let yScale = d3.scale.linear().domain([0,10]);
 						var width = this.state.chartWidth;
+						var height = this.state.chartHeight;
 
 
 						return(
 
 							<div>
-								<div className="chartTitle">Books read by Week/Month/Year/All-time</div>
+								<div className="chartTitle">Books read by this Week/Month/Year/All-time</div>
 				                <LineChart
 				                   data={data}
 				                   width={width || 620}
-				                   height={400}
+				                   height={height || 450}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
 				            	   yAxis={{label: "No. of books", ticks: booksread ? booksread.length : 0, tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
@@ -424,7 +431,7 @@ class StatsChart extends Component {
 						}
 
 
-						for(let i=0;i<booksread ? booksread.length : 0;i++){
+						for(let i=0;i<(booksread ? booksread.length : 0);i++){
 							let tempbook = booksread[i].date_updated[0];
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -446,6 +453,7 @@ class StatsChart extends Component {
 
 
 						var width = this.state.chartWidth;
+						var height = this.state.chartHeight;
 
 
 						return(
@@ -455,7 +463,7 @@ class StatsChart extends Component {
 				                <LineChart
 				                   data={data}
 				                   width={width || 620}
-				                   height={400}
+				                   height={height || 450}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
 				            	   yAxis={{label: "No. of books", tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
@@ -493,7 +501,7 @@ class StatsChart extends Component {
 
 
 						
-						for(let i=0;i<booksread ? booksread.length : 0;i++){
+						for(let i=0;i<(booksread ? booksread.length : 0);i++){
 							let tempbook = booksread[i].date_updated[0];
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -515,6 +523,7 @@ class StatsChart extends Component {
 
 
 						var width = this.state.chartWidth;
+						var height = this.state.chartHeight;
 
 
 						return(
@@ -524,7 +533,7 @@ class StatsChart extends Component {
 				                <LineChart
 				                   data={data}
 				                   width={width || 620}
-				                   height={400}
+				                   height={height || 450}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
 				            	   yAxis={{label: "No. of books", tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
@@ -567,7 +576,7 @@ class StatsChart extends Component {
 
 					
 						
-						for(let i=0;i<booksread ? booksread.length : 0;i++){
+						for(let i=0;i<(booksread ? booksread.length : 0);i++){
 							let tempbook = dateFns.format(booksread[i].date_updated[0], 'YYYY');
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -583,6 +592,7 @@ class StatsChart extends Component {
 						
 
 						var width = this.state.chartWidth;
+						var height = this.state.chartHeight;
 
 						data[0].values.unshift({x:dateFns.format(dateFns.subYears(data[0].values[0].x, 1),'YYYY'),  y:0 })
 						//glitch sorta. line graph needs one data plot previous to connect a line. needs to have a default.
@@ -594,7 +604,7 @@ class StatsChart extends Component {
 				                <LineChart
 				                   data={data}
 				                   width={width || 620}
-				                   height={400}
+				                   height={height || 450}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
 				            	   yAxis={{label: "No. of books"}}
