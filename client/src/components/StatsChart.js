@@ -54,7 +54,7 @@ class StatsChart extends Component {
 		   	let winwidth = window.innerWidth;
 		 
 		   	if(winwidth >=0 && winwidth <= 500){
-		   		this.setState({chartWidth:300});
+		   		this.setState({chartWidth:300, chartHeight:250});
 	    	}else if(winwidth >=501 && winwidth <= 600) {
 			   	
 			   		this.setState({chartWidth:500, chartHeight:400});
@@ -124,7 +124,7 @@ class StatsChart extends Component {
 
 		   	let winwidth = window.innerWidth;
 		   	if(winwidth >=0 && winwidth <= 500){
-		   		this.setState({chartWidth:300});
+		   		this.setState({chartWidth:300, chartHeight:250});
 	    	}else if(winwidth >=501 && winwidth <= 600) {
 			   	
 			   		this.setState({chartWidth:500, chartHeight:400});
@@ -195,6 +195,7 @@ class StatsChart extends Component {
 				];
 
 				let books = this.state.books;
+				console.log(books)
 				for(let i=0;i<(books ? books.length : 0);i++){
 					
 					let numpages = books[i].book[0].num_pages[0];

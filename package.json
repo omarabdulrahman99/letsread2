@@ -26,7 +26,6 @@
     "passport": "^0.4.0",
     "passport-goodreads": "^1.0.0",
     "turn.js": "^1.0.5",
-    "twilio": "^3.30.0",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {}

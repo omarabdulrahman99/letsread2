@@ -2075,7 +2075,7 @@ div.clock div p{
 .clockcontainer{
     background-color:pink;
     height:8em;
-    width:24em;
+    width:28em;
     text-align:center;
     line-height:.8;
     border:5px solid black;
@@ -2785,5 +2785,21 @@ div.days .day p {
         text-align:center;
         padding:5%;
     }
+
+    div.clock div p{
+        font-size: 50px;
+        z-index: 100;
+    }
+
+    .clockcontainer{
+        background-color:pink;
+        height:6em;
+        width:15em;
+        text-align:center;
+        line-height:.8;
+        border:5px solid black;
+    }
+
+
 
 }
