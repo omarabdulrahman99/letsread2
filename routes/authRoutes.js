@@ -1,4 +1,6 @@
 const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 
 module.exports = app => {
@@ -57,8 +59,39 @@ module.exports = app => {
          res.send(req.user);
 
 
-  });
+    });
 
+
+
+    app.post('/api/savenotetime', async (req,res) => {
+
+      let userid = req.body.user._id;
+      let addsecs = req.body.secscount;
+      User.findOneAndUpdate({ _id:userid }, {$inc:{savednotetime:addsecs}}, {new:true}, function(err,user){
+
+
+          res.send({totalsecs:user})
+
+
+
+        })
+
+    })
+
+
+
+
+    app.post('/api/getnotetimesecs', async (req,res) => {
+
+      let userid = req.body.user._id;
+      User.findOneAndUpdate({ _id:userid }, {new:true}, function(err,user){
+
+
+          res.send({totalsecs:user});
+
+        })
+
+    })
 
 
 

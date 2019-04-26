@@ -6,12 +6,7 @@ const userSchema = new Schema({
 
 
 	goodreadId: String,
-	profilePic:String,
-	displayName:String,
-	bio:String,
-	importopt:String
-
-
+	savednotetime:{type:Number, default:0}
 
 
 })

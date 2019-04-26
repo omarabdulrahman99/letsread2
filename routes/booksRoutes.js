@@ -1,4 +1,4 @@
-const passport = require('passport');
+
 const axios = require('axios');
 const parseString = require('xml2js').parseString;
 const requireLogin = require('../middlewares/requireLogin');
@@ -540,10 +540,7 @@ module.exports = app => {
 			Book.findOneAndUpdate({bookid:bookid,user:user}, {$set:{'chapters.$[elem].predictions':editor}}, {new:true, arrayFilters:[{"elem.chapnum":chapnum}]}, function(err,book){
 
 
-
-
 				res.send({book:book})
-
 
 
 			})

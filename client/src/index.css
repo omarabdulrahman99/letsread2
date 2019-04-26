@@ -1990,6 +1990,7 @@ blockquote.grapefruit{
 
 .totalreadChartRadioGroup{
     text-align:center;
+    margin-bottom:5em;
 
 }
 
@@ -1999,6 +2000,36 @@ blockquote.grapefruit{
 
 
 }
+
+
+
+.chartRadio  {
+    box-sizing: border-box; /* Addresses box sizing set to content-box in IE8/9 */
+    padding: 0; /* Addresses excess padding in IE8/9 */
+    max-width: 1em!important;
+    height: 1em!important;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1em !important;
+    background: #fff;
+    border: 1px solid #8f8f8f;
+    border-radius: 50%;
+}
+
+.chartRadio:checked {
+    background: #2a6cb3;
+    background: #7097d2; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #7097d2 0%, #7097d2 20%, #207cca 20%, #2a6cb3 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7097d2), color-stop(20%,#7097d2), color-stop(20%,#207cca), color-stop(100%,#2a6cb3)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7097d2', endColorstr='#2a6cb3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -webkit-box-shadow: inset 0 0 0 1px #fff;
+    box-shadow: inset 0 0 0 1px #fff;
+}
+
 
 
 
@@ -2015,10 +2046,69 @@ svg{
 }*/
 
 
+/*DIGITAL CLOCK FONT*/
+@font-face{
+ font-family:'digital-7';
+ src: url('./fonts/digital-7.ttf');
+}
 
 
+div.clock div{
+    display: inline-block;
+    font-family:'digital-7';
+    font-weight:800px;
+}
+
+div.clock div p{
+    font-size: 100px;
+    z-index: 100;
+}
 
 
+/*CLASS THAT CHANGES COLOR OF TEXT TO APPEAR LIKE ITS "ON"*/
+.light-on {
+    color: #ffffff;
+}
+
+
+.clockcontainer{
+    background-color:pink;
+    height:8em;
+    width:24em;
+    text-align:center;
+    line-height:.8;
+    border:5px solid black;
+}
+
+.clockTitle{
+    text-align:center;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom:.25em;
+   
+}
+
+div.days {
+
+    color: #131212;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-evenly;
+    padding:.4em 0 0 0 ;
+}
+
+div.days .day {
+    display: inline-block;
+}
+
+div.days .day p {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+
+}
 
 
 
@@ -2051,10 +2141,17 @@ svg{
     
 
     }
+    .flashsecs{
+        grid-column:1/2;
+        grid-row:1;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
 
     .pagesChart{
         grid-column:1/2;
-        grid-row:1/2;
+        grid-row:2;
         margin:0px auto;
         margin-top:5em;
 
@@ -2062,7 +2159,7 @@ svg{
 
     .shelvesChart{
         grid-column:1/2;
-        grid-row:2/3;
+        grid-row:3;
         margin:0px auto;
         margin-top:5em;
  
@@ -2070,7 +2167,7 @@ svg{
 
     .totalreadChart{
         grid-column:1/2;
-        grid-row:3;
+        grid-row:4;
         margin:0px auto;
         margin-top:5em;
     }
@@ -2099,10 +2196,17 @@ svg{
     
 
     }
+    .flashsecs{
+        grid-column:1/2;
+        grid-row:1;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
 
     .pagesChart{
         grid-column:1/2;
-        grid-row:1/2;
+        grid-row:2;
         margin:0px auto;
         margin-top:5em;
 
@@ -2110,7 +2214,7 @@ svg{
 
     .shelvesChart{
         grid-column:1/2;
-        grid-row:2/3;
+        grid-row:3;
         margin:0px auto;
         margin-top:5em;
  
@@ -2118,7 +2222,7 @@ svg{
 
     .totalreadChart{
         grid-column:1/2;
-        grid-row:3;
+        grid-row:4;
         margin:0px auto;
         margin-top:5em;
     }
@@ -2225,10 +2329,17 @@ svg{
     
 
     }
+    .flashsecs{
+        grid-column:1/2;
+        grid-row:1;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
 
     .pagesChart{
         grid-column:1/2;
-        grid-row:1/2;
+        grid-row:2;
         margin:0px auto;
         margin-top:5em;
 
@@ -2236,7 +2347,7 @@ svg{
 
     .shelvesChart{
         grid-column:1/2;
-        grid-row:2/3;
+        grid-row:3;
         margin:0px auto;
         margin-top:5em;
  
@@ -2244,7 +2355,7 @@ svg{
 
     .totalreadChart{
         grid-column:1/2;
-        grid-row:3;
+        grid-row:4;
         margin:0px auto;
         margin-top:5em;
     }
@@ -2317,9 +2428,17 @@ svg{
 
     }
 
+    .flashsecs{
+        grid-column:1/2;
+        grid-row:1;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
+
     .pagesChart{
         grid-column:1/2;
-        grid-row:1/2;
+        grid-row:2;
         margin:0px auto;
         margin-top:5em;
 
@@ -2327,7 +2446,7 @@ svg{
 
     .shelvesChart{
         grid-column:1/2;
-        grid-row:2/3;
+        grid-row:3;
         margin:0px auto;
         margin-top:5em;
  
@@ -2335,7 +2454,7 @@ svg{
 
     .totalreadChart{
         grid-column:1/2;
-        grid-row:3;
+        grid-row:4;
         margin:0px auto;
         margin-top:5em;
     }
@@ -2427,9 +2546,17 @@ svg{
 
     }
 
+    .flashsecs{
+        grid-column:1/2;
+        grid-row:1;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
+
     .pagesChart{
         grid-column:1/2;
-        grid-row:1/2;
+        grid-row:2;
         margin:0px auto;
         margin-top:5em;
 
@@ -2437,7 +2564,7 @@ svg{
 
     .shelvesChart{
         grid-column:1/2;
-        grid-row:2/3;
+        grid-row:3;
         margin:0px auto;
         margin-top:5em;
  
@@ -2445,7 +2572,7 @@ svg{
 
     .totalreadChart{
         grid-column:1/2;
-        grid-row:3;
+        grid-row:4;
         margin:0px auto;
         margin-top:5em;
     }
@@ -2584,10 +2711,17 @@ svg{
     
 
     }
+    .flashsecs{
+        grid-column:1/2;
+        grid-row:1;
+        margin:0px auto;
+        margin-top:5em;
+
+    }
 
     .pagesChart{
         grid-column:1/2;
-        grid-row:1/2;
+        grid-row:2;
         margin:0px auto;
         margin-top:5em;
 
@@ -2595,7 +2729,7 @@ svg{
 
     .shelvesChart{
         grid-column:1/2;
-        grid-row:2;
+        grid-row:3;
         margin:0px auto;
         margin-top:5em;
  
@@ -2603,7 +2737,7 @@ svg{
 
     .totalreadChart{
         grid-column:1/2;
-        grid-row:3;
+        grid-row:4;
         margin:0px auto;
         margin-top:5em;
     }

@@ -40,7 +40,7 @@ class App extends Component {
        <BrowserRouter>             
        
           <div className="rootdk">
-            <Suspense fallback ={<div className="loader"></div>}>
+            <Suspense fallback ={<div></div>}>
               <Header/>
             </Suspense>
               <div className="container">

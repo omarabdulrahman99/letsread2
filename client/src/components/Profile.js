@@ -12,6 +12,7 @@ class Profile extends Component {
 		this.state = {
 
 			dataloaded:'notloaded',
+
 			
 
 		}
@@ -27,11 +28,22 @@ class Profile extends Component {
  
 componentDidMount(){
 
+
 		this.profileload(this.props.thisuser);
+
 
 	}
 
-	 toggle(nr) {
+
+
+
+
+
+
+
+
+
+toggle(nr) {
 	 	console.log('toggle1')
 	    let modalNumber = 'modal' + nr
 	    this.setState({
@@ -39,7 +51,15 @@ componentDidMount(){
 	    }, () => console.log(this.state.modal1));
   }
 
-	async profileload(user){
+
+
+
+
+
+
+
+
+async profileload(user){
 
 		if(!user.goodreadId){
 
@@ -146,7 +166,7 @@ componentDidMount(){
 			if( !(favbooks) || !favbooks[i]){
 				imagesarray.push(<figure key={i}><img src={imgempty} alt=""></img></figure>);
 			}else{
-				console.log(favbooks[i])
+				
 				imagesarray.push(<figure key={i} onClick={() => this.toggle(1)}><img src={favbooks[i].book[0].image_url[0]} alt=""></img></figure>);
 			}
 

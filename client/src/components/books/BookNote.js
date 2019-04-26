@@ -13,15 +13,6 @@ import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 
 
 
-
-
-
-
-
-
-
-
-
 class BookNote extends Component {
 
     constructor(props) {
@@ -50,8 +41,8 @@ class BookNote extends Component {
             editorState: null,
             initialEditor: EditorState.createEmpty(),
             turnjstext: null,
-            coverinfo:null,
-            profile:null
+            coverinfo: null,
+            profile: null
 
 
 
@@ -60,13 +51,43 @@ class BookNote extends Component {
     }
 
 
+    componentDidMount = () => {
+
+
+        let secscount = 0;
+
+        setInterval(function() {
+            secscount += 1;
+        }, 1000)
+
+
+        let saveTime = this.saveTime;
+        setInterval(function() {
+
+
+            saveTime(secscount);
+            secscount = 0;
+
+        }, 10000);
+
+
+
+
+    }
+
+
+    saveTime = async (secscount) => {
+
+        const timesaved = await axios.post('/api/savenotetime', { user: this.props.user, secscount: secscount });
+
+
+
+    }
+
+
 
 
     saveEditorState = (editorState) => {
-
-
-
-
 
         this.setState({ editorState })
     }
@@ -99,7 +120,7 @@ class BookNote extends Component {
 
         //check if input is positive && between 1-170;
         var title = this.state.title;
-        var patt = new RegExp(/^\d*$/); //0-9 & positive.		
+        var patt = new RegExp(/^\d*$/); //0-9 & positive.       
         var valid = patt.test(this.state.chapnum) && (parseInt(this.state.chapnum) >= 1 && parseInt(this.state.chapnum) <= 170);
         var valid2 = true;
 
@@ -207,31 +228,31 @@ class BookNote extends Component {
 
     }
 
-    /* 		//if I decided to use simple inputs later on.
-    		noteEdit = (e) => {
+    /*      //if I decided to use simple inputs later on.
+            noteEdit = (e) => {
 
-    			switch(e.currentTarget.id){
+                switch(e.currentTarget.id){
 
-    				case "predictions":
-    					this.setState({predictions:e.currentTarget.value})
-    					break;
-    				case "quotes":
-    					this.setState({quotes:e.currentTarget.value})
-    					break;
-    				case "lessons":			
-    					this.setState({lessons:e.currentTarget.value})
-    					break;
+                    case "predictions":
+                        this.setState({predictions:e.currentTarget.value})
+                        break;
+                    case "quotes":
+                        this.setState({quotes:e.currentTarget.value})
+                        break;
+                    case "lessons":         
+                        this.setState({lessons:e.currentTarget.value})
+                        break;
 
-    				case "general":
-    					this.setState({general:e.currentTarget.value})					
-    					break;
+                    case "general":
+                        this.setState({general:e.currentTarget.value})                  
+                        break;
 
-    			}
+                }
 
 
 
-    		}
-    	*/
+            }
+        */
 
 
     renderEditCards = () => {
@@ -253,11 +274,11 @@ class BookNote extends Component {
 
 
                     <div key={this.state.chapters[i].chapnum} id={this.state.chapters[i].chapnum} onClick={this.editCardClick} className="bkcardeditselect">
-								<div className="cardTitle">Chapter {this.state.chapters[i].chapnum}</div>
-								<hr></hr>
-								<input id={this.state.chapters[i].chapnum} type="text" placeholder={this.state.chapters[i].title} style={inputstyle} className="cardTitle2" value={this.state.cardinputs[this.state.chapters[i].chapnum]} onChange={this.cardonChange} />
-								<button onClick={(e) => {this.addBookNote(e)}} >Add Book Notes</button>
-							</div>
+                                <div className="cardTitle">Chapter {this.state.chapters[i].chapnum}</div>
+                                <hr></hr>
+                                <input id={this.state.chapters[i].chapnum} type="text" placeholder={this.state.chapters[i].title} style={inputstyle} className="cardTitle2" value={this.state.cardinputs[this.state.chapters[i].chapnum]} onChange={this.cardonChange} />
+                                <button onClick={(e) => {this.addBookNote(e)}} >Add Book Notes</button>
+                            </div>
 
 
                 )
@@ -267,10 +288,10 @@ class BookNote extends Component {
                 cardsarr.push(
 
                     <div key={this.state.chapters[i].chapnum} id={this.state.chapters[i].chapnum} onClick={this.editCardClick} className="bkcardedit">
-						<div className="cardTitle">Chapter {this.state.chapters[i].chapnum}</div>
-						<hr></hr>
-						<div className="cardTitle2">{this.state.chapters[i].title}</div>>
-					</div>
+                        <div className="cardTitle">Chapter {this.state.chapters[i].chapnum}</div>
+                        <hr></hr>
+                        <div className="cardTitle2">{this.state.chapters[i].title}</div>>
+                    </div>
                 )
 
 
@@ -323,7 +344,7 @@ class BookNote extends Component {
 
     }
 
-     turnjsSwitch = async (e) => {
+    turnjsSwitch = async (e) => {
 
 
         let chapnum = e.currentTarget.id;
@@ -332,9 +353,9 @@ class BookNote extends Component {
         let title = this.state.chapters[index].title;
 
 
-        var profileres = await axios.post('/api/profileonly', {goodreadId:this.props.user.goodreadId});
+        var profileres = await axios.post('/api/profileonly', { goodreadId: this.props.user.goodreadId });
         var profileuserdata = profileres.data.profileinfo.GoodreadsResponse.user;
-        console.log(profileuserdata)
+
 
 
 
@@ -364,7 +385,7 @@ class BookNote extends Component {
 
 
             var blockcount = 0;
- 
+
             for (var i = 0; i < turnjstext.length; i++) {
 
                 var tempstyles = { display: "inline" };
@@ -381,7 +402,7 @@ class BookNote extends Component {
 
 
 
-                        var start = predObj.blocks[j].inlineStyleRanges[k].offset + blockcount ;
+                        var start = predObj.blocks[j].inlineStyleRanges[k].offset + blockcount;
                         var end = predObj.blocks[j].inlineStyleRanges[k].length + start;
                         var style = predObj.blocks[j].inlineStyleRanges[k].style;
 
@@ -402,7 +423,7 @@ class BookNote extends Component {
 
 
                     blockcount += predObj.blocks[j].text.length + 1;
-                    
+
 
 
                 } //endfor2
@@ -426,24 +447,24 @@ class BookNote extends Component {
             var divarr2 = [];
 
 
-        	
+
             for (var m = 0; m < stylechars.length; m++) {
 
-            
-                if ((stylechars[m][0].match(/\r\n|\r|\n/g) ) || (!stylechars[m + 1]) || (divarr2.length >0)) {
 
-                  
-                    if(divarr2.length >0){
+                if ((stylechars[m][0].match(/\r\n|\r|\n/g)) || (!stylechars[m + 1]) || (divarr2.length > 0)) {
 
-                    	if(divarr2[1]){
 
-                    		divarr2.pop();
-                    	}
-                    	divarr = divarr2;
-    
-                    	m = m -1;
-                    
-                    	divarr2 = [];
+                    if (divarr2.length > 0) {
+
+                        if (divarr2[1]) {
+
+                            divarr2.pop();
+                        }
+                        divarr = divarr2;
+
+                        m = m - 1;
+
+                        divarr2 = [];
 
                     }
 
@@ -453,314 +474,326 @@ class BookNote extends Component {
                     }
 
                     let type = predObj.blocks[blocknum] ? predObj.blocks[blocknum].type : null;
-             	//17 is the safety buffer. can still add last block.
-                    switch (type) {                  	
+                    //17 is the safety buffer. can still add last block.
+                    switch (type) {
                         case "header-one":
-                         	{if(linecount + 3 >= 17){
-                      		    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h1>{divarr}</h1></div>);
-                         		pagenum++;
-                         		blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h1>{divarr}</h1></div>);                    
-                         		blocknum++;
-                         		linecount += 3;
-                         	}
+                            {
+                                if (linecount + 3 >= 17) {
+                                    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                    pages[pagenum].push(<div key={m}><h1>{divarr}</h1></div>);
+                                    pagenum++;
+                                    blocknum++;
+                                    linecount = 0;
+                                } else {
+                                    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                    pages[pagenum].push(<div key={m}><h1>{divarr}</h1></div>);
+                                    blocknum++;
+                                    linecount += 3;
+                                }
 
-                            break;}
+                                break;
+                            }
                         case "header-two":
-                       		if(linecount + 2.5 >= 17){                         		
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h2>{divarr}</h2></div>);
-                         		pagenum++;
-                         		blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h2>{divarr}</h2></div>);                    
-                         		blocknum++;
-                         		linecount += 2.5;
-                         	}
+                            if (linecount + 2.5 >= 17) {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h2>{divarr}</h2></div>);
+                                pagenum++;
+                                blocknum++;
+                                linecount = 0;
+                            } else {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h2>{divarr}</h2></div>);
+                                blocknum++;
+                                linecount += 2.5;
+                            }
 
                             break;
                         case "header-three":
-                       	if(linecount + 2 >= 17){                        		
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h3>{divarr}</h3></div>);
-                         		pagenum++;
-                         		blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h3>{divarr}</h3></div>);                    
-                         		blocknum++;
-                         		linecount += 2;
-                         	}
+                            if (linecount + 2 >= 17) {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h3>{divarr}</h3></div>);
+                                pagenum++;
+                                blocknum++;
+                                linecount = 0;
+                            } else {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h3>{divarr}</h3></div>);
+                                blocknum++;
+                                linecount += 2;
+                            }
                             break;
                         case "header-four":
-                       	if(linecount + 1.5 >= 17){                       		
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h4>{divarr}</h4></div>);
-                         		pagenum++;
-                         		blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h4>{divarr}</h4></div>);                    
-                         		blocknum++;
-                         		linecount += 1.5;
-                         	}
+                            if (linecount + 1.5 >= 17) {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h4>{divarr}</h4></div>);
+                                pagenum++;
+                                blocknum++;
+                                linecount = 0;
+                            } else {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h4>{divarr}</h4></div>);
+                                blocknum++;
+                                linecount += 1.5;
+                            }
 
                             break;
                         case "header-five":
-                        	if(linecount + 1.25 >= 17){                        		
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h5>{divarr}</h5></div>);
-                         		pagenum++;
-                         		blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h5>{divarr}</h5></div>);                    
-                         		blocknum++;
-                         		linecount += 1.25;
-                         	}
+                            if (linecount + 1.25 >= 17) {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h5>{divarr}</h5></div>);
+                                pagenum++;
+                                blocknum++;
+                                linecount = 0;
+                            } else {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h5>{divarr}</h5></div>);
+                                blocknum++;
+                                linecount += 1.25;
+                            }
 
                             break;
                         case "header-six":
-                       		if(linecount + 1 >= 17){                       		
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h6>{divarr}</h6></div>);
-                         		pagenum++;
-                         		blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><h6>{divarr}</h6></div>);                    
-                         		blocknum++;
-                         		linecount += 1;
-                         	}
+                            if (linecount + 1 >= 17) {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h6>{divarr}</h6></div>);
+                                pagenum++;
+                                blocknum++;
+                                linecount = 0;
+                            } else {
+                                divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                pages[pagenum].push(<div key={m}><h6>{divarr}</h6></div>);
+                                blocknum++;
+                                linecount += 1;
+                            }
 
                             break;
                         case "unordered-list-item":
-                            {let olchars = divarr.length;
-                        	let widthchars = 36; //in OL, each line is 36 chars max, accounting for capitalized text, gives us an extra line or two safety.
-                        	let lines = olchars/widthchars;
-                        	let totallines = linecount + lines;
+                            {
+                                let olchars = divarr.length;
+                                let widthchars = 36; //in OL, each line is 36 chars max, accounting for capitalized text, gives us an extra line or two safety.
+                                let lines = olchars / widthchars;
+                                let totallines = linecount + lines;
 
-                                              	
- 							if(totallines >= 17){	
-                         		
-                         		let nextpglines = totallines - 17;
-                         		let nextindex = widthchars * nextpglines;
-                      		
 
-                         		if(olchars <= nextindex){
-                         	
-                         			divarr2 = divarr2.concat(divarr);
+                                if (totallines >= 17) {
 
-                         		}else{
-                         			
-                         		
-                         			let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)                       
-                         			divarr2.length = 0;
-                         			divarr2 = divarr2.concat(divarrcut);
-                       
-                         	
-                         			pages[pagenum].push(<div key={m}><ul className="pageUL"><li>{divarr}</li></ul></div>);
-                         		
-                         		}                    		
-                         		
-                         		pagenum++;
-                         		//blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><ul className="pageUL"><li>{divarr}</li></ul></div>);                   
-                         		blocknum++;
-                         		linecount += Math.ceil(lines);
-                         	}
+                                    let nextpglines = totallines - 17;
+                                    let nextindex = widthchars * nextpglines;
 
-                         	                         	
-                         	break;}
+
+                                    if (olchars <= nextindex) {
+
+                                        divarr2 = divarr2.concat(divarr);
+
+                                    } else {
+
+
+                                        let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)
+                                        divarr2.length = 0;
+                                        divarr2 = divarr2.concat(divarrcut);
+
+
+                                        pages[pagenum].push(<div key={m}><ul className="pageUL"><li>{divarr}</li></ul></div>);
+
+                                    }
+
+                                    pagenum++;
+                                    //blocknum++;
+                                    linecount = 0;
+                                } else {
+
+                                    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                    pages[pagenum].push(<div key={m}><ul className="pageUL"><li>{divarr}</li></ul></div>);
+                                    blocknum++;
+                                    linecount += Math.ceil(lines);
+                                }
+
+
+                                break;
+                            }
                         case "ordered-list-item":
 
-                        	{let olchars = divarr.length;
-                        	let widthchars = 36; //in OL, each line is 36 chars max, accounting for capitalized text, gives us an extra line or two safety.
-                        	let lines = olchars/widthchars;
-                        	let totallines = linecount + lines;
+                            {
+                                let olchars = divarr.length;
+                                let widthchars = 36; //in OL, each line is 36 chars max, accounting for capitalized text, gives us an extra line or two safety.
+                                let lines = olchars / widthchars;
+                                let totallines = linecount + lines;
 
-                        
-                        	
- 							if(totallines >= 17){	
-                         		
-                         		let nextpglines = totallines - 17;
-                         		let nextindex = widthchars * nextpglines;
-                      		
 
-                         		if(olchars <= nextindex){
-                         	
-                         			divarr2 = divarr2.concat(divarr);
 
-                         		}else{
-                         			
-                         		
-                         			let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)                       
-                         			divarr2.length = 0;
-                         			divarr2 = divarr2.concat(divarrcut);
-                       
-                         	
-                         			pages[pagenum].push(<div key={m}><ol className="pageOL"><li>{divarr}</li></ol></div>);
-                         		
-                         		}                    		
-                         		
-                         		pagenum++;
-                         		//blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><ol className="pageOL"><li>{divarr}</li></ol></div>);                   
-                         		blocknum++;
-                         		linecount += Math.ceil(lines);
-                         	}
+                                if (totallines >= 17) {
 
-                         	                         	
-                         	break;}
+                                    let nextpglines = totallines - 17;
+                                    let nextindex = widthchars * nextpglines;
+
+
+                                    if (olchars <= nextindex) {
+
+                                        divarr2 = divarr2.concat(divarr);
+
+                                    } else {
+
+
+                                        let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)
+                                        divarr2.length = 0;
+                                        divarr2 = divarr2.concat(divarrcut);
+
+
+                                        pages[pagenum].push(<div key={m}><ol className="pageOL"><li>{divarr}</li></ol></div>);
+
+                                    }
+
+                                    pagenum++;
+                                    //blocknum++;
+                                    linecount = 0;
+                                } else {
+
+                                    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                    pages[pagenum].push(<div key={m}><ol className="pageOL"><li>{divarr}</li></ol></div>);
+                                    blocknum++;
+                                    linecount += Math.ceil(lines);
+                                }
+
+
+                                break;
+                            }
                         case "blockquote":
-                        	{let olchars = divarr.length;
-                        	let widthchars = 36;
-                        	let lines = olchars/widthchars;
-                        	let totallines = linecount + lines;
-       
- 							if(totallines >= 17){	
-                         		
-                         		let nextpglines = totallines - 17;
-                         		let nextindex = widthchars * nextpglines;
-                        
-                         		if(olchars <= nextindex){
-                         			
-                         			divarr2 = divarr2.concat(divarr);
-                         		
-                         		}else{
-                         			let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)                       
-                         			divarr2.length = 0;
-                         			divarr2 = divarr2.concat(divarrcut);
-                         			pages[pagenum].push(<div key={m}><blockquote className="grapefruit">{divarr}</blockquote></div>);
-                         	
-                         		}                    		
-                         		
-                         		pagenum++;
-                         		//blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}><blockquote className="grapefruit">{divarr}</blockquote></div>);                  
-                         		blocknum++;
-                         		linecount += Math.ceil(lines);
-                         	}
-                         	break;}
-                        case "unstyled":   
-                   
-                           {let olchars = divarr.length;
-                        	let widthchars = 36;
-                        	let lines = olchars/widthchars;
-                        	let totallines = linecount + lines;
+                            {
+                                let olchars = divarr.length;
+                                let widthchars = 36;
+                                let lines = olchars / widthchars;
+                                let totallines = linecount + lines;
 
-                       
- 							if(totallines >= 17){	
-                         		
-                         		let nextpglines = totallines - 17;
-                         		let nextindex = widthchars * nextpglines;
-                        
-                         		if(olchars <= nextindex){
-                         			
-                         			divarr2 = divarr2.concat(divarr);
-                         		
-                         		}else{
-                         			let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)                       
-                         			divarr2.length = 0;
-                         			divarr2 = divarr2.concat(divarrcut);
-                         			pages[pagenum].push(<div key={m}>{divarr}</div>);
-                         		
-                         		}                    		
-                         		
-                         		pagenum++;
-                         		//blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}>{divarr}</div>);                  
-                         		blocknum++;
-                         		linecount += Math.ceil(lines);
-                         	}
-                         	break;}
+                                if (totallines >= 17) {
+
+                                    let nextpglines = totallines - 17;
+                                    let nextindex = widthchars * nextpglines;
+
+                                    if (olchars <= nextindex) {
+
+                                        divarr2 = divarr2.concat(divarr);
+
+                                    } else {
+                                        let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)
+                                        divarr2.length = 0;
+                                        divarr2 = divarr2.concat(divarrcut);
+                                        pages[pagenum].push(<div key={m}><blockquote className="grapefruit">{divarr}</blockquote></div>);
+
+                                    }
+
+                                    pagenum++;
+                                    //blocknum++;
+                                    linecount = 0;
+                                } else {
+
+                                    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                    pages[pagenum].push(<div key={m}><blockquote className="grapefruit">{divarr}</blockquote></div>);
+                                    blocknum++;
+                                    linecount += Math.ceil(lines);
+                                }
+                                break;
+                            }
+                        case "unstyled":
+
+                            {
+                                let olchars = divarr.length;
+                                let widthchars = 36;
+                                let lines = olchars / widthchars;
+                                let totallines = linecount + lines;
+
+
+                                if (totallines >= 17) {
+
+                                    let nextpglines = totallines - 17;
+                                    let nextindex = widthchars * nextpglines;
+
+                                    if (olchars <= nextindex) {
+
+                                        divarr2 = divarr2.concat(divarr);
+
+                                    } else {
+                                        let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)
+                                        divarr2.length = 0;
+                                        divarr2 = divarr2.concat(divarrcut);
+                                        pages[pagenum].push(<div key={m}>{divarr}</div>);
+
+                                    }
+
+                                    pagenum++;
+                                    //blocknum++;
+                                    linecount = 0;
+                                } else {
+
+                                    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                    pages[pagenum].push(<div key={m}>{divarr}</div>);
+                                    blocknum++;
+                                    linecount += Math.ceil(lines);
+                                }
+                                break;
+                            }
 
                         default:
-                           {let olchars = divarr.length;
-                        	let widthchars = 36;
-                        	let lines = olchars/widthchars;
-                        	let totallines = linecount + lines;
+                            {
+                                let olchars = divarr.length;
+                                let widthchars = 36;
+                                let lines = olchars / widthchars;
+                                let totallines = linecount + lines;
 
-                       
- 							if(totallines >= 17){	
-                         		
-                         		let nextpglines = totallines - 17;
-                         		let nextindex = widthchars * nextpglines;
-                        
-                         		if(olchars <= nextindex){
-                         			
-                         			divarr2 = divarr2.concat(divarr);
-                         		
-                         		}else{
-                         			let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)                       
-                         			divarr2.length = 0;
-                         			divarr2 = divarr2.concat(divarrcut);
-                         			pages[pagenum].push(<div key={m}>{divarr}</div>);
-                         		
-                         		}                    		
-                         		
-                         		pagenum++;
-                         		//blocknum++;
-                         		linecount = 0;
-                         	}else{
-                         
-                         		divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
-                         		pages[pagenum].push(<div key={m}>{divarr}</div>);                  
-                         		blocknum++;
-                         		linecount += Math.ceil(lines);
-                         	}
-                         	break;}
+
+                                if (totallines >= 17) {
+
+                                    let nextpglines = totallines - 17;
+                                    let nextindex = widthchars * nextpglines;
+
+                                    if (olchars <= nextindex) {
+
+                                        divarr2 = divarr2.concat(divarr);
+
+                                    } else {
+                                        let divarrcut = divarr.splice(divarr.length - nextindex, nextindex)
+                                        divarr2.length = 0;
+                                        divarr2 = divarr2.concat(divarrcut);
+                                        pages[pagenum].push(<div key={m}>{divarr}</div>);
+
+                                    }
+
+                                    pagenum++;
+                                    //blocknum++;
+                                    linecount = 0;
+                                } else {
+
+                                    divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>)
+                                    pages[pagenum].push(<div key={m}>{divarr}</div>);
+                                    blocknum++;
+                                    linecount += Math.ceil(lines);
+                                }
+                                break;
+                            }
                     }
 
 
 
-                 
+
                     divarr = [];
 
 
 
                 } else {
-               
+
                     divarr.push(<div key={m} style={stylechars[m][1]}>{stylechars[m][0]}</div>);
-                    
+
                 }
 
             }
 
 
-            
 
 
-       
-           console.log(profileuserdata)
 
-            this.setState({ turnjstext: pages, coverinfo:{chapnum:chapnum,title:title}, profile:profileuserdata}, () => {
+
+
+
+            this.setState({ turnjstext: pages, coverinfo: { chapnum: chapnum, title: title }, profile: profileuserdata }, () => {
 
                 this.setState({ turnjs: 'on' })
             })
@@ -768,14 +801,14 @@ class BookNote extends Component {
         } else {
 
             let turnjstext = ["No notes =("];
-            this.setState({ turnjstext: turnjstext, coverinfo:{chapnum:index, title:title}, profile:profileuserdata }, () => {
+            this.setState({ turnjstext: turnjstext, coverinfo: { chapnum: index, title: title }, profile: profileuserdata }, () => {
 
-            	this.setState({turnjs:'on'})
+                this.setState({ turnjs: 'on' })
             })
 
 
 
-      }
+        }
 
     }
 
@@ -795,10 +828,10 @@ class BookNote extends Component {
 
             cardsarr.push(
                 <div key={this.state.chapters[i].chapnum} id={this.state.chapters[i].chapnum} onClick={this.turnjsSwitch} className="bkcard">
-						<div className="cardTitle">Chapter   {this.state.chapters[i].chapnum}</div>
-						<hr></hr>
-						<div className="cardTitle2">{this.state.chapters[i].title}</div>
-					</div>);
+                        <div className="cardTitle">Chapter   {this.state.chapters[i].chapnum}</div>
+                        <hr></hr>
+                        <div className="cardTitle2">{this.state.chapters[i].title}</div>
+                    </div>);
 
         }
 
@@ -819,12 +852,12 @@ class BookNote extends Component {
 
         return (
             <div className="icon-trash" onClick={this.delChapters}>
-				    <div className="trash-lid"></div>
-				    <div className="trash-container"></div>
-				    <div className="trash-line-1"></div>
-				    <div className="trash-line-2"></div>
-				    <div className="trash-line-3"></div>
-				  </div>
+                    <div className="trash-lid"></div>
+                    <div className="trash-container"></div>
+                    <div className="trash-line-1"></div>
+                    <div className="trash-line-2"></div>
+                    <div className="trash-line-3"></div>
+                  </div>
 
         )
     }
@@ -936,7 +969,7 @@ class BookNote extends Component {
     }
 
 
- 
+
 
 
     render() {
@@ -968,76 +1001,76 @@ class BookNote extends Component {
 
 
 
-        <main className="cero">
+            <main className="cero">
 
             {this.state.turnjs == 'on' ? <Link to="/booknotes" className="editFlexBack">Go Back</Link> : null}
-			{this.state.turnjs == 'on' ?  <Turn turnjstext={this.state.turnjstext} profile={this.state.profile} coverinfo={this.state.coverinfo} /> : 
-			<div className="cardscontainer">
-				<div className="editcontainer">
+            {this.state.turnjs == 'on' ?  <Turn turnjstext={this.state.turnjstext} profile={this.state.profile} coverinfo={this.state.coverinfo} /> : 
+            <div className="cardscontainer">
+                <div className="editcontainer">
                     <a href="/mybooks" className="editFlexBack">Go Back</a>
-					<div className="editflex">
-						<div className="editFlexBack" onClick={this.seteditRender} >Edit</div>
-						{this.state.edit != false ? <div onClick={this.saveedits} className="editFlexBack">Save</div> : null}
-						{this.state.edit != false ? this.trashButton() : null}
-					</div>
-				</div>
-				<div className="bkcards">
+                    <div className="editflex">
+                        <div className="editFlexBack" onClick={this.seteditRender} >Edit</div>
+                        {this.state.edit != false ? <div onClick={this.saveedits} className="editFlexBack">Save</div> : null}
+                        {this.state.edit != false ? this.trashButton() : null}
+                    </div>
+                </div>
+                <div className="bkcards">
 
-					<Modal isOpen={this.state.savemsg} size="sm">				         
-				          <ModalBody style={savemsgStyle}>
-				          	<img height="50" src={greencheck}></img>Save Success!			          	     
-				          </ModalBody>
-			        </Modal>
+                    <Modal isOpen={this.state.savemsg} size="sm">                        
+                          <ModalBody style={savemsgStyle}>
+                            <img height="50" src={greencheck}></img>Save Success!                            
+                          </ModalBody>
+                    </Modal>
 
-			        <Modal isOpen={this.state.deletemsg} size="sm">				         
-				          <ModalBody style={savemsgStyle}>
-				          	<img height="50" src={greencheck}></img>Delete Success!			          	     
-				          </ModalBody>
-			        </Modal>
+                    <Modal isOpen={this.state.deletemsg} size="sm">                      
+                          <ModalBody style={savemsgStyle}>
+                            <img height="50" src={greencheck}></img>Delete Success!                          
+                          </ModalBody>
+                    </Modal>
 
-			        <Modal isOpen={this.state.notemodal} className="editNoteModal" >
-			        	<ModalHeader toggle={() => this.setState({notemodal:!this.state.notemodal}) }>
-			        		Edit Book Notes
-			        	</ModalHeader>
-			        	<ModalBody>
-			        		<div>Predictions:</div>
-			        		<DraftEditor initialEditor={this.state.initialEditor} saveEditorState={this.saveEditorState} />
-			        		<button onClick={this.saveEditorToDB}>SAVE</button>
-			        		
-			        	</ModalBody>
-			        	<ModalFooter>
-			        	</ModalFooter>
-			        </Modal>
+                    <Modal isOpen={this.state.notemodal} className="editNoteModal" >
+                        <ModalHeader toggle={() => this.setState({notemodal:!this.state.notemodal}) }>
+                            Edit Book Notes
+                        </ModalHeader>
+                        <ModalBody>
+                            <div>Predictions:</div>
+                            <DraftEditor initialEditor={this.state.initialEditor} saveEditorState={this.saveEditorState} />
+                            <button onClick={this.saveEditorToDB}>SAVE</button>
+                            
+                        </ModalBody>
+                        <ModalFooter>
+                        </ModalFooter>
+                    </Modal>
 
-					<Modal isOpen={this.state.addchapter} size="sm">
-				         <ModalHeader toggle={() => this.setChapterStart()}>Add a new chapter</ModalHeader>
-				         <form>
-				          <ModalBody>
-				          	<MDBInput id="chapnum" value={this.state.chapnum} onChange={(e) => {this.mStartOnChange(e)}} className="modalstartinput" label="Chapter Number" type="number" required min="1" max="170"/>
-				          	{this.state.warning1 ? warning1 : null}
-				          	{this.state.warning2 ? warning2 : null}
-				          	<MDBInput id="title" value={this.state.title} onChange={(e) => {this.mStartOnChange(e)}} label="Chapter Title"  maxLength="50"/>				     
-				          </ModalBody>
-			         	<ModalFooter>
-			         		<Button size="sm" type="submit" color="primary" onClick={(e) => {this.addChapter(e)}} required>Save changes</Button>
-				            <Button size="sm" color="secondary" onClick={() => this.setChapterStart()} required>Close</Button>{' '}
-			         	</ModalFooter>
-			         </form>
-			        </Modal>
-			        {this.state.edit != false && this.state.chapters ? this.renderEditCards() : null}
-			        {this.state.chapters && this.state.edit == false  ? this.renderCards() : null}
-					{this.state.edit ? null : <div className="addCenter">
-						<div className="addCenter" onClick={this.setChapterStart}>
-						  <div className="editFlexBack">Add Chapter</div>
-						</div>
-					</div>}
-				</div>
-			</div>
+                    <Modal isOpen={this.state.addchapter} size="sm">
+                         <ModalHeader toggle={() => this.setChapterStart()}>Add a new chapter</ModalHeader>
+                         <form>
+                          <ModalBody>
+                            <MDBInput id="chapnum" value={this.state.chapnum} onChange={(e) => {this.mStartOnChange(e)}} className="modalstartinput" label="Chapter Number" type="number" required min="1" max="170"/>
+                            {this.state.warning1 ? warning1 : null}
+                            {this.state.warning2 ? warning2 : null}
+                            <MDBInput id="title" value={this.state.title} onChange={(e) => {this.mStartOnChange(e)}} label="Chapter Title"  maxLength="50"/>                     
+                          </ModalBody>
+                        <ModalFooter>
+                            <Button size="sm" type="submit" color="primary" onClick={(e) => {this.addChapter(e)}} required>Save changes</Button>
+                            <Button size="sm" color="secondary" onClick={() => this.setChapterStart()} required>Close</Button>{' '}
+                        </ModalFooter>
+                     </form>
+                    </Modal>
+                    {this.state.edit != false && this.state.chapters ? this.renderEditCards() : null}
+                    {this.state.chapters && this.state.edit == false  ? this.renderCards() : null}
+                    {this.state.edit ? null : <div className="addCenter">
+                        <div className="addCenter" onClick={this.setChapterStart}>
+                          <div className="editFlexBack">Add Chapter</div>
+                        </div>
+                    </div>}
+                </div>
+            </div>
 
-			}
+            }
 
 
-			</main>
+            </main>
 
 
 

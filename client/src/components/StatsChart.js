@@ -21,10 +21,15 @@ class StatsChart extends Component {
 			drawcharts:false,
 			chartWidth:620,
 			initialwidth:1,
-			draw3view:"week"
+			draw3view:"week",
+			secs:0
 		}
 
 	}
+
+
+
+
 
 
 
@@ -76,10 +81,41 @@ class StatsChart extends Component {
 
 		this.setState({books:books, shelves:shelves, joindate:joindate, draw3view:"year", totalreadChecked:"year"}, () => {this.setState({drawcharts:true});})
 
+		const getNoteSecs = this.getNoteSecs;
+		getNoteSecs();
+		
+		setInterval(function(){
+			getNoteSecs();
+		},10000);
+
 	}
 
 
+		getNoteSecs = async () => {
 
+			const notetimesecs = await axios.post('/api/getnotetimesecs', {user:this.props.thisuser });
+			const secs = notetimesecs.data.totalsecs.savednotetime;
+
+			const dhms = this.secstodhms(secs);
+
+			this.setState({ ...dhms});
+		}
+
+
+		secstodhms = (seconds) => {
+
+
+			  var days     = Math.floor(seconds / (24*60*60));
+			      seconds -= days    * (24*60*60);
+			  var hours    = Math.floor(seconds / (60*60));
+			      seconds -= hours   * (60*60);
+			  var minutes  = Math.floor(seconds / (60));
+			      seconds -= minutes * (60);
+
+
+
+			    return {days:days, hours:hours, minutes:minutes, seconds:seconds}
+		}
 
 
 	   handleResize = (e) => {
@@ -157,7 +193,7 @@ class StatsChart extends Component {
 				];
 
 				let books = this.state.books;
-				for(let i=0;i<books.length;i++){
+				for(let i=0;i<books ? books.length : 0;i++){
 					
 					let numpages = books[i].book[0].num_pages[0];
 					
@@ -233,6 +269,7 @@ class StatsChart extends Component {
 
 
 				var top6 = shelves.length >= 6 ? shelves.slice(shelves.length-6) : shelves;
+				
 
 				
 
@@ -240,19 +277,12 @@ class StatsChart extends Component {
 
 					let shelfname = top6[i].name[0];
 					let bkcount = top6[i].book_count[0]._;
-					if(bkcount == 0){
-						continue;
-					}
+	
 					data[0].values.push({x:shelfname, y:parseInt(bkcount)});
 
 				}
 
 			
-
-
-
-
-
 
 			var width = this.state.chartWidth;
 			return (
@@ -283,7 +313,6 @@ class StatsChart extends Component {
 
 
 
-
 	drawChart3 = () => {
 
 		var data = [{
@@ -298,7 +327,7 @@ class StatsChart extends Component {
 
 
 		//only get books on the 'read' shelf.
-		let booksread = books.filter((book) => {
+		let booksread = books ? books.filter((book) => {
 
 			for(let i=0;i<book.shelves.length;i++){
 				if(book.shelves[i].shelf[0].$.name == "read"){
@@ -308,7 +337,7 @@ class StatsChart extends Component {
 
 			return false;
 
-		})
+		}) : null;
 
 		
 
@@ -334,7 +363,7 @@ class StatsChart extends Component {
 
 
 						//loop through each book & compare its date with each date in data.values array. if equals, then increment y by 1.
-						for(let i=0;i<booksread.length;i++){
+						for(let i=0;i<booksread ? booksread.length : 0;i++){
 							let tempbook = booksread[i].date_updated[0];
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -370,7 +399,7 @@ class StatsChart extends Component {
 				                   height={400}
 				                   margin={{top: 10, bottom: 50, left: 50, right: 20}}
 				           		   xAxis={{label: "Dates"}}
-				            	   yAxis={{label: "No. of books", ticks:booksread.length, tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
+				            	   yAxis={{label: "No. of books", ticks: booksread ? booksread.length : 0, tickFormat:function(e){if(Math.floor(e) != e){return;}return e;}}}
 
 				                />
 				            </div>
@@ -395,7 +424,7 @@ class StatsChart extends Component {
 						}
 
 
-						for(let i=0;i<booksread.length;i++){
+						for(let i=0;i<booksread ? booksread.length : 0;i++){
 							let tempbook = booksread[i].date_updated[0];
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -464,7 +493,7 @@ class StatsChart extends Component {
 
 
 						
-						for(let i=0;i<booksread.length;i++){
+						for(let i=0;i<booksread ? booksread.length : 0;i++){
 							let tempbook = booksread[i].date_updated[0];
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -538,7 +567,7 @@ class StatsChart extends Component {
 
 					
 						
-						for(let i=0;i<booksread.length;i++){
+						for(let i=0;i<booksread ? booksread.length : 0;i++){
 							let tempbook = dateFns.format(booksread[i].date_updated[0], 'YYYY');
 							
 							for(let j=0;j<data[0].values.length;j++){
@@ -557,8 +586,7 @@ class StatsChart extends Component {
 
 						data[0].values.unshift({x:dateFns.format(dateFns.subYears(data[0].values[0].x, 1),'YYYY'),  y:0 })
 						//glitch sorta. line graph needs one data plot previous to connect a line. needs to have a default.
-						console.log(data)
-
+					
 						return(
 
 							<div>
@@ -601,11 +629,60 @@ class StatsChart extends Component {
 		var drawcharts = this.state ?  this.state.drawcharts ? this.state.drawcharts : false : false;
 
 
+
 		return(
 			<div>
 
 			{ drawcharts ?
 				<div  className="chartLayout">
+
+					<div className="flashsecs">
+
+							<div className="clockTitle">Time Spent Notetaking</div>
+							<div className="clockcontainer">
+								<div className="days">
+									<div className="day">
+										<p className="sunday">Days</p>
+									</div>
+									<div className="day">
+										<p className="sunday">Hours</p>
+									</div>
+									<div className="day">
+										<p className="sunday">Minutes</p>
+									</div>
+									<div className="day">
+										<p className="sunday">Seconds</p>
+									</div>
+
+								</div>
+								<div className="clock">
+									<div className="numbers">
+										<p className="days">{this.state.days}</p>
+									</div>
+									<div className="colon">
+										<p>:</p>
+									</div>
+									<div className="numbers">
+										<p className="hours">{this.state.hours}</p>
+									</div>
+									<div className="colon">
+										<p>:</p>
+									</div>
+									<div className="numbers">
+										<p className="minutes">{this.state.minutes}</p>
+									</div>
+									<div className="colon">
+										<p>:</p>
+									</div>
+									  <div className="numbers">
+									    <p className="seconds">{this.state.seconds}</p>
+									  </div>
+								</div>
+							</div>
+
+
+
+					</div>
 					<div className="pagesChart">						
 						{this.drawChart()}
 					</div>

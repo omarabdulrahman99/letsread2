@@ -67,11 +67,11 @@ class SearchResults extends Component {
 
 			if(this.props.thisuser){
 
-			 shelflist = await axios.post('http://localhost:7000/api/shelf/list',{
+			 shelflist = await axios.post('/api/shelf/list',{
 					user:this.props.thisuser
 				});
 
-			 usershelfbooksraw = await axios.post('http://localhost:7000/api/usershelfbooks', {
+			 usershelfbooksraw = await axios.post('/api/usershelfbooks', {
 				goodreadId:this.props.thisuser.goodreadId
 			})
 
@@ -89,7 +89,7 @@ class SearchResults extends Component {
 			
 			const form = ee.parentNode;
 			const query = form.elements["searchq"].value;
-			dataresults = await axios.get(`http://localhost:7000/api/search/${query}`);
+			dataresults = await axios.get(`/api/search/${query}`);
 
 
 
@@ -119,7 +119,7 @@ class SearchResults extends Component {
 			
 			const form = ee;
 			const query = form.elements["searchq"].value;
-			dataresults = await axios.get(`http://localhost:7000/api/search/${query}`);
+			dataresults = await axios.get(`/api/search/${query}`);
 
 			
 			
