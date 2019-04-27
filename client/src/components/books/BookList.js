@@ -241,6 +241,7 @@ class BookList extends Component {
                 if (tabledatachoice[i].book[0].id[0]._ == previewId) {
                     foundbook = tabledatachoice[i].book[0];
                     descr = tabledatachoice[i].book[0].description[0];
+                    descr = descr.replace(/(<([^>]+)>)/gi, ""); //regex that removes html tags and its text from book description
                     numpages = tabledatachoice[i].book[0].num_pages[0];
                     cover = tabledatachoice[i].book[0].image_url[0];
                     title = tabledatachoice[i].book[0].title[0];
