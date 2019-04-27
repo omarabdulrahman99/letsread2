@@ -33,7 +33,7 @@ class Profile extends Component {
 		if (!user.goodreadId) {
 			return <div>nodata</div>;
 		} else {
-			if (this.state.dataloaded == "loaded") {
+			if (this.state.dataloaded === "loaded") {
 			} else {
 				var profileres = await axios.post("/api/profileinfo", {
 					goodreadId: user.goodreadId
@@ -43,7 +43,7 @@ class Profile extends Component {
 
 				this.setState(prevState => ({
 					dataloaded:
-						prevState.dataloaded != "notloaded" ? null : "loaded"
+						prevState.dataloaded !== "notloaded" ? null : "loaded"
 				}));
 			}
 		}
@@ -76,8 +76,8 @@ class Profile extends Component {
 					</div>
 					<div className="profiledata">
 						<div>{location}</div>
-						<div>{gender != "" ? gender : "n/a"}</div>
-						<div>{age != "" ? age : "n/a"}</div>
+						<div>{gender !== "" ? gender : "n/a"}</div>
+						<div>{age !== "" ? age : "n/a"}</div>
 						<br />
 						<div className="quotation">{about}</div>
 					</div>
@@ -122,18 +122,18 @@ class Profile extends Component {
 	render() {
 		return (
 			<div className="profilecontainer">
-				{this.state.dataloaded != "notloaded" ? (
+				{this.state.dataloaded !== "notloaded" ? (
 					this.profilerender()
 				) : (
 					<div className="loader" />
 				)}
-				{this.state.dataloaded != "notloaded" ? (
+				{this.state.dataloaded !== "notloaded" ? (
 					this.galleryrender()
 				) : (
 					<div />
 				)}
 
-				{this.state.dataloaded != "notloaded" ? (
+				{this.state.dataloaded !== "notloaded" ? (
 					<div className="favbookscontainer">
 						<div className="favbookstitle">Favorite books</div>
 						<div className="favbooksicon">

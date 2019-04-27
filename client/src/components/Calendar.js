@@ -58,14 +58,14 @@ class Calendar extends Component {
 		var startdate = this.state.startdate;
 		var enddate = this.state.enddate;
 
-		if (startdate != null && enddate != null) {
+		if (startdate !== null && enddate !== null) {
 			//adding a new date cant be null, and startdate has to be less than enddate.
 			if (startdate < enddate) {
 				var svds = this.state.saveddates;
 				var getdata = true;
 
 				//chek for existing date conflicts. loop through each saved date svds[key]ect, and if selected startdate is in between existing start date or end date, then getdata is false. same for enddate.
-				if (svds != null) {
+				if (svds !== null) {
 					for (var i = 0; i < svds.length; i++) {
 						if (
 							(startdate >= dateFns.parse(svds[i].startdate) &&
@@ -87,7 +87,7 @@ class Calendar extends Component {
 					}
 				}
 
-				if (getdata == false) {
+				if (getdata === false) {
 					this.setState({
 						warning1: false,
 						warning2: false,
@@ -140,13 +140,13 @@ class Calendar extends Component {
 		var startdate = this.state.startdate;
 		var enddate = this.state.enddate;
 
-		if (startdate != null && enddate != null) {
+		if (startdate !== null && enddate !== null) {
 			if (startdate < enddate) {
 				var svds = { ...this.state.saveddates };
 				var getdata = true;
 
 				for (let key in svds) {
-					if (svds[key].titlenum == this.editnum) {
+					if (svds[key].titlenum === this.editnum) {
 						//svds.splice(i,1)
 
 						delete svds[key];
@@ -175,7 +175,7 @@ class Calendar extends Component {
 					}
 				}
 
-				if (getdata == false) {
+				if (getdata === false) {
 					this.setState({
 						warning1: false,
 						warning2: false,
@@ -232,7 +232,7 @@ class Calendar extends Component {
 	schedinput = (value, e) => {
 		//check if end date is ahead of startdate
 
-		if (e == "startdate") {
+		if (e === "startdate") {
 			this.setState(prevState => {
 				return {
 					startdate: value,
@@ -292,7 +292,7 @@ class Calendar extends Component {
 			var sd;
 			var ed;
 			for (var obj of saveddates) {
-				if (obj.titlenum == titlenum) {
+				if (obj.titlenum === titlenum) {
 					this.togsd = dateFns.parse(obj.startdate);
 					this.toged = dateFns.parse(obj.enddate);
 					sd = obj.startdate;
@@ -459,7 +459,7 @@ class Calendar extends Component {
 	rtogsd = () => {
 		var sdsd = this.togsd;
 		var stringsd = "";
-		if (sdsd != null) {
+		if (sdsd !== null) {
 			stringsd = dateFns.format(sdsd, "ddd MMM DD, YYYY hh:mm A");
 			stringsd = stringsd.toString();
 		}
@@ -470,7 +470,7 @@ class Calendar extends Component {
 	rtoged = () => {
 		var sdsd = this.toged;
 		var stringsd = "";
-		if (sdsd != null) {
+		if (sdsd !== null) {
 			stringsd = dateFns.format(sdsd, "ddd MMM DD, YYYY hh:mm A");
 			stringsd = stringsd.toString();
 		}
@@ -519,13 +519,13 @@ class Calendar extends Component {
 							}}
 							value={this.state.enddate}
 						/>
-						{this.state.warning1 == false ? null : (
+						{this.state.warning1 === false ? null : (
 							<div>{warning1}</div>
 						)}
-						{this.state.warning2 == false ? null : (
+						{this.state.warning2 === false ? null : (
 							<div>{warning2}</div>
 						)}
-						{this.state.warning3 == false ? null : (
+						{this.state.warning3 === false ? null : (
 							<div>{warning3}</div>
 						)}
 					</ModalBody>
@@ -556,7 +556,7 @@ class Calendar extends Component {
 								this.schedinput(value, sd);
 							}}
 							value={
-								this.state.calchange != false
+								this.state.calchange !== false
 									? this.state.startdate
 									: this.state.selectedDate
 							}
@@ -568,18 +568,18 @@ class Calendar extends Component {
 								this.schedinput(value, ed);
 							}}
 							value={
-								this.state.calchange != false
+								this.state.calchange !== false
 									? this.state.enddate
 									: this.state.selectedDate
 							}
 						/>
-						{this.state.warning1 == false ? null : (
+						{this.state.warning1 === false ? null : (
 							<div>{warning1}</div>
 						)}
-						{this.state.warning2 == false ? null : (
+						{this.state.warning2 === false ? null : (
 							<div>{warning2}</div>
 						)}
-						{this.state.warning3 == false ? null : (
+						{this.state.warning3 === false ? null : (
 							<div>{warning3}</div>
 						)}
 					</ModalBody>

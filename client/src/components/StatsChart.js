@@ -262,7 +262,7 @@ class StatsChart extends Component {
         let booksread = books
             ? books.filter(book => {
                   for (let i = 0; i < book.shelves.length; i++) {
-                      if (book.shelves[i].shelf[0].$.name == "read") {
+                      if (book.shelves[i].shelf[0].$.name === "read") {
                           return true;
                       }
                   }
@@ -271,7 +271,7 @@ class StatsChart extends Component {
               })
             : null;
 
-        if (this.state.draw3view == "week") {
+        if (this.state.draw3view === "week") {
             data[0].values = [];
 
             let startOfWeek = dateFns.startOfWeek(currDate);
@@ -322,7 +322,7 @@ class StatsChart extends Component {
                             label: "No. of books",
                             ticks: booksread ? booksread.length : 0,
                             tickFormat: function(e) {
-                                if (Math.floor(e) != e) {
+                                if (Math.floor(e) !== e) {
                                     return;
                                 }
                                 return e;
@@ -333,7 +333,7 @@ class StatsChart extends Component {
             );
         }
 
-        if (this.state.draw3view == "month") {
+        if (this.state.draw3view === "month") {
             data[0].values = [];
 
             let startOfMonth = dateFns.startOfMonth(currDate);
@@ -377,7 +377,7 @@ class StatsChart extends Component {
                         yAxis={{
                             label: "No. of books",
                             tickFormat: function(e) {
-                                if (Math.floor(e) != e) {
+                                if (Math.floor(e) !== e) {
                                     return;
                                 }
                                 return e;
@@ -388,7 +388,7 @@ class StatsChart extends Component {
             );
         }
 
-        if (this.state.draw3view == "year") {
+        if (this.state.draw3view === "year") {
             data[0].values = [];
 
             //take last day of year. subtract 1 month, 12 times loop. save those in an array, use shift for asc order.
@@ -441,7 +441,7 @@ class StatsChart extends Component {
                         yAxis={{
                             label: "No. of books",
                             tickFormat: function(e) {
-                                if (Math.floor(e) != e) {
+                                if (Math.floor(e) !== e) {
                                     return;
                                 }
                                 return e;
@@ -452,7 +452,7 @@ class StatsChart extends Component {
             );
         }
 
-        if (this.state.draw3view == "all") {
+        if (this.state.draw3view === "all") {
             data[0].values = [];
 
             //do currentDate minus accountCreationDate. that'll be the amount of years for loop to do subYear from currentDate.

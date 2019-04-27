@@ -37,7 +37,7 @@ class BookList extends Component {
             });
             const bookdata = booksres.data;
 
-            if (JSON.stringify(bookdata) != JSON.stringify(this.mybookdata)) {
+            if (JSON.stringify(bookdata) !== JSON.stringify(this.mybookdata)) {
                 this.mybookdata = bookdata;
 
                 this.setState(prevState => ({
@@ -53,7 +53,7 @@ class BookList extends Component {
         var othershelves = [];
 
         for (var i = 0; i < shelflist.length; i++) {
-            if (shelflist[i].exclusive_flag[0]._ == "true") {
+            if (shelflist[i].exclusive_flag[0]._ === "true") {
                 exclusive.push(
                     <li key={i} onClick={this.tableload}>
                         {shelflist[i].name[0]}
@@ -83,7 +83,7 @@ class BookList extends Component {
     async tableload(e) {
         var shelf;
 
-        if (e.currentTarget.textContent == "All") {
+        if (e.currentTarget.textContent === "All") {
             shelf = "";
         } else {
             shelf = e.currentTarget.textContent;
@@ -102,7 +102,7 @@ class BookList extends Component {
     tablerender() {
         var tabledatachoice;
 
-        if (this.state.tabledata != "") {
+        if (this.state.tabledata !== "") {
             tabledatachoice = this.state.tabledata.books;
         } else {
             tabledatachoice = this.mybookdata.books;
@@ -111,8 +111,8 @@ class BookList extends Component {
         var rows;
 
         if (
-            tabledatachoice == null ||
-            tabledatachoice == undefined ||
+            tabledatachoice === null ||
+            tabledatachoice === undefined ||
             Object.keys(tabledatachoice).length === 0
         ) {
             rows = [
@@ -206,7 +206,7 @@ class BookList extends Component {
 
         this.booksched = bookDates.data.dates;
 
-        if (this.state.grid2 == "grid2") {
+        if (this.state.grid2 === "grid2") {
             this.setState({ grid2: "grid3" });
         } else {
             this.setState({ grid2: "grid2" });
@@ -217,13 +217,12 @@ class BookList extends Component {
         var previewId = this.bookpreviewId;
         var tabledatachoice;
 
-        var foundbook;
         var descr;
-        var numpages;
+
         var cover;
         var title;
 
-        if (this.state.tabledata != "") {
+        if (this.state.tabledata !== "") {
             tabledatachoice = this.state.tabledata.books;
         } else {
             tabledatachoice = this.mybookdata.books;
@@ -231,18 +230,16 @@ class BookList extends Component {
 
         //use bookid and inside a for loop compare it to each object -> book ->id
         if (!tabledatachoice) {
-            foundbook = null;
             descr = null;
-            numpages = null;
+
             cover = null;
             title = null;
         } else {
             for (var i = 0; i < tabledatachoice.length; i++) {
-                if (tabledatachoice[i].book[0].id[0]._ == previewId) {
-                    foundbook = tabledatachoice[i].book[0];
+                if (tabledatachoice[i].book[0].id[0]._ === previewId) {
                     descr = tabledatachoice[i].book[0].description[0];
                     descr = descr.replace(/(<([^>]+)>)/gi, ""); //regex that removes html tags and its text from book description
-                    numpages = tabledatachoice[i].book[0].num_pages[0];
+
                     cover = tabledatachoice[i].book[0].image_url[0];
                     title = tabledatachoice[i].book[0].title[0];
                 }
@@ -286,33 +283,33 @@ class BookList extends Component {
         return (
             <div
                 className={
-                    this.state.booknote != false
+                    this.state.booknote !== false
                         ? "bknoteparent"
-                        : this.state.grid2 != "grid2"
+                        : this.state.grid2 !== "grid2"
                         ? "mybookscontainer style-13"
                         : "mybookscontainer2 style-13"
                 }
             >
-                {this.state.bookcounter != 1 ? null : (
+                {this.state.bookcounter !== 1 ? null : (
                     <div className="loader" />
                 )}
 
-                {this.state.booknote != false ? <BookNote /> : null}
-                {this.state.booknote != false ? null : (
+                {this.state.booknote !== false ? <BookNote /> : null}
+                {this.state.booknote !== false ? null : (
                     <nav className="booklistsidebar style-13">
-                        {this.state.bookcounter != 1 ? this.leftnav() : null}
+                        {this.state.bookcounter !== 1 ? this.leftnav() : null}
                     </nav>
                 )}
 
-                {this.state.booknote != false ? null : (
+                {this.state.booknote !== false ? null : (
                     <main className="mybookstable style-13">
-                        {this.state.bookcounter != 1
+                        {this.state.bookcounter !== 1
                             ? this.tablerender()
                             : null}
                     </main>
                 )}
 
-                {this.state.grid2 != "grid2" && this.state.booknote != true
+                {this.state.grid2 !== "grid2" && this.state.booknote !== true
                     ? this.previewRender()
                     : null}
             </div>

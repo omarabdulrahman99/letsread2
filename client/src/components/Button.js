@@ -70,8 +70,6 @@ class Button extends Component {
 		this.shelftitle = undefined;
 
 		if (usershelfbooks) {
-			console.log(usershelfbooks);
-
 			toggleitemd = usershelfbooks.map((book, i) => {
 				if (usershelfbooks[i].book[0].id[0]._ === bookId) {
 					for (
@@ -80,8 +78,8 @@ class Button extends Component {
 						j++
 					) {
 						if (
-							usershelfbooks[i].shelves[0].shelf[j].$.exclusive ==
-							"true"
+							usershelfbooks[i].shelves[0].shelf[j].$
+								.exclusive === "true"
 						) {
 							this.shelftitle =
 								usershelfbooks[i].shelves[0].shelf[j].$.name;
@@ -96,7 +94,7 @@ class Button extends Component {
 						} else {
 							if (
 								usershelfbooks[i].shelves[0].shelf[j].$
-									.exclusive == "false"
+									.exclusive === "false"
 							) {
 								this.othershelves2.push(
 									usershelfbooks[i].shelves[0].shelf[j].$.name
@@ -109,13 +107,13 @@ class Button extends Component {
 				}
 			});
 
-			if (this.othershelves2.length == 0) {
+			if (this.othershelves2.length === 0) {
 				this.othershelves2 = undefined;
 			}
 
 			var toggleitem = toggleitemd.filter(n => n);
 
-			if (toggleitem === undefined || toggleitem.length == 0) {
+			if (toggleitem === undefined || toggleitem.length === 0) {
 				return (
 					<DropdownToggle caret color="warning">
 						Want to read &#63;
@@ -143,9 +141,9 @@ class Button extends Component {
 				shelflist.data.GoodreadsResponse.shelves[0].user_shelf;
 
 			ditems = shelves.map(shelf => {
-				if (shelf.exclusive_flag[0]._ == "true") {
+				if (shelf.exclusive_flag[0]._ === "true") {
 					if (this.shelftitle) {
-						if (this.shelftitle != shelf.name[0]) {
+						if (this.shelftitle !== shelf.name[0]) {
 							return (
 								<DropdownItem key={shelf.id[0]._}>
 									{shelf.name[0]}
@@ -165,7 +163,7 @@ class Button extends Component {
 						var nomatch = undefined;
 
 						for (var j = 0; j < this.othershelves2.length; j++) {
-							if (shelf.name[0] == this.othershelves2[j]) {
+							if (shelf.name[0] === this.othershelves2[j]) {
 								this.activeshelves2[shelf.id[0]._] = true;
 								shelfmatch = (
 									<div
@@ -290,7 +288,7 @@ class Button extends Component {
 		//console.log(JSON.stringify(Button.activeshelves,null,2)+'buttonshelf');
 		//console.log(JSON.stringify(this.state.activeshelf,null,2)+'stateshelf');
 
-		if (this.prevCounter != this.props.searchcounter) {
+		if (this.prevCounter !== this.props.searchcounter) {
 			console.log(
 				this.prevCounter +
 					"uhmm" +

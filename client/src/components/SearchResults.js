@@ -75,14 +75,14 @@ class SearchResults extends Component {
 			usershelfbooks = false;
 		}
 
-		if (event.nodeName == "DIV") {
+		if (event.nodeName === "DIV") {
 			const form = ee.parentNode;
 			const query = form.elements["searchq"].value;
 			dataresults = await axios.get(`/api/search/${query}`);
 
-			var searchcounter = this.state.searchcounter;
+			let searchcounter = this.state.searchcounter;
 
-			var booksarray = dataresults.data.booksarray;
+			let booksarray = dataresults.data.booksarray;
 
 			dataresults.data.rows.forEach(function(rowobj, i, trowsArray) {
 				trowsArray[i].button = (
@@ -106,9 +106,9 @@ class SearchResults extends Component {
 			const query = form.elements["searchq"].value;
 			dataresults = await axios.get(`/api/search/${query}`);
 
-			var searchcounter = this.state.searchcounter;
+			let searchcounter = this.state.searchcounter;
 
-			var booksarray = dataresults.data.booksarray;
+			let booksarray = dataresults.data.booksarray;
 			dataresults.data.rows.forEach(function(rowobj, i, trowsArray) {
 				trowsArray[i].button = (
 					<Button

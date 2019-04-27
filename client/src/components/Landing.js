@@ -37,8 +37,6 @@ class Landing extends Component {
 		if (this.props.thisuser) {
 			//watsup
 
-			console.log(this.props.thisuser);
-
 			shelflist = await axios.post(`/api/shelflist`, {
 				user: this.props.thisuser
 			});
@@ -51,7 +49,7 @@ class Landing extends Component {
 			usershelfbooksraw = false;
 		}
 
-		if (event.nodeName == "DIV") {
+		if (event.nodeName === "DIV") {
 			const form = ee.parentNode;
 			const query = form.elements["searchq"].value;
 			dataresults = await axios.get(`/api/search/${query}`);
@@ -80,7 +78,7 @@ class Landing extends Component {
 	}
 
 	renderContent() {
-		if (this.state.searchpage != true) {
+		if (this.state.searchpage !== true) {
 			return (
 				<div className="formcenter">
 					<p className="landtitlep">Let's Read </p>

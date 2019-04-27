@@ -102,13 +102,13 @@ class BookNote extends Component {
 
         if (this.state.chapters) {
             for (var i = 0; i < this.state.chapters.length; i++) {
-                if (this.state.chapnum == this.state.chapters[i].chapnum) {
+                if (this.state.chapnum === this.state.chapters[i].chapnum) {
                     valid2 = false;
                 }
             }
         }
 
-        if (valid && valid2 != false) {
+        if (valid && valid2 !== false) {
             this.setState({ warning1: false, warning2: false });
             var datares = await axios.post("/api/postachapter", {
                 user: this.props.user,
@@ -120,11 +120,11 @@ class BookNote extends Component {
             this.setState({ chapters: datares.data.book.chapters });
         }
 
-        if (valid == false) {
+        if (valid === false) {
             this.setState({ warning1: true });
         }
 
-        if (valid2 == false) {
+        if (valid2 === false) {
             this.setState({ warning2: true, warning1: false });
         }
 
@@ -133,11 +133,11 @@ class BookNote extends Component {
 
     //calling it 'start' bc this is the first modal to 'start' a new chapter
     mStartOnChange = e => {
-        if (e.currentTarget.id == "chapnum") {
+        if (e.currentTarget.id === "chapnum") {
             this.setState({ chapnum: e.currentTarget.value });
         }
 
-        if (e.currentTarget.id == "title") {
+        if (e.currentTarget.id === "title") {
             this.setState({ title: e.currentTarget.value });
         }
     };
@@ -206,7 +206,7 @@ class BookNote extends Component {
         for (var i = 0; i < sortedchaps.length; i++) {
             var chapnum = this.state.chapters[i].chapnum;
 
-            if (this.state.cardselects[chapnum] == "selected") {
+            if (this.state.cardselects[chapnum] === "selected") {
                 cardsarr.push(
                     <div
                         key={this.state.chapters[i].chapnum}
@@ -274,10 +274,10 @@ class BookNote extends Component {
     };
 
     editCardClick = e => {
-        if (e.target.nodeName != "INPUT") {
+        if (e.target.nodeName !== "INPUT") {
             var chapid = e.currentTarget.id;
 
-            if (this.state.cardselects[chapid] == "selected") {
+            if (this.state.cardselects[chapid] === "selected") {
                 this.setState(prevState => ({
                     chapnum: chapid,
                     cardselects: {
@@ -285,7 +285,7 @@ class BookNote extends Component {
                         [chapid]: "notselected"
                     }
                 }));
-            } else if (this.state[chapid] == "notselected") {
+            } else if (this.state[chapid] === "notselected") {
                 this.setState(prevState => ({
                     chapnum: chapid,
                     cardselects: {
@@ -325,7 +325,7 @@ class BookNote extends Component {
         let turnjstext = turnjsEditor.getCurrentContent().getPlainText();
 
         var predObj = predictions ? JSON.parse(predictions) : "Empty";
-        if (predObj != "Empty") {
+        if (predObj !== "Empty") {
             var stylechars = [];
 
             var stylesDict = {
@@ -922,7 +922,7 @@ class BookNote extends Component {
 
         for (var key in cardinputs) {
             for (var key2 in cardselects) {
-                if (cardselects[key2] == "selected" && key == key2) {
+                if (cardselects[key2] === "selected" && key === key2) {
                     var obj = { chapnum: key, title: cardinputs[key] };
                     saveinputs.push(obj);
                 }
@@ -931,7 +931,7 @@ class BookNote extends Component {
 
         for (var i = 0; i < chapters.length; i++) {
             for (var j = 0; j < saveinputs.length; j++) {
-                if (chapters[i].chapnum == saveinputs[j].chapnum) {
+                if (chapters[i].chapnum === saveinputs[j].chapnum) {
                     chapters[i].title = saveinputs[j].title;
                 }
             }
@@ -970,7 +970,7 @@ class BookNote extends Component {
 
         //empty the inputs obj that match the cardselects obj.
         for (let key in cardselects) {
-            if (cardselects[key] == "selected") {
+            if (cardselects[key] === "selected") {
                 delete cardinputs[key];
             }
         }
@@ -1028,12 +1028,12 @@ class BookNote extends Component {
 
         return (
             <main className="cero">
-                {this.state.turnjs == "on" ? (
+                {this.state.turnjs === "on" ? (
                     <Link to="/booknotes" className="editFlexBack">
                         Go Back
                     </Link>
                 ) : null}
-                {this.state.turnjs == "on" ? (
+                {this.state.turnjs === "on" ? (
                     <Turn
                         turnjstext={this.state.turnjstext}
                         profile={this.state.profile}
@@ -1052,7 +1052,7 @@ class BookNote extends Component {
                                 >
                                     Edit
                                 </div>
-                                {this.state.edit != false ? (
+                                {this.state.edit !== false ? (
                                     <div
                                         onClick={this.saveedits}
                                         className="editFlexBack"
@@ -1060,7 +1060,7 @@ class BookNote extends Component {
                                         Save
                                     </div>
                                 ) : null}
-                                {this.state.edit != false
+                                {this.state.edit !== false
                                     ? this.trashButton()
                                     : null}
                             </div>
@@ -1172,10 +1172,10 @@ class BookNote extends Component {
                                     </ModalFooter>
                                 </form>
                             </Modal>
-                            {this.state.edit != false && this.state.chapters
+                            {this.state.edit !== false && this.state.chapters
                                 ? this.renderEditCards()
                                 : null}
-                            {this.state.chapters && this.state.edit == false
+                            {this.state.chapters && this.state.edit === false
                                 ? this.renderCards()
                                 : null}
                             {this.state.edit ? null : (

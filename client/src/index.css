@@ -1,18 +1,25 @@
 /* latin-ext */
 @font-face {
-  font-family: 'Arizonia';
+  font-family: "Arizonia";
   font-style: normal;
   font-weight: 400;
-  src: local('Arizonia Regular'), local('Arizonia-Regular'), url(https://fonts.gstatic.com/s/arizonia/v9/neIIzCemt4A5qa7mv5WPFqwKUQ.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: local("Arizonia Regular"), local("Arizonia-Regular"),
+    url(https://fonts.gstatic.com/s/arizonia/v9/neIIzCemt4A5qa7mv5WPFqwKUQ.woff2)
+      format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
-  font-family: 'Arizonia';
+  font-family: "Arizonia";
   font-style: normal;
   font-weight: 400;
-  src: local('Arizonia Regular'), local('Arizonia-Regular'), url(https://fonts.gstatic.com/s/arizonia/v9/neIIzCemt4A5qa7mv5WBFqw.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: local("Arizonia Regular"), local("Arizonia-Regular"),
+    url(https://fonts.gstatic.com/s/arizonia/v9/neIIzCemt4A5qa7mv5WBFqw.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
 .dropdown-content {
@@ -31,7 +38,7 @@
 }
 
 .topsearch {
-    /*position:absolute;
+  /*position:absolute;
   top:10%;
   margin-top:10%;
   left:20%;
@@ -63,7 +70,7 @@ body,
   margin: 0;
   display: grid;
   grid-template-rows: 1fr 50px;
-    /*hax:*/
+  /*hax:*/
   height: 90vh;
   overflow: auto;
   background: #f7f9fb;
@@ -78,7 +85,7 @@ body,
   width: 100%;
   z-index: 1;
   background-color: #cc0000;
-  background-color: rgb(213,30,56);
+  background-color: rgb(213, 30, 56);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -90,23 +97,24 @@ body,
   color: white;
   text-decoration: none;
   font-size: 1.6rem;
-  font: 3rem 'Arizonia', Helvetica, sans-serif !important;
+  font: 3rem "Arizonia", Helvetica, sans-serif !important;
   margin-left: 10px;
 }
 
 .headerul a {
   color: white;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   text-decoration: none;
   font-weight: bold;
-  border-top: 2px solid rgba(255,255,255,0);
-  border-bottom: 2px solid rgba(255,255,255,0);
-  transition: padding .3s,border-color .3s;
+  border-top: 2px solid rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  transition: padding 0.3s, border-color 0.3s;
   font-size: 1rem;
 }
 
-.headerul a:focus, a:hover {
-  border-color: rgba(255,255,255,1);
+.headerul a:focus,
+a:hover {
+  border-color: rgba(255, 255, 255, 1);
   outline: none;
 }
 
@@ -203,7 +211,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .form-inline {
-    /*dis form is flex so yeah*/
+  /*dis form is flex so yeah*/
   justify-content: center;
 }
 
@@ -213,7 +221,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-size: 10vw;
   font-family: "Poppins", sans-serif;
   text-align: center;
-  background: -webkit-linear-gradient(right, #ff6600 0%, #800000 25%, #cc0000 50%, #FFC0CB 100%) repeat;
+  background: -webkit-linear-gradient(
+      right,
+      #ff6600 0%,
+      #800000 25%,
+      #cc0000 50%,
+      #ffc0cb 100%
+    )
+    repeat;
   -webkit-background-clip: text;
   -ms-background-clip: text;
   -moz-background-clip: text;
@@ -230,7 +245,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 @keyframes shimmer {
   0% {
-    background-position: 0,0;
+    background-position: 0, 0;
   }
 
   100% {
@@ -242,7 +257,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   grid-row: 2/3;
   z-index: 1;
   background-color: #cc0000;
-  background-color: rgb(213,30,56);
+  background-color: rgb(213, 30, 56);
   color: white;
   width: 100%;
   height: 100%;
@@ -258,7 +273,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .logobg {
-  background-image: url('https://media-public.canva.com/MACDvTz2goA/1/screen.png');
+  background-image: url("https://media-public.canva.com/MACDvTz2goA/1/screen.png");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position-y: 20%;
@@ -297,81 +312,170 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 @-webkit-keyframes load5 {
-
   0%,
-    100% {
+  100% {
     box-shadow: 0em -2.6em 0em 0em #d12e2e,
-            1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
-            2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
-            1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
-            0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
-            -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
-            -2.6em 0em 0 0em rgba(209, 46, 46, 0.5),
-            -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7);
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.5),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7);
   }
 
   12.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.7), 1.8em -1.8em 0 0em #d12e2e, 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.7),
+      1.8em -1.8em 0 0em #d12e2e, 2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5);
   }
 
   25% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.5), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7), 2.5em 0em 0 0em #d12e2e, 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.5),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7), 2.5em 0em 0 0em #d12e2e,
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   37.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5), 2.5em 0em 0 0em rgba(209, 46, 46, 0.7), 1.75em 1.75em 0 0em #d12e2e, 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.7), 1.75em 1.75em 0 0em #d12e2e,
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   50% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.5), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.7), 0em 2.5em 0 0em #d12e2e, -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.5),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.7), 0em 2.5em 0 0em #d12e2e,
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   62.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.5), 0em 2.5em 0 0em rgba(209, 46, 46, 0.7), -1.8em 1.8em 0 0em #d12e2e, -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.5),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.7), -1.8em 1.8em 0 0em #d12e2e,
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   75% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.5), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.7), -2.6em 0em 0 0em #d12e2e, -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.5),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.7), -2.6em 0em 0 0em #d12e2e,
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   87.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.5), -2.6em 0em 0 0em rgba(209, 46, 46, 0.7), -1.8em -1.8em 0 0em #d12e2e;
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.5),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.7), -1.8em -1.8em 0 0em #d12e2e;
   }
 }
 
 @keyframes load5 {
-
   0%,
-    100% {
-    box-shadow: 0em -2.6em 0em 0em #d12e2e, 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.5), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7);
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #d12e2e,
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.5),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7);
   }
 
   12.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.7), 1.8em -1.8em 0 0em #d12e2e, 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.7),
+      1.8em -1.8em 0 0em #d12e2e, 2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5);
   }
 
   25% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.5), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7), 2.5em 0em 0 0em #d12e2e, 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.5),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.7), 2.5em 0em 0 0em #d12e2e,
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   37.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5), 2.5em 0em 0 0em rgba(209, 46, 46, 0.7), 1.75em 1.75em 0 0em #d12e2e, 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.5),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.7), 1.75em 1.75em 0 0em #d12e2e,
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   50% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.5), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.7), 0em 2.5em 0 0em #d12e2e, -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2), -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.5),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.7), 0em 2.5em 0 0em #d12e2e,
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.2),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   62.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.5), 0em 2.5em 0 0em rgba(209, 46, 46, 0.7), -1.8em 1.8em 0 0em #d12e2e, -2.6em 0em 0 0em rgba(209, 46, 46, 0.2), -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.5),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.7), -1.8em 1.8em 0 0em #d12e2e,
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   75% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.5), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.7), -2.6em 0em 0 0em #d12e2e, -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.5),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.7), -2.6em 0em 0 0em #d12e2e,
+      -1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2);
   }
 
   87.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2), 1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2), 2.5em 0em 0 0em rgba(209, 46, 46, 0.2), 1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2), 0em 2.5em 0 0em rgba(209, 46, 46, 0.2), -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.5), -2.6em 0em 0 0em rgba(209, 46, 46, 0.7), -1.8em -1.8em 0 0em #d12e2e;
+    box-shadow: 0em -2.6em 0em 0em rgba(209, 46, 46, 0.2),
+      1.8em -1.8em 0 0em rgba(209, 46, 46, 0.2),
+      2.5em 0em 0 0em rgba(209, 46, 46, 0.2),
+      1.75em 1.75em 0 0em rgba(209, 46, 46, 0.2),
+      0em 2.5em 0 0em rgba(209, 46, 46, 0.2),
+      -1.8em 1.8em 0 0em rgba(209, 46, 46, 0.5),
+      -2.6em 0em 0 0em rgba(209, 46, 46, 0.7), -1.8em -1.8em 0 0em #d12e2e;
   }
 }
 
@@ -381,7 +485,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   width: 10em;
   height: 10em;
   margin-top: 9%;
-    /*box-shadow:0px 0px 50px 27px #ff0000;*/
+  /*box-shadow:0px 0px 50px 27px #ff0000;*/
   border-radius: 50%;
   background-repeat: no-repeat;
   background-color: red;
@@ -406,19 +510,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 @media screen and (min-width: 1101px) {
-
   .profilelabels,
-    .profiledata,
-    .quotation {
+  .profiledata,
+  .quotation {
     font-size: 17px;
   }
 }
 
 @media screen and (max-width: 1100px) {
-
   .profilelabels,
-    .profiledata,
-    .quotation {
+  .profiledata,
+  .quotation {
     font-size: 15px;
   }
 }
@@ -465,7 +567,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 #carousel {
   width: 10em;
-    /*this was the issue* fixed width rather than %*/
+  /*this was the issue* fixed width rather than %*/
   height: 70%;
   margin: 0 auto;
   transform-style: preserve-3d;
@@ -497,19 +599,18 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-top: 35%;
 }
 
-#carousel figure>img {
+#carousel figure > img {
   width: 100%;
   height: 100%;
-    /*-webkit-filter: grayscale(1);*/
+  /*-webkit-filter: grayscale(1);*/
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 /*#carousel figure>img:hover{
   -webkit-filter: grayscale(0);
   /*transform: scale(1.2,1.2);
 }*/
-
 
 #carousel figure:nth-child(1) {
   transform: rotateY(0deg) translateZ(288px);
@@ -619,7 +720,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .booklistsidebar li:hover {
-  background: rgb(213,30,56);
+  background: rgb(213, 30, 56);
   cursor: pointer;
   color: white;
 }
@@ -631,7 +732,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .goodReadsLogo {
-  background-image: url('./images/goodreadslogo.png');
+  background-image: url("./images/goodreadslogo.png");
   background-repeat: no-repeat;
   height: 10em;
   width: 10em;
@@ -651,22 +752,24 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .style-13::-webkit-scrollbar {
   width: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .style-13::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #D62929;
-  background-image: -webkit-linear-gradient(90deg,
-        transparent,
-        rgba(0, 0, 0, 0.4) 50%,
-        transparent,
-        transparent);
+  background-color: #d62929;
+  background-image: -webkit-linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent,
+    transparent
+  );
 }
 
 .divider {
   border-bottom: 3px solid darkred;
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
 .mybookstable {
@@ -692,8 +795,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .bookprevinfo {
   grid-row: 1/2;
-    /*grid-template-columns: 200px 2fr;
-  grid-template-rows:300px 1fr;*/;
+  /*grid-template-columns: 200px 2fr;
+  grid-template-rows:300px 1fr;*/
 }
 
 .bookprevinfo img {
@@ -744,7 +847,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   grid-row: 3/4;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700);
 
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
@@ -768,12 +871,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .calendar .header .icon {
   cursor: pointer;
-  transition: .15s ease-out;
+  transition: 0.15s ease-out;
 }
 
 .calendar .header .icon:hover {
   transform: scale(1.75);
-  transition: .25s ease-out;
+  transition: 0.25s ease-out;
   color: var(--main-color);
 }
 
@@ -790,7 +893,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-weight: 400;
   color: var(--text-color-light);
   font-size: 70%;
-  padding: .75em 0;
+  padding: 0.75em 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -812,7 +915,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
+  border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
   border-image-slice: 1;
 }
 
@@ -832,8 +935,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   position: absolute;
   font-size: 82.5%;
   line-height: 1;
-  top: .75em;
-  right: .75em;
+  top: 0.75em;
+  right: 0.75em;
   font-weight: 700;
 }
 
@@ -849,25 +952,26 @@ Note: Beware of modifying this element as it can break the animations - you shou
   opacity: 0;
   font-size: 8em;
   position: absolute;
-  top: -.2em;
-  right: -.05em;
-  transition: .25s ease-out;
-  letter-spacing: -.07em;
+  top: -0.2em;
+  right: -0.05em;
+  transition: 0.25s ease-out;
+  letter-spacing: -0.07em;
 }
 
-.calendar .body .cell:hover .bg, .calendar .body .selected .bg {
+.calendar .body .cell:hover .bg,
+.calendar .body .selected .bg {
   opacity: 0.05;
-  transition: .5s ease-in;
+  transition: 0.5s ease-in;
 }
 
 .calendar .body .col {
   flex-grow: 0;
-  flex-basis: calc(100%/7);
-  width: calc(100%/7);
+  flex-basis: calc(100% / 7);
+  width: calc(100% / 7);
 }
 
 .icon {
-  font-family: 'Material Icons', serif;
+  font-family: "Material Icons", serif;
   font-style: normal;
   display: inline-block;
   vertical-align: middle;
@@ -880,7 +984,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }
 
 :root {
@@ -891,7 +995,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
-
 
 /* flexbox calendar */
 
@@ -966,8 +1069,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .btn.btn-sm {
-  padding: .84rem 2.14rem;
-  font-size: .67rem;
+  padding: 0.84rem 2.14rem;
+  font-size: 0.67rem;
 }
 
 .bknotewarningred {
@@ -989,7 +1092,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bkcard {
   border: 2px solid #e7e7e7;
   border-radius: 4px;
-  padding: .5rem;
+  padding: 0.5rem;
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   color: #5d5e5e;
@@ -999,13 +1102,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: -webkit-linear-gradient(to bottom, #cbad6d, #d53369);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #cbad6d, #d53369);
- /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   overflow-wrap: break-word;
 }
 
 .bkcard:hover {
-  transition: transform .75s;
-  box-shadow: 20px 20px 40px 0px rgba(0,0,0,0.5);
+  transition: transform 0.75s;
+  box-shadow: 20px 20px 40px 0px rgba(0, 0, 0, 0.5);
   transform: scale3d(1.06, 1.09, 2);
   cursor: pointer;
 }
@@ -1013,7 +1116,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bkcardedit {
   border: 2px solid #e7e7e7;
   border-radius: 4px;
-  padding: .5rem;
+  padding: 0.5rem;
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   color: #5d5e5e;
@@ -1023,7 +1126,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: -webkit-linear-gradient(to bottom, #cbad6d, #d53369);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #cbad6d, #d53369);
- /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   overflow-wrap: break-word;
   opacity: 0.4;
 }
@@ -1032,7 +1135,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border: 2px solid #e7e7e7;
   border-radius: 4px;
   border-style: dotted;
-  padding: .5rem;
+  padding: 0.5rem;
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   color: #5d5e5e;
@@ -1042,7 +1145,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: -webkit-linear-gradient(to bottom, #cbad6d, #d53369);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #cbad6d, #d53369);
- /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   overflow-wrap: break-word;
 }
 
@@ -1051,8 +1154,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 2px;
-  color: #9CC9E3;
-  font-family: 'Roboto', sans-serif;
+  color: #9cc9e3;
+  font-family: "Roboto", sans-serif;
 }
 
 .cardTitle2 {
@@ -1060,7 +1163,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-weight: 300;
   letter-spacing: 2px;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 hr {
@@ -1068,7 +1171,7 @@ hr {
   height: 3px;
   margin: 20px auto;
   border: 0;
-  background: #D0BB57;
+  background: #d0bb57;
 }
 
 .cardscontainer {
@@ -1096,7 +1199,13 @@ hr {
   -moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   box-shadow: inset 0px 1px 0px 0px #fce2c1;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, #ffc477),
+    color-stop(1, #fb9e25)
+  );
   background: -moz-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
   background: -webkit-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
   background: -o-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
@@ -1119,7 +1228,13 @@ hr {
 }
 
 .editCards:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, #fb9e25),
+    color-stop(1, #ffc477)
+  );
   background: -moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
   background: -webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
   background: -o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
@@ -1189,7 +1304,13 @@ hr {
   -moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   box-shadow: inset 0px 1px 0px 0px #fce2c1;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, #ffc477),
+    color-stop(1, #fb9e25)
+  );
   background: -moz-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
   background: -webkit-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
   background: -o-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
@@ -1212,7 +1333,13 @@ hr {
 }
 
 .saveCards:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, #fb9e25),
+    color-stop(1, #ffc477)
+  );
   background: -moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
   background: -webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
   background: -o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
@@ -1351,8 +1478,8 @@ hr {
   -ms-box-shadow: inset 0 0 5px #666;
   box-shadow: inset 0 0 5px #666;
   font-weight: bold;
-  color: #9CC9E3;
- /*#5d5e5e;*/
+  color: #9cc9e3;
+  /*#5d5e5e;*/
   font-size: 20px;
   text-align: center;
   background: #d53369;
@@ -1360,7 +1487,7 @@ hr {
   background: -webkit-linear-gradient(to bottom, #cbad6d, #d53369) !important;
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #cbad6d, #d53369) !important;
- /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   overflow-wrap: break-word;
 }
 
@@ -1373,12 +1500,18 @@ hr {
 }
 
 .book .odd {
-  background: -webkit-gradient(linear, right top, left top, color-stop(0.95, #FFF), color-stop(1, #DADADA));
-  background-image: -webkit-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-  background-image: -moz-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-  background-image: -ms-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-  background-image: -o-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-  background-image: linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+  background: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    color-stop(0.95, #fff),
+    color-stop(1, #dadada)
+  );
+  background-image: -webkit-linear-gradient(right, #fff 95%, #c4c4c4 100%);
+  background-image: -moz-linear-gradient(right, #fff 95%, #c4c4c4 100%);
+  background-image: -ms-linear-gradient(right, #fff 95%, #c4c4c4 100%);
+  background-image: -o-linear-gradient(right, #fff 95%, #c4c4c4 100%);
+  background-image: linear-gradient(right, #fff 95%, #c4c4c4 100%);
   -webkit-box-shadow: inset 0 0 5px #666;
   -moz-box-shadow: inset 0 0 5px #666;
   -o-box-shadow: inset 0 0 5px #666;
@@ -1387,7 +1520,13 @@ hr {
 }
 
 .book .even {
-  background: -webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0.95, #fff),
+    color-stop(1, #dadada)
+  );
   background-image: -webkit-linear-gradient(left, #fff 95%, #dadada 100%);
   background-image: -moz-linear-gradient(left, #fff 95%, #dadada 100%);
   background-image: -ms-linear-gradient(left, #fff 95%, #dadada 100%);
@@ -1403,7 +1542,7 @@ hr {
 .RichEditor-root {
   background: #fff;
   border: 1px solid #ddd;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 14px;
   padding: 15px;
 }
@@ -1432,7 +1571,7 @@ hr {
 .RichEditor-editor .RichEditor-blockquote {
   border-left: 5px solid #eee;
   color: #666;
-  font-family: 'Hoefler Text', 'Georgia', serif;
+  font-family: "Hoefler Text", "Georgia", serif;
   font-style: italic;
   margin: 16px 0;
   padding: 10px 20px;
@@ -1440,13 +1579,13 @@ hr {
 
 .RichEditor-editor .public-DraftStyleDefault-pre {
   background-color: rgba(0, 0, 0, 0.05);
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  font-family: "Inconsolata", "Menlo", "Consolas", monospace;
   font-size: 16px;
   padding: 20px;
 }
 
 .RichEditor-controls {
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
   font-size: 14px;
   margin-bottom: 5px;
   user-select: none;
@@ -1493,7 +1632,7 @@ blockquote {
 
 blockquote::before {
   content: "\201C";
- /*Unicode for Left Double Quote*/
+  /*Unicode for Left Double Quote*/
   /*Font*/
   font-family: Georgia, serif;
   font-size: 60px;
@@ -1583,11 +1722,6 @@ blockquote.grapefruit {
   }
 }
 
-
-
-
-
-
 /* d3 statcharts */
 
 .chartTitle {
@@ -1618,8 +1752,6 @@ blockquote.grapefruit {
   -o-animation: fadeIn ease 5s;
   -ms-animation: fadeIn ease 5s;
 }
-
-
 
 /* for slideins
 
@@ -1652,8 +1784,6 @@ blockquote.grapefruit {
     margin-left:5em; }
 }
 */
-
-
 
 .shelvesChart {
   grid-column: 2/3;
@@ -1692,11 +1822,11 @@ blockquote.grapefruit {
 
 .chartRadio {
   box-sizing: border-box;
- /* Addresses box sizing set to content-box in IE8/9 */
+  /* Addresses box sizing set to content-box in IE8/9 */
   padding: 0;
- /* Addresses excess padding in IE8/9 */
-  max-width: 1em!important;
-  height: 1em!important;
+  /* Addresses excess padding in IE8/9 */
+  max-width: 1em !important;
+  height: 1em !important;
   appearance: none;
   -webkit-appearance: none;
   width: 1em !important;
@@ -1708,28 +1838,68 @@ blockquote.grapefruit {
 .chartRadio:checked {
   background: #2a6cb3;
   background: #7097d2;
- /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover,  #7097d2 0%, #7097d2 20%, #207cca 20%, #2a6cb3 100%);
- /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7097d2), color-stop(20%,#7097d2), color-stop(20%,#207cca), color-stop(100%,#2a6cb3));
- /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%);
- /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%);
- /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%);
- /* IE10+ */
-  background: radial-gradient(ellipse at center,  #7097d2 0%,#7097d2 20%,#207cca 20%,#2a6cb3 100%);
- /* W3C */
+  /* Old browsers */
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    #7097d2 0%,
+    #7097d2 20%,
+    #207cca 20%,
+    #2a6cb3 100%
+  );
+  /* FF3.6+ */
+  background: -webkit-gradient(
+    radial,
+    center center,
+    0px,
+    center center,
+    100%,
+    color-stop(0%, #7097d2),
+    color-stop(20%, #7097d2),
+    color-stop(20%, #207cca),
+    color-stop(100%, #2a6cb3)
+  );
+  /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    #7097d2 0%,
+    #7097d2 20%,
+    #207cca 20%,
+    #2a6cb3 100%
+  );
+  /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(
+    center,
+    ellipse cover,
+    #7097d2 0%,
+    #7097d2 20%,
+    #207cca 20%,
+    #2a6cb3 100%
+  );
+  /* Opera 12+ */
+  background: -ms-radial-gradient(
+    center,
+    ellipse cover,
+    #7097d2 0%,
+    #7097d2 20%,
+    #207cca 20%,
+    #2a6cb3 100%
+  );
+  /* IE10+ */
+  background: radial-gradient(
+    ellipse at center,
+    #7097d2 0%,
+    #7097d2 20%,
+    #207cca 20%,
+    #2a6cb3 100%
+  );
+  /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7097d2', endColorstr='#2a6cb3',GradientType=1 );
- /* IE6-9 fallback on horizontal gradient */
+  /* IE6-9 fallback on horizontal gradient */
   -webkit-box-shadow: inset 0 0 0 1px #fff;
   box-shadow: inset 0 0 0 1px #fff;
 }
-
-
-
-
 
 /*
 svg{
@@ -1742,16 +1912,15 @@ svg{
     width:50px;
 }*/
 
-
 /*DIGITAL CLOCK FONT*/
 @font-face {
-  font-family:'digital-7';
- src: url('./fonts/digital-7.ttf');
+  font-family: "digital-7";
+  src: url("./fonts/digital-7.ttf");
 }
 
 div.clock div {
   display: inline-block;
-  font-family: 'digital-7';
+  font-family: "digital-7";
   font-weight: 800px;
 }
 
@@ -1759,7 +1928,6 @@ div.clock div p {
   font-size: 100px;
   z-index: 100;
 }
-
 
 /*CLASS THAT CHANGES COLOR OF TEXT TO APPEAR LIKE ITS "ON"*/
 .light-on {
@@ -1771,7 +1939,7 @@ div.clock div p {
   height: 8em;
   width: 28em;
   text-align: center;
-  line-height: .8;
+  line-height: 0.8;
   border: 5px solid black;
 }
 
@@ -1779,7 +1947,7 @@ div.clock div p {
   text-align: center;
   font-size: 1.5em;
   font-weight: bold;
-  padding-bottom: .25em;
+  padding-bottom: 0.25em;
 }
 
 div.days {
@@ -1788,7 +1956,7 @@ div.days {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-evenly;
-  padding: .4em 0 0 0;
+  padding: 0.4em 0 0 0;
 }
 
 div.days .day {
@@ -1802,25 +1970,8 @@ div.days .day p {
   text-transform: uppercase;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*MEDIA QUERY TIME!! =)*/
 @media (min-width: 1281px) {
-  
   .chartLayout {
     display: grid;
     grid-template-columns: 1fr;
@@ -1865,7 +2016,6 @@ div.days .day p {
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
-  
   .chartLayout {
     display: grid;
     grid-template-columns: 1fr;
@@ -1910,8 +2060,7 @@ div.days .day p {
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  
-    /*.mybookscontainer{
+  /*.mybookscontainer{
         display:grid;
         grid-template-rows:1fr 70em;
         grid-template-columns: 20em 1fr;
@@ -1979,7 +2128,7 @@ div.days .day p {
   }
 
   .previewnote {
-    grid-column: 1/ span 2;
+    grid-column: 1 / span 2;
     grid-row: 2/3;
     overflow-y: scroll;
     grid-template-rows: 1fr 85px 400px;
@@ -2029,9 +2178,6 @@ div.days .day p {
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  
-
-
   .mybookscontainer {
     display: grid;
     grid-template-rows: 60em 60em;
@@ -2061,7 +2207,7 @@ div.days .day p {
   }
 
   .previewnote {
-    grid-column: 1/ span 2;
+    grid-column: 1 / span 2;
     grid-row: 2/3;
     overflow-y: scroll;
     grid-template-rows: 1fr 85px 400px;
@@ -2111,11 +2257,10 @@ div.days .day p {
 */
 
 @media (min-width: 481px) and (max-width: 767px) {
-  
   .headerul a {
-    font-size: .9rem;
+    font-size: 0.9rem;
     white-space: nowrap;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   .mybookscontainer {
@@ -2209,11 +2354,11 @@ div.days .day p {
   }
 
   .totalreadChartRadioGroup {
-    font-size: .7em;
+    font-size: 0.7em;
   }
 
   .tick {
-    font-size: .7em;
+    font-size: 0.7em;
   }
 
   .profiledetail {
@@ -2254,11 +2399,10 @@ div.days .day p {
 */
 
 @media (min-width: 0px) and (max-width: 480px) {
-  
   .headerul a {
     font-size: 1em;
     white-space: nowrap;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   .logobg {
@@ -2353,11 +2497,11 @@ div.days .day p {
   }
 
   .totalreadChartRadioGroup {
-    font-size: .7em;
+    font-size: 0.7em;
   }
 
   .tick {
-    font-size: .7em;
+    font-size: 0.7em;
   }
 
   .profiledetail {
@@ -2401,7 +2545,7 @@ div.days .day p {
     height: 6em;
     width: 15em;
     text-align: center;
-    line-height: .8;
+    line-height: 0.8;
     border: 5px solid black;
   }
 }

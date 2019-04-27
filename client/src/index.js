@@ -2,19 +2,15 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "./index.css";
 
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import Turn from "./Turn";
-import $ from "jquery";
-import q from "turn.js";
+
 
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import * as actions from "./actions";
-import { connect } from "react-redux";
+
 
 import App from "./App";
 
