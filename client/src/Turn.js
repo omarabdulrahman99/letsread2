@@ -1,18 +1,14 @@
 import $ from "jquery";
-import q from "turn.js";
-import React from 'react';
+import "turn.js";
+import React from "react";
 
-
-import * as actions from './actions';
-import { connect } from 'react-redux';
-
-
+import * as actions from "./actions";
+import { connect } from "react-redux";
 
 class Turn extends React.Component {
     static defaultProps = {
         style: {},
         className: "book",
-        options: {},
         pages: [
             "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/01.jpg",
             "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/02.jpg",
@@ -35,17 +31,9 @@ class Turn extends React.Component {
                 }
             }
         }
-
     };
 
-
-
-
-
     componentDidMount() {
-
-        
-
         if (this.el) {
             $(this.el).turn(Object.assign({}, this.props.options));
         }
@@ -71,52 +59,47 @@ class Turn extends React.Component {
     };
 
     render() {
-
-       
-        let hardstyle = {width:"400px",height:"800px"};
         let chapnum = this.props.coverinfo.chapnum;
         let title = this.props.coverinfo.title;
         let name = this.props.profile[0].name[0];
- 
 
         return (
             <div className={this.props.className} ref={el => (this.el = el)}>
-
-                 <div className="hard">
+                <div className="hard">
                     <div className="noteCover">
-                        <div className="cardTitle">{"Your notes for Chapter " + this.props.coverinfo.chapnum}</div>
-                        <hr></hr>
-                        <div className="cardTitle2">{this.props.coverinfo.title}</div>
-                    </div>
-                 </div>
-                 <div className="hard"></div>
-                    {this.props.turnjstext.map((page, index) => (
-                        <div key={index} className="page">
-                            <div className="turnjsPageNum">{index+1}</div>
-                            <hr></hr>
-                            <div className="pageText">
-                                {page}
-                            </div>
+                        <div className="cardTitle">
+                            {"Your notes for Chapter " + chapnum}
                         </div>
-                    ))}
-                <div className="hard">           
-                        <div className="cardTitle">{"Credits to YOU =) " + name}</div>
+                        <hr />
+                        <div className="cardTitle2">{title}</div>
+                    </div>
+                </div>
+                <div className="hard" />
+                {this.props.turnjstext.map((page, index) => (
+                    <div key={index} className="page">
+                        <div className="turnjsPageNum">{index + 1}</div>
+                        <hr />
+                        <div className="pageText">{page}</div>
+                    </div>
+                ))}
+                <div className="hard">
+                    <div className="cardTitle">
+                        {"Credits to YOU =) " + name}
+                    </div>
                 </div>
                 <div className="hard">
                     <div className="cardTitle">End Cover</div>
                 </div>
-             
-
-
             </div>
         );
     }
 }
 
 function mapStateToProps(props) {
-
-    return { thisuser: props.auth }
+    return { thisuser: props.auth };
 }
 
-
-export default connect(mapStateToProps, actions)(Turn);
+export default connect(
+    mapStateToProps,
+    actions
+)(Turn);
