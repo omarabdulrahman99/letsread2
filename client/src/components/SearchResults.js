@@ -60,7 +60,7 @@ class SearchResults extends Component {
 		var shelflist = "";
 
 		if (this.props.thisuser) {
-			shelflist = await axios.post("/api/shelf/list", {
+			shelflist = await axios.post("/api/shelflist", {
 				user: this.props.thisuser
 			});
 
