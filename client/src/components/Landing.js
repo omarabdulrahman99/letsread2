@@ -34,24 +34,13 @@ class Landing extends Component {
 		var usershelfbooksraw = "";
 		var event = e.currentTarget;
 
-		if (this.props.thisuser) {
-			//watsup
-
-			shelflist = await axios.post(`/api/shelflist`, {
-				user: this.props.thisuser
-			});
-
-			usershelfbooksraw = await axios.post(`/api/usershelfbooks`, {
-				goodreadId: this.props.thisuser.goodreadId
-			});
-		} else {
-			shelflist = false;
-			usershelfbooksraw = false;
-		}
-
-		if (event.nodeName === "DIV") {
+		if (event.nodeName === "BUTTON") {
 			const form = ee.parentNode;
 			const query = form.elements["searchq"].value;
+
+			if (query === "") {
+				return null;
+			}
 			dataresults = await axios.get(`/api/search/${query}`);
 
 			this.setState({
@@ -64,6 +53,9 @@ class Landing extends Component {
 		} else {
 			const form = ee;
 			const query = form.elements["searchq"].value;
+			if (query === "") {
+				return null;
+			}
 			dataresults = await axios.get(`/api/search/${query}`);
 
 			this.setState({
@@ -74,6 +66,19 @@ class Landing extends Component {
 			});
 
 			//this.setState({searchpage:true});
+		}
+
+		if (this.props.thisuser) {
+			shelflist = await axios.post(`/api/shelflist`, {
+				user: this.props.thisuser
+			});
+
+			usershelfbooksraw = await axios.post(`/api/usershelfbooks`, {
+				goodreadId: this.props.thisuser.goodreadId
+			});
+		} else {
+			shelflist = false;
+			usershelfbooksraw = false;
 		}
 	}
 
@@ -86,9 +91,12 @@ class Landing extends Component {
 						onSubmit={this.handleSubmit}
 						className="form-inline active-pink-3 active-pink-4 "
 					>
-						<div onClick={this.handleSubmit}>
-							<i className="fa fa-search" aria-hidden="true" />
-						</div>
+						<button
+							className="searchButton"
+							onClick={this.handleSubmit}
+						>
+							<i className="fa fa-search" />
+						</button>
 						<input
 							className="form-control form-control-sm ml-3 w-75"
 							required={true}

@@ -56,7 +56,7 @@ class Profile extends Component {
 		var gender = profileuserdata[0].gender[0];
 		var location = profileuserdata[0].location[0];
 		var age = profileuserdata[0].age[0];
-		var about = profileuserdata[0].about[0];
+		var about = profileuserdata[0].about[0].replace(/(<([^>]+)>)/gi, "");//regex to remove <>tags 
 		var image = profileuserdata[0].image_url[0];
 
 		var styles = {

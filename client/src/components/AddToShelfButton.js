@@ -4,7 +4,7 @@ import Spinner from "./Spinner";
 import axios from "axios";
 import { connect } from "react-redux";
 
-class Button extends Component {
+class AddToShelfButton extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -329,4 +329,4 @@ function mapStateToProps(props) {
 	return { thisuser: props.auth };
 }
 
-export default connect(mapStateToProps)(Button);
+export default connect(mapStateToProps)(AddToShelfButton);

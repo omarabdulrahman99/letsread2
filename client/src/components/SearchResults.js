@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { MDBDataTable } from "mdbreact";
-import Button from "./Button";
+import Button from "./AddToShelfButton";
 import axios from "axios";
 
 class SearchResults extends Component {
@@ -59,29 +59,17 @@ class SearchResults extends Component {
 		var usershelfbooksraw = "";
 		var shelflist = "";
 
-		if (this.props.thisuser) {
-			shelflist = await axios.post("/api/shelflist", {
-				user: this.props.thisuser
-			});
-
-			usershelfbooksraw = await axios.post("/api/usershelfbooks", {
-				goodreadId: this.props.thisuser.goodreadId
-			});
-
-			usershelfbooks = usershelfbooksraw.data.usershelfbooks;
-		} else {
-			shelflist = false;
-			usershelfbooksraw = false;
-			usershelfbooks = false;
-		}
 
 		if (event.nodeName === "DIV") {
 			const form = ee.parentNode;
 			const query = form.elements["searchq"].value;
+			if(query === ""){
+				return null
+			}
+
 			dataresults = await axios.get(`/api/search/${query}`);
 
 			let searchcounter = this.state.searchcounter;
-
 			let booksarray = dataresults.data.booksarray;
 
 			dataresults.data.rows.forEach(function(rowobj, i, trowsArray) {
@@ -104,6 +92,9 @@ class SearchResults extends Component {
 		} else {
 			const form = ee;
 			const query = form.elements["searchq"].value;
+			if(query === ""){
+				return null
+			}
 			dataresults = await axios.get(`/api/search/${query}`);
 
 			let searchcounter = this.state.searchcounter;
@@ -127,6 +118,26 @@ class SearchResults extends Component {
 				searchcounter: prevState.searchcounter + 1
 			}));
 		}
+
+
+		if (this.props.thisuser) {
+			shelflist = await axios.post("/api/shelflist", {
+				user: this.props.thisuser
+			});
+
+			usershelfbooksraw = await axios.post("/api/usershelfbooks", {
+				goodreadId: this.props.thisuser.goodreadId
+			});
+
+			usershelfbooks = usershelfbooksraw.data.usershelfbooks;
+		} else {
+			shelflist = false;
+			usershelfbooksraw = false;
+			usershelfbooks = false;
+		}
+
+
+
 	}
 
 	handleInputChanges(e) {
@@ -159,7 +170,6 @@ class SearchResults extends Component {
 							<i
 								onClick={this.onClicki}
 								className="fa fa-search"
-								aria-hidden="true"
 							/>
 						</div>
 						<input

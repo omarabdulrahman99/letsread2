@@ -204,6 +204,26 @@ Note: Beware of modifying this element as it can break the animations - you shou
   text-align: center;
 }
 
+.searchButton {
+  width: 4em;
+  background: #cc0000;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+.searchButton:hover {
+  background: #ff7f7f;
+}
+.ml-3 {
+  margin: 0 !important;
+}
+
+.mx-3 {
+  margin: 0 !important;
+}
+
 .formcenter {
   margin-top: 10%;
   width: 100%;
