@@ -1477,8 +1477,7 @@ hr {
 }
 
 .book {
-  margin-top: 50px !important;
-  margin-left: 30% !important;
+  margin: 50px auto !important;
   height: 90%;
   width: 90%;
   -webkit-touch-callout: none;
