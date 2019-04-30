@@ -24,6 +24,7 @@ class SearchResults extends Component {
 	componentDidMount() {
 		var usershelfbooks = "";
 		var usershelfbooksraw = this.state.usershelfbooksraw;
+		var user = this.props.user;
 
 		if (usershelfbooksraw) {
 			usershelfbooks = this.state.usershelfbooksraw.data.usershelfbooks;
@@ -33,19 +34,24 @@ class SearchResults extends Component {
 
 		var booksarray = this.state.tbooksarray;
 		var trows = this.state.trows;
+		var tcolumns = this.state.tcolumns;
 		var shelflist = this.state.shelflist;
 		var searchcounter = this.state.searchcounter;
 
-		trows.forEach(function(rowobj, i, trowsArray) {
-			trowsArray[i].button = (
-				<Button
-					usershelfbooks={usershelfbooks}
-					shelflist={shelflist}
-					bookobj={booksarray[i]}
-					searchcounter={searchcounter}
-				/>
-			);
-		});
+		if (this.props.thisuser) {
+			trows.forEach(function(rowobj, i, trowsArray) {
+				trowsArray[i].button = (
+					<Button
+						usershelfbooks={usershelfbooks}
+						shelflist={shelflist}
+						bookobj={booksarray[i]}
+						searchcounter={searchcounter}
+					/>
+				);
+			});
+		} else {
+			tcolumns.pop();
+		}
 
 		this.setState({ trows: trows });
 	}
@@ -58,67 +64,7 @@ class SearchResults extends Component {
 		var usershelfbooks = "";
 		var usershelfbooksraw = "";
 		var shelflist = "";
-
-
-		if (event.nodeName === "DIV") {
-			const form = ee.parentNode;
-			const query = form.elements["searchq"].value;
-			if(query === ""){
-				return null
-			}
-
-			dataresults = await axios.get(`/api/search/${query}`);
-
-			let searchcounter = this.state.searchcounter;
-			let booksarray = dataresults.data.booksarray;
-
-			dataresults.data.rows.forEach(function(rowobj, i, trowsArray) {
-				trowsArray[i].button = (
-					<Button
-						shelflist={shelflist}
-						usershelfbooks={usershelfbooks}
-						bookobj={booksarray[i]}
-						searchcounter={searchcounter}
-					/>
-				);
-			});
-
-			this.setState(prevState => ({
-				trows: dataresults.data.rows,
-				tcolumns: dataresults.data.columns,
-				tbooksarray: dataresults.data.booksarray,
-				searchcounter: prevState.searchcounter + 1
-			}));
-		} else {
-			const form = ee;
-			const query = form.elements["searchq"].value;
-			if(query === ""){
-				return null
-			}
-			dataresults = await axios.get(`/api/search/${query}`);
-
-			let searchcounter = this.state.searchcounter;
-
-			let booksarray = dataresults.data.booksarray;
-			dataresults.data.rows.forEach(function(rowobj, i, trowsArray) {
-				trowsArray[i].button = (
-					<Button
-						shelflist={shelflist}
-						usershelfbooks={usershelfbooks}
-						bookobj={booksarray[i]}
-						searchcounter={searchcounter}
-					/>
-				);
-			});
-
-			this.setState(prevState => ({
-				trows: dataresults.data.rows,
-				tcolumns: dataresults.data.columns,
-				tbooksarray: dataresults.data.booksarray,
-				searchcounter: prevState.searchcounter + 1
-			}));
-		}
-
+		var user = this.props.thisuser;
 
 		if (this.props.thisuser) {
 			shelflist = await axios.post("/api/shelflist", {
@@ -136,8 +82,73 @@ class SearchResults extends Component {
 			usershelfbooks = false;
 		}
 
+		if (event.nodeName === "DIV") {
+			const form = ee.parentNode;
+			const query = form.elements["searchq"].value;
+			if (query === "") {
+				return null;
+			}
 
+			dataresults = await axios.get(`/api/search/${query}`);
 
+			let searchcounter = this.state.searchcounter;
+			let booksarray = dataresults.data.booksarray;
+
+			if (this.props.thisuser) {
+				dataresults.data.rows.forEach(function(rowobj, i, trowsArray) {
+					trowsArray[i].button = (
+						<Button
+							shelflist={shelflist}
+							usershelfbooks={usershelfbooks}
+							bookobj={booksarray[i]}
+							searchcounter={searchcounter}
+						/>
+					);
+				});
+			} else {
+				dataresults.data.columns.pop();
+			}
+
+			this.setState(prevState => ({
+				trows: dataresults.data.rows,
+				tcolumns: dataresults.data.columns,
+				tbooksarray: dataresults.data.booksarray,
+				searchcounter: prevState.searchcounter + 1
+			}));
+		} else {
+			const form = ee;
+			const query = form.elements["searchq"].value;
+			if (query === "") {
+				return null;
+			}
+			dataresults = await axios.get(`/api/search/${query}`);
+
+			let searchcounter = this.state.searchcounter;
+
+			let booksarray = dataresults.data.booksarray;
+
+			if (this.props.thisuser) {
+				dataresults.data.rows.forEach(function(rowobj, i, trowsArray) {
+					trowsArray[i].button = (
+						<Button
+							shelflist={shelflist}
+							usershelfbooks={usershelfbooks}
+							bookobj={booksarray[i]}
+							searchcounter={searchcounter}
+						/>
+					);
+				});
+			} else {
+				dataresults.data.columns.pop();
+			}
+
+			this.setState(prevState => ({
+				trows: dataresults.data.rows,
+				tcolumns: dataresults.data.columns,
+				tbooksarray: dataresults.data.booksarray,
+				searchcounter: prevState.searchcounter + 1
+			}));
+		}
 	}
 
 	handleInputChanges(e) {

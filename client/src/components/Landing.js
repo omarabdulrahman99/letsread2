@@ -34,6 +34,21 @@ class Landing extends Component {
 		var usershelfbooksraw = "";
 		var event = e.currentTarget;
 
+
+		if (this.props.thisuser) {
+			shelflist = await axios.post(`/api/shelflist`, {
+				user: this.props.thisuser
+			});
+
+			usershelfbooksraw = await axios.post(`/api/usershelfbooks`, {
+				goodreadId: this.props.thisuser.goodreadId
+			});
+		} else {
+			shelflist = false;
+			usershelfbooksraw = false;
+		}
+
+
 		if (event.nodeName === "BUTTON") {
 			const form = ee.parentNode;
 			const query = form.elements["searchq"].value;
@@ -68,18 +83,7 @@ class Landing extends Component {
 			//this.setState({searchpage:true});
 		}
 
-		if (this.props.thisuser) {
-			shelflist = await axios.post(`/api/shelflist`, {
-				user: this.props.thisuser
-			});
 
-			usershelfbooksraw = await axios.post(`/api/usershelfbooks`, {
-				goodreadId: this.props.thisuser.goodreadId
-			});
-		} else {
-			shelflist = false;
-			usershelfbooksraw = false;
-		}
 	}
 
 	renderContent() {

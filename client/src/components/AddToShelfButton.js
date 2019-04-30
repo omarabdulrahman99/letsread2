@@ -53,7 +53,6 @@ class AddToShelfButton extends Component {
 					}
 				);
 
-				console.log(shelfadd + " shelfadd");
 				this.setState({
 					loading: false
 				});
@@ -289,24 +288,14 @@ class AddToShelfButton extends Component {
 		//console.log(JSON.stringify(this.state.activeshelf,null,2)+'stateshelf');
 
 		if (this.prevCounter !== this.props.searchcounter) {
-			console.log(
-				this.prevCounter +
-					"uhmm" +
-					this.props.searchcounter +
-					"should change"
-			);
-
 			this.prevCounter = this.props.searchcounter;
 
-			this.setState(
-				prevState => {
-					return {
-						...prevState,
-						activeshelf: this.activeshelves2
-					};
-				},
-				() => console.log("completed ding!")
-			);
+			this.setState(prevState => {
+				return {
+					...prevState,
+					activeshelf: this.activeshelves2
+				};
+			});
 		}
 
 		return ditems;
