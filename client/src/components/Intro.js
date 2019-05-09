@@ -82,7 +82,9 @@ class Intro extends Component {
       ],
       herochoice: null,
       dbgcounter: 0,
-      edit: "no"
+      edit: "no",
+      heronanim:"yes",
+      showimg:"yes"
     };
 
     this.twiquotedivs = [];
@@ -98,12 +100,12 @@ class Intro extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({ dbgcounter: 0, diainter: diainter });
+    this.setState({ dbgcounter: 0, diainter: diainter, heroanim:"yes", showimg:"yes" });
 
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.startup();
     }, 500);
-    this.startup();
+    this.startup();*/
 
     let diainter = setInterval(() => {
       if (this.state.herochoice === "katniss") {
@@ -355,7 +357,7 @@ class Intro extends Component {
         fadeTimeOut: null
       },
       () => {
-        this.startup();
+        //this.startup();
         this.setTwilightQuotes();
       }
     );
@@ -569,7 +571,7 @@ class Intro extends Component {
                 id="harry"
                 className={
                   this.state.heroanim === "yes"
-                    ? "heroes slide-up"
+                    ? "heroes "
                     : "heroeshide"
                 }
                 onClick={this.handlePicClicks}
@@ -580,7 +582,7 @@ class Intro extends Component {
                 id="jondany"
                 className={
                   this.state.heroanim === "yes"
-                    ? "heroes slide-down"
+                    ? "heroes "
                     : "heroeshide"
                 }
                 onClick={this.handlePicClicks}
@@ -591,7 +593,7 @@ class Intro extends Component {
                 id="katniss"
                 className={
                   this.state.heroanim === "yes"
-                    ? "heroes slide-up"
+                    ? "heroes "
                     : "heroeshide"
                 }
                 onClick={this.handlePicClicks}
@@ -602,7 +604,7 @@ class Intro extends Component {
                 id="twilight"
                 className={
                   this.state.heroanim === "yes"
-                    ? "heroes slide-down"
+                    ? "heroes "
                     : "heroeshide"
                 }
                 onClick={this.handlePicClicks}
