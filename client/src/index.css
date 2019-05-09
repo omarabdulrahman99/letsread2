@@ -113,7 +113,7 @@ body,
   border-top: 2px solid rgba(255, 255, 255, 0);
   border-bottom: 2px solid rgba(255, 255, 255, 0);
   transition: padding 0.3s, border-color 0.3s;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .headerul a:focus,
@@ -2179,6 +2179,35 @@ animation:leftslide 2s;
  z-index:5;
 }
 
+.righthalf1hover {
+  position:absolute;
+  height:100%;
+  width:50%;
+  right:0;
+  text-align:left;
+   transform: translateX(.5%);
+  background-color:#FFE5E5;
+  z-index:5;
+}
+
+.lefthalf1hover {
+  position:absolute;
+  left:0;
+  height:100%;
+  width:50%;
+  text-align:right;
+  background-color:#FFE5E5;
+  transform: translateX(-.5%);
+  z-index:5;
+}
+
+
+
+
+
+
+
+
 
 .righthalfimg {
 
@@ -2289,7 +2318,7 @@ transform: translateY(0vh);
   padding: 15px 20px 15px 45px;
   font-family: Georgia, serif;
   line-height: 1.2;
-  color: white;
+  color: #773239;
   box-shadow: none;
 }
 
@@ -2305,7 +2334,9 @@ transform: translateY(0vh);
   padding: 15px 20px 15px 45px;
   font-family: Georgia, serif;
   line-height: 1.2;
-  color: white;
+  color: #773239;
+
+
   box-shadow: none;
 }
 
@@ -2315,7 +2346,7 @@ transform: translateY(0vh);
   left:0%;
   font-size: 34px;
   text-align: left;
-  width: 40%;
+  width: 25%;
   border: none;
   display: block;
   background: none;
@@ -2331,13 +2362,47 @@ transform: translateY(0vh);
 
 }
 
+.righthalf1text2:hover {
+
+
+   position:absolute;
+  top:45%;
+  left:0%;
+  font-size: 34px;
+  text-align: left;
+  width: 25%;
+  border: none;
+  display: block;
+  background: none;
+  line-height: 1.2;
+  color: black;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-weight:bold;
+  letter-spacing: 12px;
+
+
+  background:-webkit-linear-gradient(
+    right,
+    #ff6600 0%,
+    #800000 25%,
+    #cc0000 50%,
+    #ffc0cb 100%
+  )
+  repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 .lefthalf1text2 {
   position:absolute;
   top:45%;
   right:0%;
   font-size: 34px;
   text-align: right;
-  width: 40%;
+  width: 25%;
   border: none;
   display: block;
   background: none;
@@ -2352,6 +2417,45 @@ transform: translateY(0vh);
   letter-spacing: 12px;
 
 }
+
+
+.lefthalf1text2:hover {
+ position:absolute;
+  top:45%;
+  right:0%;
+  font-size: 34px;
+  text-align: right;
+  width: 25%;
+  border: none;
+  display: block;
+  background: none;
+  
+  
+  line-height: 1.2;
+  color: black;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-weight:bold;
+  letter-spacing: 12px;
+  background:-webkit-linear-gradient(
+    right,
+    #ff6600 0%,
+    #800000 25%,
+    #cc0000 50%,
+    #ffc0cb 100%
+  )
+  repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+
+
+
 
 .lefthalf2text {
   text-align:center;

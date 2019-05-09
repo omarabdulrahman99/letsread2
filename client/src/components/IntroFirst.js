@@ -11,7 +11,9 @@ constructor(props){
 	this.state = {
 		clicked:false,
 		clicked2:false,
-		clicked3:false
+		clicked3:false,
+		lefthalfhov:false,
+		righthalfhov:false
 	}
 
 }
@@ -77,6 +79,45 @@ setclockStyle = ()=> {
             
 }
 
+mOverRightHalf1 = (e) => {
+	if(!this.state.clicked){
+	setTimeout(()=>{
+		this.setState({righthalfhov:true, lefthalfhov:true})
+	},200)
+  }
+	
+}
+
+mLeaveRightHalf1 = (e) => {
+	if(!this.state.clicked){
+	setTimeout(()=>{
+		this.setState({righthalfhov:false, lefthalfhov:false})
+	},200)
+  }
+	
+}
+
+
+mOverLeftHalf1 = (e) => {
+	if(!this.state.clicked){
+	setTimeout(()=>{
+		this.setState({lefthalfhov:true, righthalfhov:true})
+	},200)
+  }
+}
+
+mLeaveLeftHalf1 = (e) => {
+
+
+	if(!this.state.clicked){
+	setTimeout(()=>{
+		this.setState({lefthalfhov:false, righthalfhov:false})
+	},200)
+	}
+
+
+}
+
 
 
 render(){
@@ -85,16 +126,16 @@ render(){
 	return(
 
 		<div className="parentIntroFirst">
-			<div className={this.state.clicked ? "lefthalf1anim" : "lefthalf1"} onClick={this.onClick1}>
+			<div className={this.state.lefthalfhov ? "lefthalf1hover" : this.state.clicked ? "lefthalf1anim" : "lefthalf1"} onClick={this.onClick1}>
 				<img className="lefthalfimg" src="https://i.imgur.com/Jajhk5m.png"></img>
 				<blockquote className="lefthalf1text">“A reader lives a thousand lives before he dies.. The man who never reads lives only one" – George R.R. Martin</blockquote>
-				<div className="lefthalf1text2">Get S</div>
+				<div className="lefthalf1text2" onMouseOver={this.mOverLeftHalf1} onMouseLeave={this.mLeaveLeftHalf1} onClick={()=>{this.setState({clicked:true,righthalfhov:false,lefthalfhov:false})}}>Get S</div>
 			</div>
-			<div className={this.state.clicked ? "righthalf1anim" : "righthalf1"}  onClick={this.onClick1} >
+			<div className={this.state.righthalfhov ? "righthalf1hover" : this.state.clicked ? "righthalf1anim" : "righthalf1"}  onClick={this.onClick1} >
 				<img className="righthalfimg" src="https://i.imgur.com/PLFfO4r.png"></img>
 				<blockquote className="righthalf1text">"Whenever you read a good book, somewhere in the world a door opens to allow in more light." –Vera Nazarian 
 				</blockquote>
-				<div className="righthalf1text2">tarted</div>
+				<div className="righthalf1text2" onMouseOver={this.mOverRightHalf1} onMouseLeave={this.mLeaveRightHalf1} onClick={()=>{this.setState({clicked:true, righthalfhov:false, lefthalfhov:false})}}>tarted</div>
 			</div>
 			<div className={this.state.clicked2 ? "lefthalf2anim" : "lefthalf2"}  onClick={this.onClick1}>
 				<div id="clock">
