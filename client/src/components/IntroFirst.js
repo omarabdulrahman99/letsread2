@@ -147,11 +147,17 @@ render(){
 			    	<p>Do you find too many other activities distracting?</p>
 			    	<p>Do you simply like organizing your time?</p>
 			    </div>
+			    <div className="lefthalf2text2">
+			     NE
+			    </div>
 			</div>
 			<div className={this.state.clicked2 ? "righthalf2anim" : "righthalf2"}  onClick={this.onClick1}>
 					<div className="righthalf2text">
 						Use our built in calendar to easily schedule reading dates while checking out more books! 
 						You can also track your reading statistics to see how well you're doing!
+					</div>
+					<div className="righthalf2text2">
+					XT
 					</div>
 				<div style={{width:"80%",height:"60%",position:"relative",margin:"30% auto auto 0%"}}>
 					<iframe src="https://streamable.com/s/bw1sv/zpzdga" frameBorder="0" width="100%" height="100%" allowFullScreen 
@@ -165,11 +171,17 @@ render(){
 							style={{width:"100%", height:"100%", position:"absolute",left:"0px",top:"0px",overflow:"hidden"}}>
 					</iframe>
 				</div>
+				<div className="lefthalf2text2">
+			     NE
+			    </div>
 			</div>
 			<div className={this.state.clicked3 ? "righthalf3anim" : "righthalf3"}  onClick={this.onClick1} >
 					<div className="righthalf3text">
 						Here you can search for more books, add them to your favorite goodreads shelves, and save your thoughts
 						in a rich text editor that is later transformed into a 3-d personal notebook!
+					</div>
+					<div className="righthalf2text2">
+					XT
 					</div>
 
 			</div>

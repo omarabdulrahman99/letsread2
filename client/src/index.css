@@ -2453,6 +2453,124 @@ transform: translateY(0vh);
 
 
 
+.righthalf2text2 {
+  position:absolute;
+  top:5%;
+  left:0%;
+  font-size: 34px;
+  text-align: left;
+  width: 25%;
+  border: none;
+  display: block;
+  background: none;
+  
+ 
+  line-height: 1.2;
+  color: black;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-weight:bold;
+  letter-spacing: 12px;
+
+}
+
+.righthalf2text2:hover {
+
+
+   position:absolute;
+  top:5%;
+  left:0%;
+  font-size: 34px;
+  text-align: left;
+  width: 25%;
+  border: none;
+  display: block;
+  background: none;
+  line-height: 1.2;
+  color: black;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-weight:bold;
+  letter-spacing: 12px;
+
+
+  background:-webkit-linear-gradient(
+    right,
+    #ff6600 0%,
+    #800000 25%,
+    #cc0000 50%,
+    #ffc0cb 100%
+  )
+  repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.lefthalf2text2 {
+  position:absolute;
+  top:5%;
+  right:0%;
+  font-size: 34px;
+  text-align: right;
+  width: 25%;
+  border: none;
+  display: block;
+  background: none;
+  
+  
+  line-height: 1.2;
+  color: black;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-weight:bold;
+  letter-spacing: 12px;
+
+}
+
+.lefthalf2text2:hover {
+ position:absolute;
+  top:5%;
+  right:0%;
+  font-size: 34px;
+  text-align: right;
+  width: 25%;
+  border: none;
+  display: block;
+  background: none;
+  
+  
+  line-height: 1.2;
+  color: black;
+  box-shadow: none;
+  text-transform: uppercase;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-weight:bold;
+  letter-spacing: 12px;
+  background:-webkit-linear-gradient(
+    right,
+    #ff6600 0%,
+    #800000 25%,
+    #cc0000 50%,
+    #ffc0cb 100%
+  )
+  repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
