@@ -1995,13 +1995,16 @@ div.days .day p {
 
 .introCont {
   display:grid;
-  grid-template-rows:90vh 90vh 90vh;
+  grid-template-rows:90vh 90vh;
   grid-template-columns:1fr;
   height:100%;
 
   
 }
 
+.footer {
+  height:180%;
+}
 
 .introFirstSection {
   grid-row:1;
