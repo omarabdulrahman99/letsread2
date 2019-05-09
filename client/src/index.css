@@ -4323,6 +4323,14 @@ z-index:20;
     margin: 0px auto;
     margin-top: 5em;
   }
+
+  .coverHero {
+   
+    color: white;
+    font: 2rem "Arizonia", Helvetica, sans-serif !important;
+  }
+
+
 }
 
 /* 
@@ -4402,6 +4410,16 @@ z-index:20;
     margin: 0px auto;
     margin-top: 5em;
   }
+
+  .coverHero {
+   
+    color: white;
+    font: 2rem "Arizonia", Helvetica, sans-serif !important;
+  }
+
+
+
+
 }
 
 /* 
@@ -4544,6 +4562,16 @@ z-index:20;
     text-align: center;
     padding: 5%;
   }
+
+
+  .coverHero {
+   
+    color: white;
+    font: 2rem "Arizonia", Helvetica, sans-serif !important;
+  }
+
+
+
 }
 
 /* 
