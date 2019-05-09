@@ -20,12 +20,16 @@ class Header extends Component {
 				return;
 			case false:
 				return (
+					<div className="headerul">
+					<a href={"/intro"}>Intro</a>
 					<a className="login" href={"/auth/goodreads"}>
 						<img
 							src="https://s.gr-assets.com/assets/badge/goodreads-login-button-7bd184d3077cf3580f68aa8a00de39ce.png"
 							alt="goodreads-login-button"
 						/>
 					</a>
+					
+					</div>
 				);
 			default:
 				return (
