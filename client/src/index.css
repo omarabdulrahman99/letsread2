@@ -2223,7 +2223,7 @@ animation:leftslide 2s;
 
 @keyframes rightslide {
   0% {
-    transform: translateX(20%);
+    transform: translateX(0%);
   }
 
   85.71% {
@@ -2236,7 +2236,7 @@ animation:leftslide 2s;
 
 @keyframes leftslide {
   0% {
-    transform: translateX(-20%);
+    transform: translateX(0%);
   }
 
   85.71% {
@@ -2250,7 +2250,7 @@ animation:leftslide 2s;
 
 @keyframes rightslide2 {
   0% {
-    transform: translateX(20%);
+    transform: translateX(0%);
   }
 
   85.71% {
@@ -2263,7 +2263,7 @@ animation:leftslide 2s;
 
 @keyframes leftslide2 {
   0% {
-    transform: translateX(-20%);
+    transform: translateX(0%);
   }
 
   85.71% {
@@ -2276,7 +2276,7 @@ animation:leftslide 2s;
 
 @keyframes rightslide3 {
   0% {
-    transform: translateX(20%);
+    transform: translateX(0%);
   }
 
   85.71% {
@@ -2289,7 +2289,7 @@ animation:leftslide 2s;
 
 @keyframes leftslide3 {
   0% {
-    transform: translateX(-20%);
+    transform: translateX(0%);
   }
 
   85.71% {
