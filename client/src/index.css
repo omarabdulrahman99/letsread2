@@ -75,9 +75,7 @@ body,
   height: 90vh;
   overflow-y:auto;
   background: #f7f9fb;
-  scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(100vh);
-  scroll-snap-type: y mandatory;
+
 }
 
 .login {
@@ -2000,21 +1998,18 @@ div.days .day p {
   grid-template-rows:90vh 90vh 90vh;
   grid-template-columns:1fr;
   height:100%;
-  
-  scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(100vh);
-  scroll-snap-type: y mandatory;
+
   
 }
 
 
 .introFirstSection {
   grid-row:1;
-  scroll-snap-align: start;
+ 
   height:90vh;
       -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
+  -html-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -2890,7 +2885,7 @@ transform: translateY(0vh);
   grid-row:2;
   background:#171717;
   position:relative;
-  scroll-snap-align: start;
+
 }
 
 
