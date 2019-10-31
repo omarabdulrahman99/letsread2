@@ -22,7 +22,7 @@
     "express": "^4.16.3",
     "jquery": "^1.12.0",
     "json-stringify-safe": "^5.0.1",
-    "mongoose": "^5.2.17",
+    "mongoose": "^5.7.5",
     "passport": "^0.4.0",
     "passport-goodreads": "^1.0.0",
     "turn.js": "^1.0.5",
